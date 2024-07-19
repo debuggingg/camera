@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -11,9 +13,11 @@
         
         .custom-container {
             display: flex;
+            width: 100%;
             justify-content: center;
             align-items: center;
-            height: 100vh; 
+            height: auto;
+            margin: 0 auto;
         }
 
         .form-container {

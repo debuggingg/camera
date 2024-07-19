@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -5,13 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이용약관</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
+    <style>        
         .terms-container {
-            max-width: 600px;
+            width: 50%;
             margin: 0 auto;           
         }
         .terms-section {
@@ -342,7 +340,7 @@
         }
 
         function submitForm() {            
-            const signupUrl = 'sign_up.html';         
+            const signupUrl = 'index.jsp?workgroup=users&work=users_join';         
            
             const allAgreed = document.getElementById('agree1').checked && document.getElementById('agree2').checked;
             
