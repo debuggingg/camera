@@ -36,11 +36,11 @@
             justify-content: center;
             align-items: center;
             height: auto;
-            margin: 0 auto;
+            margin: 100px; 
         }
 
         .form-container {
-            max-width: 400px;
+            max-width: 350px;
             width: 100%;
             padding: 20px;           
             border: 1px solid #dee2e6;
@@ -61,6 +61,7 @@
         .is-invalid ~ .invalid-feedback {
             display: block;
         }
+       
     </style>
 </head>
 <body>
@@ -79,8 +80,8 @@
                     <input type="password" class="form-control" id="pw" name="pw" placeholder="비밀번호를 입력하세요">
                     
                 </div>
-                <button class="btn btn-primary w-100 py-2" type="submit" id="login_btn">로그인</button>                
-                <a href="index.jsp?workgroup=users&work=users_agreement" class="btn btn-secondary w-100 py-2 mt-2">회원가입</a>
+                <button class="btn btn-warning w-100 py-2" type="submit" id="login_btn">로그인</button>                
+                <a href="index.jsp?workgroup=users&work=users_agreement" class="btn btn-warning w-100 py-2 mt-2">회원가입</a>
                 <div class="d-flex justify-content-center mt-2">
                     <a href="index.jsp?workgroup=users&work=id_find" class="text-decoration-none text-muted mx-2">아이디 찾기</a>
                     <span class="text-muted">|</span>

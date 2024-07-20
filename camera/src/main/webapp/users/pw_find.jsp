@@ -17,11 +17,11 @@
             justify-content: center;
             align-items: center;
             height: auto;
-            margin: 0 auto;
+            margin: 100px; 
         }
 
         .form-container {
-            max-width: 400px; 
+            max-width: 350px; 
             width: 100%;
             padding: 20px;           
             border: 1px solid #dee2e6;
@@ -34,6 +34,7 @@
             font-size: 0.875em;
             margin-top: 0.5em;
         }
+      
     </style>
 </head>
 <body>
@@ -57,7 +58,7 @@
                     <div class="error-message" id="emailError"></div>
                 </div>
                 
-                <button type="submit" class="btn btn-primary w-100">확인</button>
+                <button type="submit" class="btn btn-warning w-100">확인</button>
             </form>
         </div>
     </div>

@@ -179,7 +179,7 @@
 					</div>
 				</div>
 				<div id="textbox">
-					<h1>Flim</h1>
+					<h1>Film</h1>
 					<P>10000000원</P>
 				</div>
 				<div id="add-box">
@@ -195,7 +195,7 @@
 					</div>
 				</div>
 				<div id="textbox">
-					<h1>Flim</h1>
+					<h1>Film</h1>
 					<P>10000000원</P>
 
 				</div>
@@ -212,7 +212,7 @@
 					</div>
 				</div>
 				<div id="textbox">
-					<h1>Flim</h1>
+					<h1>Film</h1>
 					<P>10000000원</P>
 				</div>
 				<div id="add-box">
@@ -228,7 +228,7 @@
 					</div>
 				</div>
 				<div id="textbox">
-					<h1>Flim</h1>
+					<h1>Film</h1>
 					<P>10000000원</P>
 				</div>
 				<div id="add-box">
