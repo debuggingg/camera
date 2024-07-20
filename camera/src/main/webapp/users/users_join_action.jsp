@@ -5,10 +5,12 @@
     pageEncoding="UTF-8"%>
 
 <%	
-	if(request.getMethod().equals("GET")) {
+	if(request.getMethod().equals("GET")) {	
 		request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=error&work=error_400");
 		return;
 	}
+
+	request.setCharacterEncoding("utf-8");
 	
 	String id=request.getParameter("id");	
 	String pw=Utility.encrypt(request.getParameter("pw"));

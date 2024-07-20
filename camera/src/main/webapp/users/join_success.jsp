@@ -36,7 +36,7 @@
     <div id="content">
         <h1>회원가입을 축하합니다!</h1>
         <p>회원가입이 성공적으로 완료되었습니다.</p>
-        <a href="#" class="btn btn-primary mt-3" onclick="redirectToMainPage()">메인 페이지로 이동</a>
+        <a href="#" class="btn btn-warning mt-3" onclick="redirectToMainPage()">메인 페이지로 이동</a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

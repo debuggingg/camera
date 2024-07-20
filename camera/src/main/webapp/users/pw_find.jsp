@@ -21,7 +21,7 @@
         }
 
         .form-container {
-            max-width: 350px; 
+            max-width: 390px; 
             width: 100%;
             padding: 20px;           
             border: 1px solid #dee2e6;
@@ -104,7 +104,7 @@
         }
         
         function isValidEmail(email) {
-            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var emailPattern = /^([a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+(\.[-a-zA-Z0-9]+)+)*$/g;
             return emailPattern.test(email);
         }
     </script>

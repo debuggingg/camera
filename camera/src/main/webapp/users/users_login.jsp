@@ -40,7 +40,7 @@
         }
 
         .form-container {
-            max-width: 350px;
+            max-width: 390px;
             width: 100%;
             padding: 20px;           
             border: 1px solid #dee2e6;
@@ -60,6 +60,11 @@
 
         .is-invalid ~ .invalid-feedback {
             display: block;
+        }
+        .error-message {
+            color: red;
+            font-size: 0.875em;
+            margin-top: 0.5em;
         }
        
     </style>
@@ -87,7 +92,7 @@
                     <span class="text-muted">|</span>
                     <a href="index.jsp?workgroup=users&work=pw_find" class="text-decoration-none text-muted mx-2">비밀번호 찾기</a>
                 </div>                
-                <div id="message" class="mt-3 text-danger"><%=message %></div>
+                <div id="message" class="error-message"><%=message %></div>
             </form>
         </div>
     </div>
@@ -101,13 +106,13 @@
             if($("#id").val() == "") {
                 $("#message").text("아이디를 입력해 주세요. (영문소문자/숫자, 4~16자)");
                 $("#id").focus();
-                return;
+                return false;
             }
             
             if($("#pw").val() == "") {
-                $("#message").text("비밀번호를 입력해 주세요. (영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 10~16자)");
+                $("#message").text("비밀번호를 입력해 주세요. (영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 6~16자)");
                 $("#pw").focus();
-                return;
+                return false;
             }
             
             $("#login").submit();

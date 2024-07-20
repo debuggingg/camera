@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         .custom-container {        	
@@ -18,18 +19,19 @@
         }
 
         .form-container {
-            max-width: 500px;
+            max-width: 550px;
             width: 100%;
             padding: 24px;
-            border: 1px solid #dee2e6;
+            border: 1px solid #ffffff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);          
         }
 
-        .error {
+        .msg {
             color: red;
-            font-size: 0.75em;
-            margin-top: 0.2em;
+            font-size: 0.875em;
+            margin-top: 0.5em;
+            display: none; 
         }    
                    
     </style>
@@ -38,19 +40,15 @@
     <div class="custom-container">
         <div class="form-container">
             <h1 class="my-4 text-center">회원가입</h1>
-            <form id="join" action="<%=request.getContextPath() %>/index.jsp?workgroup=users&work=users_join_action" method="post">
+         	<form id="joinForm" action="<%=request.getContextPath() %>/index.jsp?workgroup=users&work=users_join_action" method="post">
                 <input type="hidden" id="idCheckResult" value="0">
 				<div class="mb-3 row">
 					<label for="id" class="col-sm-4 col-form-label">아이디</label>
-					<div class="col-sm-8">
-						<div class="input-group">
-							<input type="text" class="form-control" id="id" name="id"
-								placeholder="아이디를 입력하세요">
-							<button type="button" class="btn btn-secondary" id="idCheck">아이디 중복 검사</button>
-						</div>
-						<div id="idMsg" class="error">아이디를 입력해 주세요.</div>
-						<div id="idRegMsg" class="error">아이디는 영문소문자/숫자, 4~16자로만 작성 가능합니다.</div>
-						<div id="idCheckMsg" class="error">아이디 중복 검사를 반드시 실행해 주세요.</div>
+					<div class="col-sm-8">						
+						<input type="text" class="form-control" id="id" name="id" placeholder="아이디를 입력하세요">							
+						<div id="idNullMsg" class="msg idMsg">아이디를 입력해 주세요.</div>
+						<div id="idValidMsg" class="msg idMsg">아이디는 영문소문자/숫자, 4~16자로만 작성 가능합니다.</div>
+						<div id="idDuplMsg" class="msg idMsg">이미 사용중인 아이디입니다.</div>
 					</div>
 				</div>
 
@@ -58,23 +56,24 @@
                     <label for="pw" class="col-sm-4 col-form-label">비밀번호</label>
                     <div class="col-sm-8">
                         <input type="password" class="form-control" id="pw" name="pw" placeholder="비밀번호를 입력하세요">
-                        <div id="pwMsg" class="error">비밀번호를 입력해 주세요.</div>
-                        <div id="pwRegMsg" class="error">비밀번호는 영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 10~16자로만 작성 가능합니다.</div>
+                        <div id="pwNullMsg" class="msg">비밀번호를 입력해 주세요.</div>
+                        <div id="pwValidMsg" class="msg">비밀번호는 영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 6~16자로만 작성<br> 가능합니다.</div>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="repw" class="col-sm-4 col-form-label">비밀번호 확인</label>
                     <div class="col-sm-8">
                         <input type="password" class="form-control" id="repw" name="repw" placeholder="비밀번호를 다시 입력하세요">
-                        <div id="repwMsg" class="error">비밀번호 확인을 입력해 주세요.</div>
-                        <div id="repwMatchMsg" class="error">비밀번호와 비밀번호 확인이 서로 맞지 않습니다.</div>
+                        <div id="repwNullMsg" class="msg">비밀번호 확인을 입력해 주세요.</div>
+                        <div id="repwValidMsg" class="msg">비밀번호와 비밀번호 확인이 서로 맞지 않습니다.</div>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="name" class="col-sm-4 col-form-label">이름</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력하세요">
-                        <div id="nameMsg" class="error">이름을 입력해 주세요.</div>
+                        <div id="nameNullMsg" class="msg">이름을 입력해 주세요.</div>
+                        <div id="nameValidMsg" class="msg">이름을 형식에 맞게 입력해 주세요.</div>
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -84,21 +83,21 @@
                             <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="우편번호" readonly>
                             <button type="button" class="btn btn-secondary" id="postSearch" onclick="sample6_execDaumPostcode()">우편번호 찾기</button>
                         </div>
-                        <div id="zipcodeMsg" class="error">우편번호를 입력해 주세요.</div>
+                        <div id="zipcodeMsg" class="msg">우편번호를 입력해 주세요.</div>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="address1" class="col-sm-4 col-form-label">기본주소</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="address1" name="address1" placeholder="주소" readonly>
-                        <div id="address1Msg" class="error">기본주소를 입력해 주세요.</div>
+                        <div id="address1Msg" class="msg">기본주소를 입력해 주세요.</div>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="address2" class="col-sm-4 col-form-label">상세주소</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="address2" name="address2" placeholder="상세주소를 입력하세요">
-                        <div id="address2Msg" class="error">상세주소를 입력해 주세요.</div>
+                        <div id="address2Msg" class="msg">상세주소를 입력해 주세요.</div>
                     </div>
                 </div>                
                 <div class="mb-3 row">
@@ -116,16 +115,16 @@
                             <input type="text" class="form-control" id="phone2" name="phone2">
                             <input type="text" class="form-control" id="phone3" name="phone3">
                         </div>
-                        <div id="phoneMsg" class="error">전화번호를 입력해 주세요.</div>
-                        <div id="phoneRegMsg" class="error">전화번호는 3~4 자리의 숫자로만 입력해 주세요.</div>
+                        <div id="phoneNullMsg" class="msg">전화번호를 입력해 주세요.</div>
+                        <div id="phoneValidMsg" class="msg">전화번호는 3~4 자리의 숫자로만 입력해 주세요.</div>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="email" class="col-sm-4 col-form-label">이메일</label>
                     <div class="col-sm-8">
                         <input type="email" class="form-control" id="email" name="email" placeholder="example@example.com">
-                        <div id="emailMsg" class="error">이메일을 입력해 주세요.</div>
-                        <div id="emailRegMsg" class="error">입력한 이메일이 형식에 맞지 않습니다.</div>
+                        <div id="emailNullMsg" class="msg">이메일을 입력해 주세요.</div>
+                        <div id="emailValidMsg" class="msg">이메일을 형식에 맞게 입력해 주세요.</div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-warning w-100">가입하기</button>
@@ -136,120 +135,127 @@
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 <script type="text/javascript">
-$(document).ready(function() {
-    
-    $(".error").hide(); 
+var idCheckResult=false;
 
-    $("#id").focus(); 
+$("#id").focus();
 
-    $("#join").submit(function() {
-        var submitResult = true;
-
-       
-        $(".error").hide();
-
-        var idReg = /^[a-z0-9]{4,16}$/;
-        if ($("#id").val() == "") {
-            $("#idMsg").css("display", "block");
-            submitResult = false;
-        } else if (!idReg.test($("#id").val())) {
-            $("#idRegMsg").css("display", "block");
-            submitResult = false;
-        } else if ($("#idCheckResult").val() == "0") {
-            $("#idCheckMsg").css("display", "block");
-            submitResult = false;
-        }
-
-        var pwReg = /^(?=.*[a-zA-Z])(?=.*[\d!@#$%^&*()_+{}|:"<>?])[a-zA-Z\d!@#$%^&*()_+{}|:"<>?]{10,16}$/;
-     
-        if ($("#pw").val() == "") {
-            $("#pwMsg").css("display", "block");
-            submitResult = false;
-        } else if (!pwReg.test($("#pw").val())) {
-            $("#pwRegMsg").css("display", "block");
-            submitResult = false;
-        }
+$("#joinForm").submit(function() {
+	$(".msg").hide();
+    	
+		var validResult=true;
+	
+		var id=$("#id").val();
+		var idReg=/^[a-z0-9]{4,16}$/g;
+		if(id=="") {
+			$("#idNullMsg").show();
+			validResult=false;
+		} else if(!idReg.test(id)) {
+			$("#idValidMsg").show();
+			validResult=false;
+		} else if(!idCheckResult) {
+			$("#idDuplMsg").show();
+			validResult=false;
+		}
+		
+		var passwd=$("#pw").val();
+		var passwdReg=/^(?=.*[a-zA-Z])(?=.*[\d!@#$%^&*()_+{}|:"<>?])[a-zA-Z\d!@#$%^&*()_+{}|:"<>?]{6,16}$/g;
+		if(passwd=="") {
+			$("#pwNullMsg").show();
+			validResult=false;
+		} else if(!passwdReg.test(passwd)) {
+			$("#pwValidMsg").show();
+			validResult=false;
+		}
 
         if ($("#repw").val() == "") {
-            $("#repwMsg").css("display", "block");
-            submitResult = false;
+            $("#repwNullMsg").show();
+            validResult = false;
         } else if ($("#pw").val() != $("#repw").val()) {
-            $("#repwMatchMsg").css("display", "block");
-            submitResult = false;
+            $("#repwValidMsg").show();
+            validResult = false;
         }
 
-        if ($("#name").val() == "") {
-            $("#nameMsg").css("display", "block");
-            submitResult = false;
-        }
+        var name=$("#name").val();
+		var nameReg=/^[가-힣]{2,10}$/g;
+		if(name=="") {
+			$("#nameNullMsg").show();
+			validResult=false;
+		} else if(!nameReg.test(name)) {
+			$("#nameValidMsg").show();
+			validResult=false;
+		}
 
-        var emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if ($("#email").val() == "") {
-            $("#emailMsg").css("display", "block");
-            submitResult = false;
-        } else if (!emailReg.test($("#email").val())) {
-            $("#emailRegMsg").css("display", "block");
-            submitResult = false;
-        }
-
+		var email=$("#email").val();
+		var emailReg=/^([a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+(\.[-a-zA-Z0-9]+)+)*$/g;
+		if(email=="") {
+			$("#emailNullMsg").show();
+			validResult=false;
+		} else if(!emailReg.test(email)) {
+			$("#emailValidMsg").show();
+			validResult=false;
+		}
+		
         var phone2Reg = /^\d{3,4}$/;
         var phone3Reg = /^\d{4}$/;
         if ($("#phone2").val() == "" || $("#phone3").val() == "") {
-            $("#phoneMsg").css("display", "block");
-            submitResult = false;
+            $("#phoneNullMsg").show();
+            validResult = false;
         } else if (!phone2Reg.test($("#phone2").val()) || !phone3Reg.test($("#phone3").val())) {
-            $("#phoneRegMsg").css("display", "block");
-            submitResult = false;
+            $("#phoneValidMsg").show();
+            validResult = false;
         }
 
         if ($("#zipcode").val() == "") {
-            $("#zipcodeMsg").css("display", "block");
-            submitResult = false;
+            $("#zipcodeMsg").show();
+            validResult = false;
         }
 
         if ($("#address1").val() == "") {
-            $("#address1Msg").css("display", "block");
-            submitResult = false;
+            $("#address1Msg").show();
+            validResult = false;
         }
 
         if ($("#address2").val() == "") {
-            $("#address2Msg").css("display", "block");
-            submitResult = false;
+            $("#address2Msg").show();
+            validResult = false;
         }
 
-        return submitResult;
-    });
+        return validResult;		
+});
 
-    $("#idCheck").click(function() {
-      
-        $(".error").hide(); 
+$("#id").keyup(function() {
+    idCheckResult = false;
 
-        var idReg = /^[a-z0-9]{4,16}$/;
-        if ($("#id").val() == "") {
-            $("#idMsg").css("display", "block");
-            return;
-        } else if (!idReg.test($("#id").val())) {
-            $("#idRegMsg").css("display", "block");
-            return;
-        }
+    var id = $(this).val();
+    if (id.length < 5) return;
 
-        window.open("<%=request.getContextPath()%>/users/id_check.jsp?id=" + $("#id").val(), "idCheck", "width=450, height=130, left=700, top=400");
-    });
-
-    $("#id").change(function() {
-        $("#idCheckResult").val("0");
-    });
-
-    $("#postSearch").click(function() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                $("#zipcode").val(data.zonecode);
-                $("#address1").val(data.address);
+    $.ajax({
+        type: "get",
+        url: "<%=request.getContextPath()%>/users/id_check.jsp",
+        data: "id=" + id,
+        dataType: "xml",
+        success: function(xmlDoc) {
+            var code = $(xmlDoc).find("code").text();
+            if (code == "possible") {
+                idCheckResult = true;
             }
-        }).open();
+        },
+        error: function(xhr) {
+            alert("에러코드 = " + xhr.status);
+        }
     });
 });
-</script>
 
+$("#postSearch").click(function() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            $("#zipcode").val(data.zonecode);
+            $("#address1").val(data.address);
+        }
+    }).open();
+});
+
+
+</script>
 </body>
 </html>
