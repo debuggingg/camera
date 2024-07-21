@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import xyz.itwill.dto.UsersDTO;
 
@@ -163,15 +165,17 @@ public class UsersDAO extends JdbcDAO {
 		try {
 			con=getConnection();
 			
-			String sql="update users set users_name=?,users_zipcode=?,users_address1=?,users_address2=?"
-					+ "users_phone=?,users_email=? where users_no=?";
+			String sql="update users set users_name=?,users_email=?,users_phone=?,users_zipcode=?,users_address1=?"
+					+ ",users_address2=? where users_no=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, users.getUsersName());
-			pstmt.setString(2, users.getUsersZipcode());
-			pstmt.setString(3, users.getUsersAddress1());
-			pstmt.setString(4, users.getUsersAddress2());
-			pstmt.setString(5, users.getUsersPhone());
-			pstmt.setString(6, users.getUsersEmail());
+			pstmt.setString(2, users.getUsersEmail());
+			pstmt.setString(3, users.getUsersPhone());
+			pstmt.setString(4, users.getUsersZipcode());
+			pstmt.setString(5, users.getUsersAddress1());
+			pstmt.setString(6, users.getUsersAddress2());
+			
+			
 			pstmt.setInt(7, users.getUsersNo());
 			
 			rows=pstmt.executeUpdate();
