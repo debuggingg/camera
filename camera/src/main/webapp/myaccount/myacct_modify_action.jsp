@@ -21,7 +21,7 @@
 	}
 	String name=request.getParameter("name");
 	String email=request.getParameter("email");
-	String mobile=request.getParameter("mobile1")+"-"+request.getParameter("mobile2")+"-"+request.getParameter("mobile3");
+	String phone=request.getParameter("phone1")+"-"+request.getParameter("phone2")+"-"+request.getParameter("phone3");
 	String zipcode=request.getParameter("zipcode");
 	String address1=request.getParameter("address1");
 	String address2=request.getParameter("address2");
@@ -31,7 +31,7 @@
 	users.setUsersPw(passwd);
 	users.setUsersName(name);
 	users.setUsersEmail(email);
-	users.setUsersPhone(mobile);
+	users.setUsersPhone(phone);
 	users.setUsersZipcode(zipcode);
 	users.setUsersAddress1(address1);
 	users.setUsersAddress2(address2);
