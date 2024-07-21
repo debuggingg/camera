@@ -32,12 +32,12 @@
                 <div id="nav-bar">
                 <nav>
                 <ul>
-                    <li><a href="#">Camera</a></li>
-                    <li><a href="#">Film</a></li>
-                    <li><a href="#">Accessory</a></li>
-                    <li><a href="#">Notice</a></li>
-                    <li><a href="#">Cart</a></li>
-                    <li><a href="#">Order List</a></li>
+                     <li><a href="#" id="good">Camera</a></li>
+                    <li><a href="#" id="good">Film</a></li>
+                    <li><a href="#" id="good">Accessory</a></li>
+                    <li><a href="#" id="good">Notice</a></li>
+                    <li><a href="#" id="good">Cart</a></li>
+                    <li><a href="#" id="good">Order List</a></li>
                 </ul>
             </nav>
         </div>
