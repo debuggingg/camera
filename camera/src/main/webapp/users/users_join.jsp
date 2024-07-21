@@ -12,7 +12,6 @@
     a {text-decoration: none !important}
         .custom-container {        	
             display: flex;
-            width: 100%;
             justify-content: center;
             align-items: center;
             height: auto;

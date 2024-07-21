@@ -248,7 +248,7 @@
 			<div id="font-box-wrap">
 				<h1>새로운 상품들을 만나보세요!</h1>
 				<p>우리 매장만의 유니크하고 다양한 상품들을 만나볼 수 있습니다.</p>
-				<a href=""> Go Products</a>
+				<a href="" id="good"> Go Products</a>
 			</div>
 		</div>
 	</div>

@@ -34,7 +34,6 @@
    
         .custom-container {           
             display: flex;
-            width: 100%;
             justify-content: center;
             align-items: center;
             height: auto;
@@ -42,7 +41,7 @@
         }
 
         .form-container {
-            max-width: 390px;
+            max-width: 400px;
             width: 100%;
             padding: 20px;           
             border: 1px solid #dee2e6;
