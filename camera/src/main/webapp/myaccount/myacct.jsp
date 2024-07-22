@@ -19,6 +19,21 @@
 --%>
 <%@include file="/security/login_check.jspf" %> 
 <style type="text/css">
+#account-wrap{
+width: 700px;
+height:450px;
+
+margin: 0 auto;
+}
+
+#account-wrap-middle{
+
+width: 700px;
+height:350px;
+
+margin-top: 50px;}
+
+
 #detail1 {
 	font-size:17px;
 	width: 500px;
@@ -76,6 +91,8 @@ font-size:12px;
 }
 </style>
 
+<div id="account-wrap">
+<div id="account-wrap-middle">
 <h1 style="text-align: center; margin-bottom: 20px;">내정보</h1>
 <div id="detail1">
 	<p><strong>아이디 =</strong> <%=loginUsers.getUsersId() %></p>
@@ -99,6 +116,8 @@ font-size:12px;
     <% } else { %>
         <p><strong>마지막 로그인 날짜 =</strong> <%=loginUsers.getUsersLastLogin() %></p>
     <% } %>
+</div>
+ </div>
 </div>
 
 
