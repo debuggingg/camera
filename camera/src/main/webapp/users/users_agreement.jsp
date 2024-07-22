@@ -11,8 +11,7 @@
     a {text-decoration: none !important}
    
  		.custom-container {           
-            display: flex;
-            width: 100%;
+            display: flex;           
             justify-content: center;
             align-items: center;
             height: auto;
@@ -20,8 +19,8 @@
         }   
           
         .terms-container {
-            width: 100%;
           	max-width: 550px;
+            width: 100%;
             padding: 24px;
             border: 1px solid #ffffff;
             border-radius: 8px;

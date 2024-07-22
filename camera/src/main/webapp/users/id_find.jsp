@@ -11,16 +11,16 @@
    
     <style>
        a {text-decoration: none !important}
-        .custom-container {
-            display: flex;
-            width: 100%;
+      
+        .custom-container {        	
+            display: flex;           
             justify-content: center;
             align-items: center;
             height: auto;
             margin: 100px; 
         }
 
-        .form-container {
+        .form-container {        	
             max-width: 390px; 
             width: 100%;
             padding: 20px;            
