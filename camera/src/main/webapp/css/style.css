@@ -45,22 +45,22 @@ html{font-size: 62.5%;}/* 15px는 1.5rem!! */
 #product{width: 170rem; height: 60rem;  margin: 0 auto; position: relative; top: 200px; display: flex; flex-direction: row; flex-wrap: wrap; justify-content:  center;}
 #product1{width: 170rem; height: 60rem;  margin: 0 auto; position: relative; top: 200px; display: flex; flex-direction: row; flex-wrap: wrap; justify-content:  center; margin-top: 100px;}
 #product-title{width: 160rem; height: 10rem;  margin: 0 auto;}
-#product-box{width: 40rem; height: 50rem; }
+#product-box{width: 40rem; height: 50rem;  font-family: 'Jua', sans-serif;}
 #add-box{width: 50%; height: 3.9rem;  text-align: center; font-size: 18px; color: white; margin-top: 10px; margin: 0 auto;}
 #add-box:hover h1{background-color: #32343E; transition: 1s;}
 #add-box h1 a:hover{ transition: 1s; color: white;}
 #productimg{width: 40rem; height: 35rem;} 
 #textbox{width: 40rem; height: 10rem; text-align: center;}
-#textbox h1{font-size: 20px;}
-#textbox p{font-size: 20px; }
+#textbox h1{font-size: 20px;  font-family: 'Jua', sans-serif;}
+#textbox p{font-size: 20px;   font-family: 'Jua', sans-serif;}
 .seeimgbox-main{width: 100%; height: 125rem;   margin: 0 auto;}
 #imgbox{width: 100rem; height: 100rem; margin: 0 auto;}
 #seeimg{width: 70rem; height: 98.5rem;   margin: 0 auto;} 
 #font-box{width: 70rem; height: 13rem; background-color: #C9AD8D; margin: 0 auto; position: relative; top: 70px; text-align: center; border: 1px solid black;}
 #font-box-wrap{width: 50rem; height: 13rem; border: 1px solid #D0AC88; margin: 0 auto;}
-#font-box h1{font-size: 26px; margin-top: 20px; }
-#font-box p{font-size: 15px; }
-#font-box a{font-size: 25px; margin-top: 15px; border-radius: 1px solid #D0AC88;  color: black;}
+#font-box h1{font-size: 26px; margin-top: 20px;  font-family: 'Jua', sans-serif;}
+#font-box p{font-size: 15px;  font-family: 'Jua', sans-serif;}
+#font-box a{font-size: 25px; margin-top: 15px; border-radius: 1px solid #D0AC88;  color: black;  font-family: 'Jua', sans-serif;}
 
 
 footer{width: 100%; height: 60rem;  display: flex; justify-content: center;  align-items: center;  font-family: 'Jua', sans-serif; } 
@@ -98,7 +98,7 @@ footer{width: 100%; height: 60rem;  display: flex; justify-content: center;  ali
 
 
 #title-box{width: 50rem; height: 10rem; margin: 0 auto; text-align: center; } 
-#title-box h1{font-size: 45px;  border-top: 3px solid #D0AC88; } 
+#title-box h1{font-size: 45px;  border-top: 3px solid #D0AC88;  font-family: 'Jua', sans-serif; } 
 #title-box p{font-size: 15px; font-family: "Noto Sans KR", sans-serif;}
 
 
