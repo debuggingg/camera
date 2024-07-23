@@ -51,26 +51,44 @@
 
         .form-signin h1 {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: xx-large;
             font-weight: bold;
         }
 
         .invalid-feedback {
             display: none;
+            font-size: small;
         }
 
         .is-invalid ~ .invalid-feedback {
             display: block;
+            font-size: small;
         }
         .error-message {
             color: red;
-            font-size: 0.875em;
+            font-size: small;
             margin-top: 0.5em;
         }
 
         .is-invalid {
             border-color: red !important;
+             font-size: small;
         }
+        .form-label {   			
+    		font-size: medium;
+		}
+		.my-4 {    	
+   			font-size: xx-large;
+		}
+		.btn-warning {
+			 font-size: 14.5px;
+		}
+		.form-control {
+			font-size: small;
+		}
+		.text-muted {
+			font-size: small;
+		}
     </style>
 </head>
 <body>
@@ -82,12 +100,12 @@
                 <div class="mb-3">
                     <label for="id" class="form-label">아이디</label>
                     <input type="text" class="form-control" id="id" name="id" value="<%=id%>" placeholder="아이디를 입력하세요" autofocus>
-                    <div id="idNullMsg" class="invalid-feedback">아이디를 입력해 주세요. (영문소문자/숫자, 4~16자)</div>
+                    <div id="idNullMsg" class="invalid-feedback">아이디를 입력해 주세요.(영문소문자/숫자, 4~16자)</div>
                 </div>
                 <div class="mb-3">
                     <label for="pw" class="form-label">비밀번호</label>
                     <input type="password" class="form-control" id="pw" name="pw" placeholder="비밀번호를 입력하세요">
-                    <div id="pwNullMsg" class="invalid-feedback">비밀번호를 입력해 주세요. (영문대소문자/숫자/특수 문자, 6~16자)</div>
+                    <div id="pwNullMsg" class="invalid-feedback">비밀번호를 입력해 주세요.(영문대소문자/숫자/특수 문자, 6~16자)</div>
                 </div>
                 <button class="btn btn-warning w-100 py-2" type="submit" id="login_btn">로그인</button>                
                 <a href="index.jsp?workgroup=users&work=users_agreement" class="btn btn-warning w-100 py-2 mt-2">회원가입</a>

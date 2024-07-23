@@ -26,12 +26,24 @@
         }
         .error-message {
             color: red;
-            font-size: 0.875em;
+            font-size: small;
             margin-top: 0.5em;
         }
         .is-invalid {
             border-color: red !important;
         }
+        .form-label {   			
+    		font-size: medium;
+		}
+		.my-4 {    	
+   			font-size: xx-large;
+		}
+		.btn-warning {
+			 font-size: 14.5px;
+		}
+		.form-control {
+			font-size: small;
+		}
     </style>
 </head>
 <body>
