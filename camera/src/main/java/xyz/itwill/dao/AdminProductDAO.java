@@ -119,7 +119,7 @@ public class AdminProductDAO extends JdbcDAO {
 		AdminProductDTO product=null;
 		try {
 			con=getConnection();
-			String sql="SELECT select PROD_NO,PROD_TYPE,PROD_NAME,PROD_PRICE,PROD_AMOUNT,PROD_IMAGE1,PROD_IMAGE2,PROD_IMAGE3,PROD_IMAGE4,PROD_INFO from product where prod_No=?";
+			String sql=" select PROD_NO,PROD_TYPE,PROD_NAME,PROD_PRICE,PROD_AMOUNT,PROD_IMAGE1,PROD_IMAGE2,PROD_IMAGE3,PROD_IMAGE4,PROD_INFO from product where prod_No=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, no);
 			rs=pstmt.executeQuery();
