@@ -4,6 +4,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <%
 List<AdminProductDTO> productList=AdminProductDAO.getDAO().selectProductList();
 /* UsersDTO users=(UsersDTO)session.getAttribute("users");
@@ -91,7 +92,7 @@ if(users.getUsersNo() != 9){
 	
  	function removeProduct(no) {
  		if(confirm("상품을  정말로 삭제 하시겠습니까?")) {
- 			location.href="<%=request.getContextPath()%>/adminproduct/productRemove.jsp?no="+no; 
+ 		location.href="<%=request.getContextPath()%>/adminproduct/productRemove.jsp?no="+no; 
  		}
  	}
         

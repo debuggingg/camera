@@ -2,13 +2,12 @@
 <%@page import="xyz.itwill.dto.AdminProductDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%
- 
 
-   
+ <%
+    
    if(request.getParameter("no") == null) {
-  		response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-  		return;
+		request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=error&work=error_400");
+		return;
   	}
 
   	//전달값을 반환받아 저장
@@ -20,8 +19,8 @@
   	
   	//비정상적인 요청에 대한 응답 처리
   	if(product == null) {
-  		response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-  		return;
+  		request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=error&work=error_400");
+		return;
   	}
   	
   	
@@ -35,7 +34,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>JSP</title>
+<title>Admin Product</title>
 <style type="text/css">
 h1 {
 	margin: 0 auto;
@@ -102,7 +101,8 @@ th, td {
 				<input type="file" name="image1"> <br><%-- <% if(product != null) { %>value="<%=product.getProdImage()%>"<% } %>> --%>
 				<% if(product.getProdImage1() != null) { %>
 				<div style="color: red;">이미지를 변경할 경우에만 파일을 입력해 주세요.</div>
-				<img src="<%=request.getContextPath()%>/product_image/<%=product.getProdImage1()%>"<% } %> width="200">
+				<img src="<%=request.getContextPath()%>/product_image/<%=product.getProdImage1()%>"width="200">
+				 <% } %> 
 			</td>
 		</tr>
 		<tr>
@@ -111,7 +111,7 @@ th, td {
 				<input type="file" name="image2"> <br><%-- <% if(product != null) { %>value="<%=product.getProdImage()%>"<% } %>> --%>
 				<% if(product.getProdImage2() != null) { %>
 				<div style="color: red;">이미지를 변경할 경우에만 파일을 입력해 주세요.</div>
-				<img src="<%=request.getContextPath()%>/product_image/<%=product.getProdImage2()%>"<% } %> width="200">
+				<img src="<%=request.getContextPath()%>/product_image/<%=product.getProdImage2()%>" width="200"> <% } %>
 			</td>
 		</tr>
 		<tr>
@@ -120,16 +120,19 @@ th, td {
 				<input type="file" name="image3"> <br><%-- <% if(product != null) { %>value="<%=product.getProdImage()%>"<% } %>> --%>
 				<% if(product.getProdImage3() != null) { %>
 				<div style="color: red;">이미지를 변경할 경우에만 파일을 입력해 주세요.</div>
-				<img src="<%=request.getContextPath()%>/product_image/<%=product.getProdImage3()%>"<% } %> width="200">
+				<img src="<%=request.getContextPath()%>/product_image/<%=product.getProdImage3()%>" width="200"> <% } %>
 			</td>
 		</tr>
 		<tr>
 			<th class="title">상품이미지4 </th>
 			<td class="input">
-				<input type="file" name="image1"> <br><%-- <% if(product != null) { %>value="<%=product.getProdImage()%>"<% } %>> --%>
+				<input type="file" name="image4"> <br><%-- <% if(product != null) { %>value="<%=product.getProdImage()%>"<% } %>> --%>
 				<% if(product.getProdImage4() != null) { %>
 				<div style="color: red;">이미지를 변경할 경우에만 파일을 입력해 주세요.</div>
-				<img src="<%=request.getContextPath()%>/product_image/<%=product.getProdImage4()%>"<% } %> width="200">
+				<img src="<%=request.getContextPath()%>/product_image/<%=product.getProdImage4()%>" width="200"> <% } %>
+			
+		
+				
 			</td>
 		</tr>
 		<tr>

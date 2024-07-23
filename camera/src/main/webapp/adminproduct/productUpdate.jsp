@@ -40,6 +40,7 @@
 
 	
 	AdminProductDTO product=new AdminProductDTO();
+	product.setProdNo(no);
 	product.setProdType(type);
 	product.setProdName(name);
 	product.setProdPrice(price);
