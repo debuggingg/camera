@@ -7,7 +7,7 @@
     String id = request.getParameter("id");
 
     if (id == null || id.equals("")) {
-    	response.sendRedirect(request.getContextPath()+"/error/error_400.jsp");
+    	response.sendError(HttpServletResponse.SC_BAD_REQUEST);
 		return;
     }
 

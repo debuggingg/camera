@@ -50,6 +50,9 @@
         #top1 {
             font-size: 1.03em;             
         }
+        .req {
+   			 color: red;
+		}
         
     </style>
 </head>
@@ -67,7 +70,7 @@
         <div class="terms-section">
             <div class="checkbox-group">
                 <input type="checkbox" id="agree1" class="required form-check-input" onclick="checkAllAgreed()"> 
-                <label class="form-check-label" for="agree1">[필수] 이용약관 동의</label>
+                <label class="form-check-label" for="agree1"><span class="req">[필수]</span> 이용약관 동의</label>
             </div>
             
             <div class="terms-text">
@@ -296,7 +299,7 @@
         <div class="terms-section">
             <div class="checkbox-group">
                 <input type="checkbox" id="agree2" class="required form-check-input" onclick="checkAllAgreed()">   
-                <label class="form-check-label" for="agree2">[필수] 개인정보 수집 및 이용 동의</label>
+                <label class="form-check-label" for="agree2"><span class="req">[필수]</span> 개인정보 수집 및 이용 동의</label>
             </div>           
             <div class="terms-text">
                 <p>회사는 회원가입, 민원 등 고객상담 처리, 본인확인(14세 미만 아동 확인) 등 의사소통을 위한 정보 활용 및 이벤트 등과 같은 마케팅용도 활용, 회원의 서비스 이용에 대한 통계, 이용자들의 개인정보를 통한 서비스 개발을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br><br>
