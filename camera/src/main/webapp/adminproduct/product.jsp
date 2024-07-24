@@ -20,8 +20,9 @@ if(users.getUsersNo() != 9){
     <meta charset="UTF-8">
 <!--     <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>Admin Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/adminproduct/styles.css">
 </head>
+
 <body>
     <!-- <form id="join" action="<%=request.getContextPath() %>/index.jsp?workgroup=member&work=member_join_action" method="post"> -->
 
@@ -83,16 +84,16 @@ if(users.getUsersNo() != 9){
 
     <script type="text/javascript"> 
        document.getElementById("addBtn").onclick=function() {
-		location.href="<%=request.getContextPath()%>/adminproduct/productAddForm.jsp";	
+		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=adminproduct&work=productAddForm";	
 	}
 	
  	function updateProduct(no) {
- 		location.href="<%=request.getContextPath()%>/adminproduct/productUpdateForm.jsp?no="+no;	 
+ 		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=adminproduct&work=productUpdateForm&no="+no;	 
  	}
 	
  	function removeProduct(no) {
  		if(confirm("상품을  정말로 삭제 하시겠습니까?")) {
- 		location.href="<%=request.getContextPath()%>/adminproduct/productRemove.jsp?no="+no; 
+ 		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=adminproduct&work=productRemove&no="+no; 
  		}
  	}
         

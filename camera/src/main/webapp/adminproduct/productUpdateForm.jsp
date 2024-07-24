@@ -61,7 +61,7 @@ th, td {
 <body>
 	<h1>상품추가</h1>
 	<hr>
-	<form name="productForm" action="<%=request.getContextPath()%>/adminproduct/productUpdate.jsp" method="post"
+	<form name="productForm" action="<%=request.getContextPath()%>/index.jsp?workgroup=adminproduct&work=productUpdate" method="post"
 	enctype="multipart/form-data" >
 		<input type="hidden" name="no" value="<%=product.getProdNo()%>"> 
 		
@@ -158,7 +158,7 @@ th, td {
 
 	
 	document.getElementById("listBtn").onclick=function() {
-		location.href="<%=request.getContextPath()%>/adminproduct/product.jsp";	
+		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=adminproduct&work=product";	
 	} 
 	</script>
 

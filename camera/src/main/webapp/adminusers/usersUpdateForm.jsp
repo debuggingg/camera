@@ -56,7 +56,7 @@ th, td {
 <body>
 	<h1>User Status</h1>
 	<hr>
-	<form name="usersForm" action="<%=request.getContextPath()%>/adminusers/usersUpdate.jsp" method="post">
+	<form name="usersForm" action="<%=request.getContextPath()%>/index.jsp?workgroup=adminusers&work=usersUpdate" method="post">
 	<table>
 		<tr>
 			<th class="title">Users No</th>
@@ -99,7 +99,7 @@ th, td {
 
 	
 	document.getElementById("listBtn").onclick=function() {
-		location.href="<%=request.getContextPath()%>/adminusers/users.jsp";	
+		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=adminusers&work=users";	
 	}
 	</script>
 </body>

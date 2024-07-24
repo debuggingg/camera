@@ -18,7 +18,7 @@
       	int rows=AdminUsersDAO.getDAO().updateUsersStatus(no);
       	
       	if(rows > 0) {//삭제행이 있는 경우
-      		response.sendRedirect(request.getContextPath()+"/adminusers/users.jsp");
+      		response.sendRedirect(request.getContextPath()+"/index.jsp?workgroup=adminusers&work=users");
       	} else {//삭제행이 있는 경우 - 비정상적인 요청에 대한 응답 처리
       		response.sendError(HttpServletResponse.SC_BAD_REQUEST);
       	}

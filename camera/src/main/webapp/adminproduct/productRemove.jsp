@@ -37,5 +37,5 @@ if(product.getProdImage4() != null){
 }
 
 
-response.sendRedirect(request.getContextPath()+"/adminproduct/product.jsp");
+response.sendRedirect(request.getContextPath()+"/index.jsp?workgroup=adminproduct&work=product");
 %>

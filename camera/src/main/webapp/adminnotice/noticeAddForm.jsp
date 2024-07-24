@@ -39,7 +39,7 @@ th, td {
 <body>
 	<h1>Notice</h1>
 	<hr>
-	<form name="productForm" action="<%=request.getContextPath()%>/index.jsp?workgroup=adminnotice&work=noticeAdd" method="post" >
+	<form name="noticeForm" action="<%=request.getContextPath()%>/index.jsp?workgroup=adminnotice&work=noticeAdd" method="post" >
 	<table>
 	
 		<tr>
@@ -72,7 +72,7 @@ th, td {
 
 	
 	<script type="text/javascript">
-	productForm.no.focus();
+	noticeForm.no.focus();
 
 	
 	

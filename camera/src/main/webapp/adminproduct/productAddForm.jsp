@@ -112,7 +112,7 @@ th, td {
 	
 	
 	document.getElementById("listBtn").onclick=function() {
-		location.href="<%=request.getContextPath()%>/adminproduct/product.jsp";	
+		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=adminproduct&work=product";	
 	}
 	</script>
 

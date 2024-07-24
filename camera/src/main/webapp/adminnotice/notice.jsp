@@ -21,7 +21,7 @@ if(users.getUsersNo() != 9){
     <meta charset="UTF-8">
 <!--     <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>Admin notice</title>
-    <link rel="stylesheet" href="styles.css">
+     <link rel="stylesheet" href="<%=request.getContextPath() %>/adminnotice/styles.css">
 </head>
 <body>
     
@@ -78,12 +78,12 @@ if(users.getUsersNo() != 9){
 	}
 	
  	function updateProduct(no) {
- 		location.href="<%=request.getContextPath()%>/adminproduct/productUpdateForm.jsp?no="+no;	 
+ 		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=adminnotice&work=noticeUpdateForm&no="+no;	 
  	}
 	
  	function removeProduct(no) {
  		if(confirm("상품을  정말로 삭제 하시겠습니까?")) {
- 		location.href="<%=request.getContextPath()%>/adminproduct/productRemove.jsp?no="+no; 
+ 		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=adminnotice&work=noticeRemove&no="+no; 
  		}
  	}
         

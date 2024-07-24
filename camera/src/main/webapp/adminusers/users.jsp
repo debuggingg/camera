@@ -16,7 +16,7 @@
     <meta charset="UTF-8">
 <!--     <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>Admin Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/adminusers/styles.css">>
 </head>
 <body>
   <%--  <form id="join" action="<%=request.getContextPath() %>/index.jsp?workgroup=member&work=member_join_action" method="post">  --%>
@@ -63,7 +63,7 @@
                     <td><%=users.getUsersPhone() %></td>
                     <td><%=users.getUsersEmail() %></td>
                     <td><%=users.getUsersSigndate().substring(0, 10) %></td>
-                    <td><%=users.getUsersLastLogin().substring(0, 10) %></td>
+                    <td><%=users.getUsersLastLogin() %></td>
                     <td><%=users.getUsersStatus() %></td>
                     <td><button type="button" onclick="removeUser(<%=users.getUsersNo()%>);" class="status-button" data-status="300">삭제</button></td>
                     <td><button type="button" onclick="updateUsers(<%=users.getUsersNo()%>);"class="status-button" data-status="100">변경</button></td>
@@ -78,12 +78,12 @@
 
 	function updateUsers(no) {
 		//alert(no);
-		location.href="<%=request.getContextPath()%>/adminusers/usersUpdateForm.jsp?no="+no;	 
+		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=adminusers&work=usersUpdateForm&no="+no;	 
 	}
 	
  	function removeUser(no) {
 		if(confirm("회원를 정말로 삭제 하시겠습니까?")) {
- 			location.href="<%=request.getContextPath()%>/adminusers/usersStatus.jsp?no="+no; 
+ 		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=adminusers&work=usersStatus&no="+no; 
 	}
 	}
         
