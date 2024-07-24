@@ -58,7 +58,7 @@
 		response.sendRedirect(request.getContextPath()+"/product/productAddForm.jsp");
 		return;
 	} */
-/* 	session.setAttribute("product", product); */
+ 	session.setAttribute("product", product); 
 
 	
 	AdminProductDAO.getDAO().insertProduct(product);

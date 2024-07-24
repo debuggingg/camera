@@ -38,7 +38,7 @@ th, td {
 <body>
 	<h1>상품추가</h1>
 	<hr>
-	<form name="productForm" action="<%=request.getContextPath()%>/adminproduct/productAdd.jsp" method="post"
+	<form name="productForm" action="<%=request.getContextPath()%>/index.jsp?workgroup=adminproduct&work=productAdd" method="post"
 	enctype="multipart/form-data" >
 	<table>
 		<tr>

@@ -34,7 +34,7 @@
 <body>
     <div class="welcome-message">
         <p>관리자님 환영합니다.</p>
-     
+        <p>최고의 서비스를 제공하겠습니다.</p>
     </div>
 </body>
 </html>

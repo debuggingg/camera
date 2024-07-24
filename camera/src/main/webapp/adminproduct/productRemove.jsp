@@ -19,15 +19,23 @@ if(product ==null){
 product.setProdType(0);
 AdminProductDAO.getDAO().updateProduct(product);
 
-if(product.getProdImage1() != null || product.getProdImage2() != null || product.getProdImage3() != null || product.getProdImage4() != null){
+if(product.getProdImage1() != null){ 
 	String saveDirectory=request.getServletContext().getRealPath("/product_image");
 	new File(saveDirectory, product.getProdImage1()).delete();
-	new File(saveDirectory, product.getProdImage2()).delete();
-	new File(saveDirectory, product.getProdImage3()).delete();
-	new File(saveDirectory, product.getProdImage4()).delete();
-	
-	
 }
+if(product.getProdImage2() != null){ 
+	String saveDirectory=request.getServletContext().getRealPath("/product_image");
+	new File(saveDirectory, product.getProdImage2()).delete();
+}
+if(product.getProdImage3() != null){ 
+	String saveDirectory=request.getServletContext().getRealPath("/product_image");
+	new File(saveDirectory, product.getProdImage3()).delete();
+}
+if(product.getProdImage4() != null){ 
+	String saveDirectory=request.getServletContext().getRealPath("/product_image");
+	new File(saveDirectory, product.getProdImage4()).delete();
+}
+
 
 response.sendRedirect(request.getContextPath()+"/adminproduct/product.jsp");
 %>
