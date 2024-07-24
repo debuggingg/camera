@@ -205,7 +205,6 @@ font-size:30px;
 				
 				  <td><%=review.getReviewUserNo() %></td>
 				  
-				   <td><%=review.getReviewContent()%></td>
 				   
 				   <td>
 				   <% if(currentDate.equals(review.getReviewDate().substring(0, 10))) { %>

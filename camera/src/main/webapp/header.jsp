@@ -32,11 +32,11 @@
                 <div id="nav-bar">
                 <nav>
                 <ul>
-                     <li><a href="#" id="good">Camera</a></li>
-                    <li><a href="#" id="good">Film</a></li>
-                    <li><a href="#" id="good">Accessory</a></li>
-                    <li><a href="#" id="good">Notice</a></li>
-                    <li><a href="#" id="good">Cart</a></li>
+                     <li><a href="index.jsp?workgroup=product&work=camera_list" id="good">Camera</a></li>
+                    <li><a href="index.jsp?workgroup=product&work=film_list" id="good">Film</a></li>
+                    <li><a href="index.jsp?workgroup=product&work=acc_list" id="good">Accessary</a></li>
+                    <li><a href="index.jsp?workgroup=notoce&work=notoce_list" id="good">Notice</a></li>
+                    <li><a href="index.jsp?workgroup=review&work=" id="good">Cart</a></li>
                     <li><a href="#" id="good">Order List</a></li>
                 </ul>
             </nav>
