@@ -439,13 +439,13 @@
             <br>
             <div class="pagination">
                 <% if (pageNum > 1) { %>
-                    <a href="?pageNum=<%= pageNum - 1 %>&filter=<%= filter %>">&laquo;</a>
+                    <a href="camera_list.jsp?pageNum=<%= pageNum - 1 %>&filter=<%= filter %>">&laquo;</a>
                 <% } %>
                 <% for (int i = 1; i <= totalPage; i++) { %>
-                    <a href="?pageNum=<%= i %>&filter=<%= filter %>" class="<%= (i == pageNum) ? "active" : "" %>"><%= i %></a>
+                    <a href="camera_list.jsp?pageNum=<%= i %>&filter=<%= filter %>" class="<%= (i == pageNum) ? "active" : "" %>"><%= i %></a>
                 <% } %>
                 <% if (pageNum < totalPage) { %>
-                    <a href="?pageNum=<%= pageNum + 1 %>&filter=<%= filter %>">&raquo;</a>
+                    <a href="camera_list.jsp?pageNum=<%= pageNum + 1 %>&filter=<%= filter %>">&raquo;</a>
                 <% } %>
             </div>
             <div class="floating">
