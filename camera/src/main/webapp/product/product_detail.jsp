@@ -480,13 +480,14 @@
 %>
 
 <form action="<%=request.getContextPath() %>/index.jsp?workgroup=product&work=product_detail" method="post" enctype="multipart/form-data">
-    <div class="product-container">
+   <div class="product-container">
         <div class="product-images">
-            <img id="mainImage" src="product_image/<%= productImages[0] %>" alt="메인 이미지 <%= productName %>">
+            <img id="mainImage" src="<%=request.getContextPath()%>/product_image/<%= productImages[0] %>" alt="메인 이미지 <%= product.getProdName() %>">
             <div class="thumbnail-images">
-                <% for (int i = 0; i < productImages.length; i++) { %>
-                    <img src="product_image/<%= productImages[i] %>" alt="작은 이미지<%= i + 1 %> <%= productName %>" onclick="changeMainImage('product_image/<%= productImages[i] %>')">
-                <% } %>
+                <% for (int i = 0; i < 3; i++) { 
+                    if (productImages[i] != null && !productImages[i].isEmpty()) { %>
+                    <img src="<%=request.getContextPath()%>/product_image/<%= productImages[i] %>" alt="작은 이미지<%= i + 1 %> <%= productName %>" onclick="changeMainImage('<%=request.getContextPath()%>/product_image/<%= productImages[i] %>')">
+                <% }} %>
             </div>
         </div>
         <div class="product-details">
@@ -524,7 +525,7 @@
             <input id="tab3-1" name="tabs-three" type="radio" checked="checked">
             <div>
                 <h4></h4>
-                  <img id="tab3-1" src="product_image/<%= productImages[0] %>" alt="상세 페이지 이미지 <%= productName %>">
+             	<img id="tab3-1" src="<%=request.getContextPath()%>/product_image/<%= product.getProdImage4() %>" alt="상세 페이지 이미지 <%= productName %>">
             </div>
         </div>
         <div class="tab-menu">

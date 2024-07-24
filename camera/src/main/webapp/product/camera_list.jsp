@@ -418,15 +418,15 @@
         <section class="product-list">
             <h2>Camera</h2>
             <div class="filter">
-                <a href="?filter=newest">신상품</a> | 
-                <a href="?filter=lowestPrice">낮은가격</a> | 
-                <a href="?filter=highestPrice">높은가격</a>
+                <a href="<%=request.getContextPath()%>/product/camera_list.jsp?filter=new">신상품</a> | 
+                <a href="<%=request.getContextPath()%>/product/camera_list.jsp?filter=lowestPrice">낮은가격</a> | 
+                <a href="<%=request.getContextPath()%>/product/camera_list.jsp?filter=highestPrice">높은가격</a>
             </div>
             <div class="products">
                 <% for (ProductDTO product : products) { %>
                 <div class="product">
-                    <a href="product_detail.jsp?prodNo=<%= product.getProdNo() %>">
-                        <img src="product_image/<%= product.getProdImage1() %>" alt="<%= product.getProdName() %>">
+                    <a href="<%=request.getContextPath()%>/product/product_detail.jsp?prodNo=<%= product.getProdNo() %>">
+                        <img src="<%=request.getContextPath()%>/product_image/<%= product.getProdImage1() %>" alt="<%= product.getProdName() %>">
                         <h3><%= product.getProdName() %></h3>
                     </a>
                     <p class="price">₩<%= String.format("%,d", product.getProdPrice()) %></p>
@@ -439,13 +439,13 @@
             <br>
             <div class="pagination">
                 <% if (pageNum > 1) { %>
-                    <a href="camera_list.jsp?pageNum=<%= pageNum - 1 %>&filter=<%= filter %>">&laquo;</a>
+                    <a href="<%=request.getContextPath()%>/product/camera_list.jsp?pageNum=<%= pageNum - 1 %>&filter=<%= filter %>">&laquo;</a>
                 <% } %>
                 <% for (int i = 1; i <= totalPage; i++) { %>
-                    <a href="camera_list.jsp?pageNum=<%= i %>&filter=<%= filter %>" class="<%= (i == pageNum) ? "active" : "" %>"><%= i %></a>
+                    <a href="<%=request.getContextPath()%>/product/camera_list.jsp?pageNum=<%= i %>&filter=<%= filter %>" class="<%= (i == pageNum) ? "active" : "" %>"><%= i %></a>
                 <% } %>
                 <% if (pageNum < totalPage) { %>
-                    <a href="camera_list.jsp?pageNum=<%= pageNum + 1 %>&filter=<%= filter %>">&raquo;</a>
+                    <a href="<%=request.getContextPath()%>/product/camera_list.jsp?pageNum=<%= pageNum + 1 %>&filter=<%= filter %>">&raquo;</a>
                 <% } %>
             </div>
             <div class="floating">
@@ -453,8 +453,6 @@
             </div>
         </section>
     </main>
-    <footer>
-    </footer>
 </form>
 </body>
 </html>
