@@ -37,7 +37,7 @@
                     <li><a href="index.jsp?workgroup=product&work=acc_list" id="good">Accessary</a></li>
                     <li><a href="index.jsp?workgroup=notoce&work=notoce_list" id="good">Notice</a></li>
                     <li><a href="index.jsp?workgroup=review&work=" id="good">Cart</a></li>
-                    <li><a href="#" id="good">Order List</a></li>
+                    <li><a href="index.jsp?workgroup=review&work=review" id="good">review</a></li>
                 </ul>
             </nav>
         </div>

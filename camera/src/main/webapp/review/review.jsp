@@ -154,13 +154,7 @@ font-size:30px;
 		<div id="review_title">리뷰(<%=totalReview %>)</div>
 		
 		<div style="text-align: right; font-size: 19px;">
-		게시글갯수 : 
-		<select id="pageSize">
-			<option value="10" <% if(pageSize==10) { %> selected <% } %>>&nbsp;10개&nbsp;</option>	
-			<option value="20" <% if(pageSize==20) { %> selected <% } %>>&nbsp;20개&nbsp;</option>	
-			<option value="50" <% if(pageSize==50) { %> selected <% } %>>&nbsp;50개&nbsp;</option>	
-			<option value="100" <% if(pageSize==100) { %> selected <% } %>>&nbsp;100개&nbsp;</option>	
-		</select>
+		
 		&nbsp;&nbsp;&nbsp;
 		<% if(loginUsers != null) {//로그인 사용자인 경우 %>
 			<button type="button" id="writeBtn">글쓰기</button>
@@ -173,7 +167,6 @@ font-size:30px;
 					<th>글번호</th>
 					<th>제목</th>
 					<th>작성자</th>
-					<th>내용</th>
 					<th>작성일</th>
 				</tr>
 			</thead>
@@ -187,7 +180,7 @@ font-size:30px;
 				<td class="subject">
 					<%-- 게시글 상태를 비교하여 제목 출력 --%>
 					<%
-						String url=request.getContextPath()+"/index.jsp?workgroup=review&work=review"
+						String url=request.getContextPath()+"/index.jsp?workgroup=review&work=review_detail"
 							+"&reviewNum="+review.getReviewNum()+"&pageNum="+pageNum+"&pageSize="+pageSize;
 						
 					%>
@@ -203,7 +196,7 @@ font-size:30px;
 				
 				<%if(review.getReviewStatus() != 0) {%>
 				
-				  <td><%=review.getReviewUserNo() %></td>
+				    <td><%=review.getUsersName() %></td>
 				  
 				   
 				   <td>

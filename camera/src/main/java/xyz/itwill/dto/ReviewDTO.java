@@ -2,7 +2,7 @@ package xyz.itwill.dto;
 
 /*
 CREATE TABLE REVIEW(REVIEW_NUM NUMBER PRIMARY KEY, REVIEW_USERS_NO NUMBER CONSTRAINT 
-REVIEW_USERS_N0_FK REFERENCES USERS(USERS_NO),REVIEW_TITLE VARCHAR2(500), REVIEW_CONTENT
+REVIEW_USERS_N0_FK REFERENCES USERS(USERS_NO),REVIEW_TITLE VARCHAR2(500), REBVIEW_CONENT
 VARCHAR2(4000), REVIEW_IMAGE VARCHAR2(100), REVIEW_STATUS NUMBER(1), REVIEW_DATE DATE);
 SELECT * FROM REVIEW;
 
@@ -26,6 +26,7 @@ REVIEW_DATE              DATE            // 리뷰 작성일
 public class ReviewDTO {
 	private int reviewNum;
 	private int reviewUserNo;
+	private String usersName;
 	private String reviewTitle;
 	private String reviewContent;
 	private String reviewImage;
@@ -36,11 +37,12 @@ public class ReviewDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ReviewDTO(int reviewNum, int reviewUserNo, String reviewTitle, String reviewContent, String reviewImage,
-			int reviewStatus, String reviewDate) {
+	public ReviewDTO(int reviewNum, int reviewUserNo, String usersName, String reviewTitle, String reviewContent,
+			String reviewImage, int reviewStatus, String reviewDate) {
 		super();
 		this.reviewNum = reviewNum;
 		this.reviewUserNo = reviewUserNo;
+		this.usersName = usersName;
 		this.reviewTitle = reviewTitle;
 		this.reviewContent = reviewContent;
 		this.reviewImage = reviewImage;
@@ -62,6 +64,14 @@ public class ReviewDTO {
 
 	public void setReviewUserNo(int reviewUserNo) {
 		this.reviewUserNo = reviewUserNo;
+	}
+
+	public String getUsersName() {
+		return usersName;
+	}
+
+	public void setUsersName(String usersName) {
+		this.usersName = usersName;
 	}
 
 	public String getReviewTitle() {
@@ -104,4 +114,5 @@ public class ReviewDTO {
 		this.reviewDate = reviewDate;
 	}
 
+	
 }
