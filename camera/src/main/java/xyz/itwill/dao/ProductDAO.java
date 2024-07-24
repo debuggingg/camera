@@ -90,7 +90,6 @@ public class ProductDAO extends JdbcDAO {
         return product;
     }
 
-    // prod_type이 1인 모든 상품정보를 검색하여 리스트로 반환하는 메소드
     public List<ProductDTO> selectProductListByType1() {
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -128,8 +127,31 @@ public class ProductDAO extends JdbcDAO {
         return productList;
     }
 
-    // prod_type이 2인 모든 상품정보를 검색하여 리스트로 반환하는 메소드
-    public List<ProductDTO> selectProductListByType2() {
+    public int getTotalProductsByType1(String filter) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        int totalProducts = 0;
+        try {
+            con = getConnection();
+
+            String sql = "select count(*) from product where PROD_TYPE = 1";
+            pstmt = con.prepareStatement(sql);
+
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                totalProducts = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("[에러]getTotalProductsByType1() 메서드의 SQL 오류 = " + e.getMessage());
+        } finally {
+            close(con, pstmt, rs);
+        }
+        return totalProducts;
+    }
+
+    public List<ProductDTO> selectProductListByType1WithPaging(int startRow, int endRow, String filter) {
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -137,8 +159,21 @@ public class ProductDAO extends JdbcDAO {
         try {
             con = getConnection();
 
-            String sql = "select * from product where PROD_TYPE = 2";
+            String sql = "select * from (select rownum rnum, a.* from (select * from product where PROD_TYPE = 1";
+            if (filter != null) {
+                if (filter.equals("newest")) {
+                    sql += " order by PROD_IN_DATE desc";
+                } else if (filter.equals("lowestPrice")) {
+                    sql += " order by PROD_PRICE asc";
+                } else if (filter.equals("highestPrice")) {
+                    sql += " order by PROD_PRICE desc";
+                }
+            }
+            sql += ") a where rownum <= ?) where rnum >= ?";
+
             pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, endRow);
+            pstmt.setInt(2, startRow);
 
             rs = pstmt.executeQuery();
 
@@ -159,27 +194,56 @@ public class ProductDAO extends JdbcDAO {
                 productList.add(product);
             }
         } catch (SQLException e) {
-            System.out.println("[에러]selectProductListByType2() 메서드의 SQL 오류 = " + e.getMessage());
+            System.out.println("[에러]selectProductListByType1WithPaging() 메서드의 SQL 오류 = " + e.getMessage());
         } finally {
             close(con, pstmt, rs);
         }
         return productList;
     }
 
-    // prod_type이 3인 모든 상품정보를 검색하여 리스트로 반환하는 메소드
-    public List<ProductDTO> selectProductListByType3() {
+    public int getTotalProductsByType2(String filter) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        int total = 0;
+        try {
+            con = getConnection();
+            String sql = "SELECT COUNT(*) FROM product WHERE PROD_TYPE = 2";
+            pstmt = con.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                total = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("[에러]getTotalProductsByType2() 메서드의 SQL 오류 = " + e.getMessage());
+        } finally {
+            close(con, pstmt, rs);
+        }
+        return total;
+    }
+
+    public List<ProductDTO> selectProductListByType2WithPaging(int startRow, int endRow, String filter) {
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         List<ProductDTO> productList = new ArrayList<ProductDTO>();
         try {
             con = getConnection();
-
-            String sql = "select * from product where PROD_TYPE = 3";
+            String orderBy = "";
+            if (filter != null) {
+                if (filter.equals("newest")) {
+                    orderBy = "ORDER BY PROD_IN_DATE DESC";
+                } else if (filter.equals("lowestPrice")) {
+                    orderBy = "ORDER BY PROD_PRICE ASC";
+                } else if (filter.equals("highestPrice")) {
+                    orderBy = "ORDER BY PROD_PRICE DESC";
+                }
+            }
+            String sql = "SELECT * FROM (SELECT rownum rn, temp.* FROM (SELECT * FROM product WHERE PROD_TYPE = 2 " + orderBy + ") temp) WHERE rn BETWEEN ? AND ?";
             pstmt = con.prepareStatement(sql);
-
+            pstmt.setInt(1, startRow);
+            pstmt.setInt(2, endRow);
             rs = pstmt.executeQuery();
-
             while (rs.next()) {
                 ProductDTO product = new ProductDTO();
                 product.setProdNo(rs.getInt("PROD_NO"));
@@ -193,11 +257,77 @@ public class ProductDAO extends JdbcDAO {
                 product.setProdImage4(rs.getString("PROD_IMAGE4"));
                 product.setProdInfo(rs.getString("PROD_INFO"));
                 product.setProdInDate(rs.getString("PROD_IN_DATE"));
-
                 productList.add(product);
             }
         } catch (SQLException e) {
-            System.out.println("[에러]selectProductListByType3() 메서드의 SQL 오류 = " + e.getMessage());
+            System.out.println("[에러]selectProductListByType2WithPaging() 메서드의 SQL 오류 = " + e.getMessage());
+        } finally {
+            close(con, pstmt, rs);
+        }
+        return productList;
+    }
+
+
+    public int getTotalProductsByType3(String filter) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        int total = 0;
+        try {
+            con = getConnection();
+            String sql = "SELECT COUNT(*) FROM product WHERE PROD_TYPE = 3";
+            pstmt = con.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                total = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("[에러]getTotalProductsByType3() 메서드의 SQL 오류 = " + e.getMessage());
+        } finally {
+            close(con, pstmt, rs);
+        }
+        return total;
+    }
+
+    public List<ProductDTO> selectProductListByType3WithPaging(int startRow, int endRow, String filter) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        List<ProductDTO> productList = new ArrayList<ProductDTO>();
+        try {
+            con = getConnection();
+            String orderBy = "";
+            if (filter != null) {
+                if (filter.equals("newest")) {
+                    orderBy = "ORDER BY PROD_IN_DATE DESC";
+                } else if (filter.equals("lowestPrice")) {
+                    orderBy = "ORDER BY PROD_PRICE ASC";
+                } else if (filter.equals("highestPrice")) {
+                    orderBy = "ORDER BY PROD_PRICE DESC";
+                }
+            }
+            String sql = "SELECT * FROM (SELECT rownum rn, temp.* FROM (SELECT * FROM product WHERE PROD_TYPE = 3 " + orderBy + ") temp) WHERE rn BETWEEN ? AND ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, startRow);
+            pstmt.setInt(2, endRow);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                ProductDTO product = new ProductDTO();
+                product.setProdNo(rs.getInt("PROD_NO"));
+                product.setProdType(rs.getInt("PROD_TYPE"));
+                product.setProdName(rs.getString("PROD_NAME"));
+                product.setProdPrice(rs.getInt("PROD_PRICE"));
+                product.setProdAmount(rs.getInt("PROD_AMOUNT"));
+                product.setProdImage1(rs.getString("PROD_IMAGE1"));
+                product.setProdImage2(rs.getString("PROD_IMAGE2"));
+                product.setProdImage3(rs.getString("PROD_IMAGE3"));
+                product.setProdImage4(rs.getString("PROD_IMAGE4"));
+                product.setProdInfo(rs.getString("PROD_INFO"));
+                product.setProdInDate(rs.getString("PROD_IN_DATE"));
+                productList.add(product);
+            }
+        } catch (SQLException e) {
+            System.out.println("[에러]selectProductListByType3WithPaging() 메서드의 SQL 오류 = " + e.getMessage());
         } finally {
             close(con, pstmt, rs);
         }
