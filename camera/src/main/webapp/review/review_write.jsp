@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/security/login_check.jspf"%>
+<%
+	String pageNum = "1", pageSize = "10";	
+	int reviewProdNo = 61; // 예시
+%>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
@@ -9,30 +13,33 @@
 <title>리뷰 작성하기</title>
 </head>
 <style type="text/css">
-
-#write-wrap{
-width: 720px;
-height:230px;
-font-size: 17px;
-margin:0 auto;
-margin-top:60px;
+#write-wrap {
+	width: 720px;
+	height: 230px;
+	font-size: 17px;
+	margin: 0 auto;
+	margin-top: 60px;
 }
-
 table {
 	margin: 0 auto;
 }
-
 th {
 	width: 100px;
 }
-
 td {
 	text-align: left;
+}
+#message {
+	text-align: center;
+	font-size: large;
 }
 </style>
 <div id="write-wrap">	
 	<form action="<%=request.getContextPath()%>/index.jsp?workgroup=review&work=review_write_action"
 	method="post" enctype="multipart/form-data" id="reviewForm">
+	<input type="hidden" name="pageNum" value="<%=pageNum%>">	
+	<input type="hidden" name="pageSize" value="<%=pageSize%>">	
+	<input type="hidden" name="reviewProdNo" value="<%=reviewProdNo%>"> <!-- 상품 번호 -->
 	<table>
 	<h1 style="text-align: center; font-size: 22px;">글쓰기</h1>
 		<tr>
@@ -62,17 +69,18 @@ td {
 	</table>
 </form>
 </div>
-	<script type="text/javascript">
+<div id="message" style="color: red;"></div>
+<script type="text/javascript">
 $("#reviewTitle").focus();
 
 $("#reviewForm").submit(function() {
-	if($("#reviewTitle").val() == "") {
+	if ($("#reviewTitle").val() == "") {
 		$("#message").text("제목을 입력해 주세요.");
 		$("#reviewTitle").focus();
 		return false;
 	}
 	
-	if($("#reviewContent").val() == "") {
+	if ($("#reviewContent").val() == "") {
 		$("#message").text("내용을 입력해 주세요.");
 		$("#reviewContent").focus();
 		return false;
