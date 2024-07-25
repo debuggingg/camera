@@ -43,6 +43,7 @@ int displayNum = totalReview - (pageNum - 1) * pageSize; // 게시글에 출력�
 
 <style type="text/css">
 * { font-family: 'Jua', sans-serif; }
+ a {text-decoration: none !important}
 
 #review_title {
     font-size: 30px;
@@ -98,12 +99,10 @@ int displayNum = totalReview - (pageNum - 1) * pageSize; // 게시글에 출력�
     font-weight: bold;
 }
 
-.subject_hidden {
-    background: black;
-    color: white;
+.subject_hidden {    
+    color: black;
     font-size: 14px;
-    border: 1px solid black;
-    border-radius: 4px;
+   
 }
 
 #page_list {
