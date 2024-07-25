@@ -16,7 +16,7 @@ public class AdminQnaDTO {
 	private String qnaType;
 	private String qnaTitle;
 	private String qnaContent;
-	private String qnaDage;
+	private String qnaDate;
 	private int qnaStatus;
 	
 	private String usersName;
@@ -57,12 +57,17 @@ public class AdminQnaDTO {
 	public void setQnaContent(String qnaContent) {
 		this.qnaContent = qnaContent;
 	}
-	public String getQnaDage() {
-		return qnaDage;
+
+	public String getQnaDate() {
+		return qnaDate;
 	}
-	public void setQnaDage(String qnaDage) {
-		this.qnaDage = qnaDage;
+
+
+	public void setQnaDate(String qnaDate) {
+		this.qnaDate = qnaDate;
 	}
+
+
 	public int getQnaStatus() {
 		return qnaStatus;
 	}
