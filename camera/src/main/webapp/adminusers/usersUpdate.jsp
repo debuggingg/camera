@@ -33,6 +33,7 @@
             	//반환하는 UsersDAO 클래스의 메소드 호출
             	AdminUsersDAO.getDAO().updateUsers(users);
             	
-            	//클라이언트에게 URL 주소를 전달하여 응답
-            	response.sendRedirect(request.getContextPath()+"/index.jsp?workgroup=adminusers&work=users");
+        
+            	/* response.sendRedirect(request.getContextPath()+"/index.jsp?workgroup=adminusers&work=users"); */
+            	request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=adminusers&work=users");
       %>

@@ -5,9 +5,17 @@
     pageEncoding="UTF-8"%>
 <%
 
+String search=request.getParameter("search");
+if(search==null){
+	search="";
+}
+String keyword=request.getParameter("keyword");
+if(keyword==null){
+	keyword="";
+}
 
 	
-	List<AdminUsersDTO> usersList=AdminUsersDAO.getDAO().selectUsersList();
+	List<AdminUsersDTO> usersList=AdminUsersDAO.getDAO().selectUsersList(search,keyword);
 %> 
     
 <!DOCTYPE html>
@@ -24,10 +32,14 @@
     <div class="container">
         <h1>관리자 페이지</h1>
         
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="이름으로 검색">
-            <button id="searchButton">검색</button>
-        </div>
+          <form action="<%= request.getContextPath()%>/index.jsp?workgroup=adminusers&work=users" method="post">
+        	<select  name="search">
+			<option id="searchInput" value="users_id" <% if(search.equals("users_id")) { %>selected<% } %>>&nbsp;id&nbsp;</option>
+			<option id="searchInput" value="USERS_STATUS" <% if(search.equals("USERS_STATUS")) { %>selected<% } %>>&nbsp;status&nbsp;</option>
+		</select>
+		<input type="text" name="keyword" value="<%=keyword%>">
+		<button type="submit" id="searchButton">검색</button>
+        </form>
 
        
         <table class="member-table">

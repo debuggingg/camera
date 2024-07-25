@@ -25,7 +25,10 @@
 	session.setAttribute("notice", notice);
 	
 	AdminNoticeDAO.getDAO().insertNotice(notice);
-	response.sendRedirect(request.getContextPath()+"index.jsp?workgroup=adminnotice&work=notice");
+	
+	
+	/* response.sendRedirect(request.getContextPath()+"index.jsp?workgroup=adminnotice&work=notice"); */
+	request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=adminnotice&work=notice");
 	
 	
 	

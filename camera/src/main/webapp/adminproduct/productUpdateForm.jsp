@@ -13,8 +13,8 @@
   	//전달값을 반환받아 저장
   	int no=Integer.parseInt(request.getParameter("no"));
   	
-  	//번호를 전달받아 회원 테이블에 저장된 하나의 행을 검색하여 검색된 회원정보(UsersDTO 
-  	//객체)를 반환하는 ProductDAO 클래스의 메소드 호출
+  	//번호를 전달받아 product 테이블에 저장된 하나의 행을 검색하여 검색된 회원정보(AdminProductDTO 
+  	//객체)를 반환하는 AdminProductDAO 클래스의 메소드 호출
   	AdminProductDTO product=AdminProductDAO.getDAO().selectProductByNo(no);
   	
   	//비정상적인 요청에 대한 응답 처리

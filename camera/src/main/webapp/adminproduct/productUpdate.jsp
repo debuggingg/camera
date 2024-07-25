@@ -98,6 +98,7 @@
 
 	
 	AdminProductDAO.getDAO().updateProduct(product);
-	//클라이언트에게 URL 주소를 전달하여 응답
-	response.sendRedirect(request.getContextPath()+"/index.jsp?workgroup=adminproduct&work=product");
+	
+/* 	response.sendRedirect(request.getContextPath()+"/index.jsp?workgroup=adminproduct&work=product"); */
+request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=adminproduct&work=product");
 %>

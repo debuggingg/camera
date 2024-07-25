@@ -7,7 +7,16 @@
     pageEncoding="UTF-8"%>
 
 <%
-List<AdminNoticeDTO> adminNotice=AdminNoticeDAO.getDAO().selectNoticeList();
+ String search=request.getParameter("search");
+if(search == null) {//전달값이 없는 경우 - 조회기능을 사용하지 않은 경우
+	search="";
+}
+String keyword=request.getParameter("keyword");//조회단어
+if(keyword == null) {
+	keyword="";
+} 
+
+List<AdminNoticeDTO> adminNotice=AdminNoticeDAO.getDAO().selectNoticeList(search,keyword);
 /* UsersDTO users=(UsersDTO)session.getAttribute("users");
 if(users.getUsersNo() != 9){
 	response.sendError(HttpServletResponse.SC_BAD_REQUEST);
@@ -28,11 +37,14 @@ if(users.getUsersNo() != 9){
 
     <div class="container">
         <h1>관리자 페이지</h1>
-        
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="이름으로 검색">
-            <button id="searchButton">검색</button>
-        </div>
+        <form action="<%= request.getContextPath()%>/index.jsp?workgroup=adminnotice&work=notice" method="post">
+        	<select  name="search">
+			<option id="searchInput" value="notice_title" <% if(search.equals("notice_title")) { %>selected<% } %>>&nbsp;title&nbsp;</option>
+			<option value="notice_content" <% if(search.equals("notice_content")) { %>selected<% } %>>&nbsp;content&nbsp;</option>
+		</select>
+		<input type="text" name="keyword" value="<%=keyword%>">
+		<button type="submit" id="searchButton">검색</button>
+        </form>
 <div>
     <button type="button" id="addBtn" class="status-button" data-status="100">추가</button>
     
@@ -77,12 +89,12 @@ if(users.getUsersNo() != 9){
 		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=adminnotice&work=noticeAddForm";	
 	}
 	
- 	function updateProduct(no) {
+ 	function updateNotice(no) {
  		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=adminnotice&work=noticeUpdateForm&no="+no;	 
  	}
 	
- 	function removeProduct(no) {
- 		if(confirm("상품을  정말로 삭제 하시겠습니까?")) {
+ 	function removeNotice(no) {
+ 		if(confirm("notice를  정말로 삭제 하시겠습니까?")) {
  		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=adminnotice&work=noticeRemove&no="+no; 
  		}
  	}

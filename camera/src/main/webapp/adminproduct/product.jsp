@@ -6,7 +6,19 @@
     pageEncoding="UTF-8"%>
 
 <%
-List<AdminProductDTO> productList=AdminProductDAO.getDAO().selectProductList();
+String search=request.getParameter("search");
+if(search==null){
+	search="";
+}
+String keyword=request.getParameter("keyword");
+if(keyword==null){
+	keyword="";
+}
+
+
+/* int totalProduct=AdminProductDAO.getDAO().selectTotalProduct(search,keyword); */
+/* List<AdminProductDTO> productList=AdminProductDAO.getDAO().selectProductList(); */
+List<AdminProductDTO> productList=AdminProductDAO.getDAO().selectProductSearchList(search,keyword);
 /* UsersDTO users=(UsersDTO)session.getAttribute("users");
 if(users.getUsersNo() != 9){
 	response.sendError(HttpServletResponse.SC_BAD_REQUEST);
@@ -28,11 +40,15 @@ if(users.getUsersNo() != 9){
 
     <div class="container">
         <h1>관리자 페이지</h1>
-        
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="이름으로 검색">
-            <button id="searchButton">검색</button>
-        </div>
+        <form action="<%= request.getContextPath()%>/index.jsp?workgroup=adminproduct&work=product" method="post">
+        	<select  name="search">
+			<option id="searchInput" value="prod_name" <% if(search.equals("prod_name")) { %>selected<% } %>>&nbsp;name&nbsp;</option>
+			<option value="prod_type" <% if(search.equals("prod_type")) { %>selected<% } %>>&nbsp;type&nbsp;</option>
+		</select>
+		<input type="text" name="keyword" value="<%=keyword%>">
+		<button type="submit" id="searchButton">검색</button>
+        </form>
+       
 <div>
     <button type="button" id="addBtn" class="status-button" data-status="100">추가</button>
     

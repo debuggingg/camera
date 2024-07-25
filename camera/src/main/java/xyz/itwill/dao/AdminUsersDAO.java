@@ -19,7 +19,7 @@ public class AdminUsersDAO extends JdbcDAO{
 		return _dao;
 	}
 	
-	public List<AdminUsersDTO> selectUsersList(){
+	public List<AdminUsersDTO> selectUsersList(String search, String keyword){
 		
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -27,10 +27,19 @@ public class AdminUsersDAO extends JdbcDAO{
 		List<AdminUsersDTO> usersList=new ArrayList<>();
 		try {
 			con=getConnection();
+			
+			if(keyword.equals("")) {
 			String sql="SELECT USERS_NO,USERS_ID,USERS_PW,USERS_NAME,USERS_ZIPCODE,"
 					+ "USERS_ADDRESS1,USERS_ADDRESS2,USERS_PHONE,USERS_EMAIL,USERS_SIGNDATE,"
 					+ "USERS_LAST_LOGIN,USERS_STATUS FROM USERS ORDER BY USERS_NO";
 			pstmt=con.prepareStatement(sql);
+			}else {
+				String sql="SELECT USERS_NO,USERS_ID,USERS_PW,USERS_NAME,USERS_ZIPCODE,"
+						+ "USERS_ADDRESS1,USERS_ADDRESS2,USERS_PHONE,USERS_EMAIL,USERS_SIGNDATE,"
+						+ "USERS_LAST_LOGIN,USERS_STATUS FROM users where "+search+" like '%'||?||'%' ORDER BY USERS_NO";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, keyword);
+			}
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				AdminUsersDTO users=new AdminUsersDTO();
