@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
-    <style type="text/css">
+      <style type="text/css">
     body {
         font-family: 'Do Hyeon', sans-serif;
         margin: 0;
@@ -411,48 +411,44 @@
 
     List<ProductDTO> products = productDAO.selectProductListByType2WithPaging(startRow, endRow, filter);
 %>
-<form action="<%=request.getContextPath() %>/index.jsp?workgroup=product&work=product_detail" method="post" enctype="multipart/form-data">
-    <header>
-    </header>
-    <main>
-        <section class="product-list">
-            <h2>Film</h2>
-            <div class="filter">
-                <a href="<%=request.getContextPath()%>/product/film_list.jsp?filter=new">신상품</a> | 
-                <a href="<%=request.getContextPath()%>/product/film_list.jsp?filter=lowestPrice">낮은가격</a> | 
-                <a href="<%=request.getContextPath()%>/product/film_list.jsp?filter=highestPrice">높은가격</a>
+<main>
+    <section class="product-list">
+        <h2>Film</h2>
+        <div class="filter">
+            <a href="<%=request.getContextPath()%>/index.jsp?workgroup=product&work=film_list&filter=new">신상품</a> | 
+            <a href="<%=request.getContextPath()%>/index.jsp?workgroup=product&work=film_list&filter=lowestPrice">낮은가격</a> | 
+            <a href="<%=request.getContextPath()%>/index.jsp?workgroup=product&work=film_list&filter=highestPrice">높은가격</a>
+        </div>
+        <div class="products">
+            <% for (ProductDTO product : products) { %>
+            <div class="product">
+                <a href="<%=request.getContextPath()%>/product/product_detail.jsp?prodNo=<%= product.getProdNo() %>">
+                    <img src="<%=request.getContextPath()%>/product_image/<%= product.getProdImage1() %>" alt="<%= product.getProdName() %>">
+                    <h3><%= product.getProdName() %></h3>
+                </a>
+                <p class="price">₩<%= String.format("%,d", product.getProdPrice()) %></p>
+                <button type="button" class="uni-btn btn-basket"><span>장바구니</span></button>
+                <button type="button" class="uni-btn btn-buy"><span>바로구매</span></button>
             </div>
-            <div class="products">
-                <% for (ProductDTO product : products) { %>
-                <div class="product">
-                    <a href="<%=request.getContextPath()%>/product/product_detail.jsp?prodNo=<%= product.getProdNo() %>">
-                        <img src="<%=request.getContextPath()%>/product_image/<%= product.getProdImage1() %>" alt="<%= product.getProdName() %>">
-                        <h3><%= product.getProdName() %></h3>
-                    </a>
-                    <p class="price">₩<%= String.format("%,d", product.getProdPrice()) %></p>
-                    <button type="button" class="uni-btn btn-basket"><span>장바구니</span></button>
-                    <button type="button" class="uni-btn btn-buy"><span>바로구매</span></button>
-                </div>
-                <% } %>
-            </div>
-            <br>
-            <br>
-            <div class="pagination">
-                <% if (pageNum > 1) { %>
-                    <a href="<%=request.getContextPath()%>/product/film_list.jsp?pageNum=<%= pageNum - 1 %>&filter=<%= filter %>">&laquo;</a>
-                <% } %>
-                <% for (int i = 1; i <= totalPage; i++) { %>
-                    <a href="<%=request.getContextPath()%>/product/film_list.jsp?pageNum=<%= i %>&filter=<%= filter %>" class="<%= (i == pageNum) ? "active" : "" %>"><%= i %></a>
-                <% } %>
-                <% if (pageNum < totalPage) { %>
-                    <a href="<%=request.getContextPath()%>/product/film_list.jsp?pageNum=<%= pageNum + 1 %>&filter=<%= filter %>">&raquo;</a>
-                <% } %>
-            </div>
-            <div class="floating">
-                <a href="#top"><i class="fa fa-arrow-circle-up"></i></a>
-            </div>
-        </section>
-    </main>
-</form>
+            <% } %>
+        </div>
+        <br>
+        <br>
+        <div class="pagination">
+            <% if (pageNum > 1) { %>
+                <a href="<%=request.getContextPath()%>/index.jsp?workgroup=product&work=film_list&pageNum=<%= pageNum - 1 %>&filter=<%= filter %>">&laquo;</a>
+            <% } %>
+            <% for (int i = 1; i <= totalPage; i++) { %>
+                <a href="<%=request.getContextPath()%>/index.jsp?workgroup=product&work=film_list&pageNum=<%= i %>&filter=<%= filter %>" class="<%= (i == pageNum) ? "active" : "" %>"><%= i %></a>
+            <% } %>
+            <% if (pageNum < totalPage) { %>
+                <a href="<%=request.getContextPath()%>/index.jsp?workgroup=product&work=film_list&pageNum=<%= pageNum + 1 %>&filter=<%= filter %>">&raquo;</a>
+            <% } %>
+        </div>
+        <div class="floating">
+            <a href="#top"><i class="fa fa-arrow-circle-up"></i></a>
+        </div>
+    </section>
+</main>
 </body>
 </html>
