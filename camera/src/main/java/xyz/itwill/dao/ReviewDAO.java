@@ -257,6 +257,33 @@ public class ReviewDAO extends JdbcDAO {
 	    }
 	    return reviewList;
 	}
+	
+	public int selectTotalReviewByProduct(int reviewProdNo) {
+	    Connection con = null;
+	    PreparedStatement pstmt = null;
+	    ResultSet rs = null;
+	    int totalReview = 0;
+	    try {
+	        con = getConnection();
+
+	        String sql = "select count(*) from review where review_prod_no = ?";
+	        pstmt = con.prepareStatement(sql);
+	        pstmt.setInt(1, reviewProdNo);
+
+	        rs = pstmt.executeQuery();
+
+	        if (rs.next()) {
+	            totalReview = rs.getInt(1);
+	        }
+
+	    } catch (SQLException e) {
+	        System.out.println("[오류] selectTotalReviewByProduct() SQL 오류 = " + e.getMessage());
+	    } finally {
+	        close(con, pstmt, rs);
+	    }
+	    return totalReview;
+	}
+
 
 		
 }
