@@ -8,7 +8,7 @@
                     <div id="profile">
                     <% if(loginUsers == null) { %>
                        <a href="index.jsp?workgroup=users&work=users_login">Login</a>
-                       <a href="index.jsp?workgroup=users&work=users_agreement">Sing up</a>
+                       <a href="index.jsp?workgroup=users&work=users_agreement">Singup</a>
                     <% } else { %>
                        <span> [<%=loginUsers.getUsersName() %>]님, 환영합니다!</span>
                        <a href="index.jsp?workgroup=users&work=users_logout_action">Logout</a>
@@ -21,7 +21,7 @@
             </div>
             <div id="header-bottom">
                 <div id="header-bottom-middle">
-                <div id="logo" onclick="location.href='index.html'">Filli Camera</div>
+                <div id="logo"><a href="index.jsp" style="color:orange;">Filli Camera</a></div>
                 <div id="search_button">
                     <div id="search-middle">
                     <form action="" method="get">
@@ -34,10 +34,10 @@
                 <ul>
                      <li><a href="index.jsp?workgroup=product&work=camera_list" id="good">Camera</a></li>
                     <li><a href="index.jsp?workgroup=product&work=film_list" id="good">Film</a></li>
-                    <li><a href="index.jsp?workgroup=product&work=acc_list" id="good">Accessary</a></li>
-                    <li><a href="index.jsp?workgroup=notoce&work=notoce_list" id="good">Notice</a></li>
-                    <li><a href="index.jsp?workgroup=review&work=" id="good">Cart</a></li>
-                    <li><a href="index.jsp?workgroup=review&work=review" id="good">review</a></li>
+                    <li><a href="index.jsp?workgroup=users&work=acc_list" id="good">Acc</a></li>
+                    <li><a href="index.jsp?workgroup=notice&work=notice" id="good">Notice</a></li>
+                    <li><a href="index.jsp?workgroup=cart&work=cart" id="good">Cart</a></li>
+                    <li><a href="index.jsp?workgroup=order&work=order_list" id="good">Review</a></li>
                 </ul>
             </nav>
         </div>

@@ -20,7 +20,7 @@
       		request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=error&work=error_400");
       		return;	
       	}
-      	notice.setNoticeStatus(0);
+      	notice.setNoticeStatus(2);
       	AdminNoticeDAO.getDAO().updateNotice(notice);
       	
       	request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=adminnotice&work=notice");
