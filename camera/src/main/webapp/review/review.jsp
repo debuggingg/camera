@@ -141,7 +141,7 @@ int displayNum = totalReview - (pageNum - 1) * pageSize; // 게시글에 출력�
 
         <% if (totalReview == 0) { %>
             <tr>
-                <td colspan="5">검색된 게시글이 없습니다.</td>
+                <td colspan="4">검색된 게시글이 없습니다.</td>
             </tr>
         <% } else { %>
             <% for (ReviewDTO review : reviewList) { %>
@@ -155,7 +155,7 @@ int displayNum = totalReview - (pageNum - 1) * pageSize; // 게시글에 출력�
                         %>
                         <% if (review.getReviewStatus() == 1) { %>
                             <a href="<%= url %>"><%= review.getReviewTitle() %></a>
-                        <% } else if (review.getReviewStatus() == 2) { %>
+                        <% } else if (review.getReviewStatus() == 0) { %>
                             <span class="subject_hidden">
                                 게시글 작성자 또는 관리자에 의해 삭제된 게시글입니다.
                             </span>
@@ -173,8 +173,7 @@ int displayNum = totalReview - (pageNum - 1) * pageSize; // 게시글에 출력�
                         </td>
                     <% } else { %>
                         <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>                     
                     <% } %>
                 </tr>
             <% } %>

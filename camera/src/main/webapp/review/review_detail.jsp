@@ -135,13 +135,13 @@ td {
 <script type="text/javascript">
 $("#modifyBtn").click(function() {
 	location.href="<%=request.getContextPath()%>/index.jsp?workgroup=review&work=review_modify"
-		+"&reviewNum=<%=review.getReviewNo()%>&pageNum=<%=pageNum%>&pageSize=<%=pageSize%>";
+		+"&reviewNo=<%=review.getReviewNo()%>&pageNum=<%=pageNum%>&pageSize=<%=pageSize%>";
 });
 
 $("#removeBtn").click(function() {
 	if(confirm("게시글을 정말로 삭제 하시겠습니까?")) {
 		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=review&work=review_remove_action"
-			+"&reviewNum=<%=review.getReviewNo()%>&pageNum=<%=pageNum%>&pageSize=<%=pageSize%>";
+			+"&reviewNo=<%=review.getReviewNo()%>&pageNum=<%=pageNum%>&pageSize=<%=pageSize%>";
 	}
 });
 
