@@ -69,7 +69,7 @@ if(keyword == null) {
                         <a href="#">Shop</a>
                         <div class="dropdown-content">
                             <a href="index.jsp?workgroup=cart&work=cart" id="good">Cart</a>
-                            <a href="index.jsp?workgroup=order&work=order_list" id="good">Order List</a>
+                            <a href="index.jsp?workgroup=review&work=review" id="good">Review</a>
                         </div>
                     </li>
                   
