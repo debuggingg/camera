@@ -25,9 +25,10 @@
 			  <nav>
                 <ul>
                     <li><a href="index.jsp?workgroup=adminusers&work=users" id="good">회원관리</a></li>
-                    <li><a href="index.jsp?workgroup=adminnotice&work=notice" id="good">게시글관리</a></li>
+                    <li><a href="index.jsp?workgroup=adminnotice&work=notice" id="good">공지관리</a></li>
+                    <li><a href="index.jsp?workgroup=adminqna&work=qna" id="good">QNA관리</a></li>
                     <li><a href="index.jsp?workgroup=adminproduct&work=product" id="good">제품관리</a></li>
-                    <li><a href="index.jsp?workgroup=adminproduct&work=product" id="good">주문관리</a></li>
+                    <li><a href="index.jsp?workgroup=adminorders&work=orders" id="good">주문관리</a></li>
                 </ul>
             </nav>
 		</div>
