@@ -170,11 +170,11 @@ legend {
 		<li>
 			<% String[] phone=loginUsers.getUsersPhone().split("-"); %>
 			<label for="mobile2">전화번호</label>
-			<select name="mobile1">
+			<select name="phone1">
 				<option value="010" <% if(phone[0].equals("010")) { %> selected <% } %>>&nbsp;010&nbsp;</option>
 			</select>
-			- <input type="text" name="mobile2" id="mobile2" size="4" maxlength="4" value="<%=phone[1]%>">
-			- <input type="text" name="mobile3" id="mobile3" size="4" maxlength="4" value="<%=phone[2]%>">
+			- <input type="text" name="phone2" id="phone2" size="4" maxlength="4" value="<%=phone[1]%>">
+			- <input type="text" name="phone3" id="phone3" size="4" maxlength="4" value="<%=phone[2]%>">
 			<div id="mobileMsg" class="error">전화번호를 입력해 입력해 주세요.</div>
 			<div id="mobileRegMsg" class="error">전화번호는 3~4 자리의 숫자로만 입력해 주세요.</div>
 		</li>
@@ -236,10 +236,10 @@ $("#join").submit(function() {
 
 	var mobile2Reg=/\d{3,4}/;
 	var mobile3Reg=/\d{4}/;
-	if($("#mobile2").val()=="" || $("#mobile3").val()=="") {
+	if($("#phone2").val()=="" || $("#phone3").val()=="") {
 		$("#mobileMsg").css("display","block");
 		submitResult=false;
-	} else if(!mobile2Reg.test($("#mobile2").val()) || !mobile3Reg.test($("#mobile3").val())) {
+	} else if(!mobile2Reg.test($("#phone2").val()) || !mobile3Reg.test($("#phone3").val())) {
 		$("#mobileRegMsg").css("display","block");
 		submitResult=false;
 	}
