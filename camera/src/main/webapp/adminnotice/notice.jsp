@@ -33,6 +33,8 @@ if(users.getUsersNo() != 9){
      <link rel="stylesheet" href="<%=request.getContextPath() %>/adminnotice/styles.css">
 </head>
 <body>
+
+
     
 
     <div class="container">
