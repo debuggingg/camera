@@ -19,7 +19,7 @@
 	String contentPath = workgroup + "/" + work + ".jsp";
 
 	String headerPath = "/header.jsp";
-	if (workgroup.equals("admin")) {
+	if (workgroup.contains("admin")) {
 		headerPath = "/header_admin.jsp";
 	}
 %>
