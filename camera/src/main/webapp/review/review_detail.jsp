@@ -48,6 +48,7 @@
 }
 
 table {
+	background-color: #e9ecef;
 	border: 1px solid black;
 	border-collapse: collapse;
 	font-size: 17px;
@@ -61,7 +62,7 @@ th, td {
 
 th {
 	width: 100px;
-	background: black;
+	background-color: #ffc107;
 	color: white;
 }
 

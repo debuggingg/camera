@@ -112,7 +112,7 @@ int displayNum = totalReview - (pageNum - 1) * pageSize; // 게시글에 출력�
 </style>
 
 <div id="review_list">
-    <div id="review_title">리뷰 (<%= totalReview %>)</div>
+    <div id="review_title">Review (<%= totalReview %>)</div>
     
     <div style="text-align: right; font-size: 19px;">
         게시글 :
@@ -140,7 +140,7 @@ int displayNum = totalReview - (pageNum - 1) * pageSize; // 게시글에 출력�
 
         <% if (totalReview == 0) { %>
             <tr>
-                <td colspan="4">검색된 게시글이 없습니다.</td>
+                <td colspan="4">작성된 게시글이 없습니다.</td>
             </tr>
         <% } else { %>
             <% for (ReviewDTO review : reviewList) { %>
