@@ -473,7 +473,9 @@
         out.println("<script>alert('존재하지 않는 상품입니다.'); history.back();</script>");
         return;
     }
-
+	//추가
+    int prodAmount=product.getProdAmount();
+    
     String productName = product.getProdName();
     String productDescription = product.getProdInfo();
     int productPrice = product.getProdPrice();
@@ -516,7 +518,17 @@
             </div>
             <div class="buttons">
                 <button type="button" class="uni-btn btn-buy"><span>구매하기</span></button>
-                <button type="button" class="uni-btn btn-basket"><span>장바구니</span></button>
+               
+               <%-- 폼태그 추가 --%>
+                <form  action="<%=request.getContextPath()%>/index.jsp?workgroup=cart&work=addtocart2" method="post">   
+                	<button type="submit" class="uni-btn btn-basket"><span>장바구니</span></button>
+               	 	<input type="hidden" name="prodNo" value="<%= prodNo %>">
+         		 	<input type="hidden" id="finalQuantity" name="finalQuantity" value=""> <!-- /index.jsp?workgroup=cart&work=addtocart"2 --> 
+               <!--	 <input type="hidden" id="prodAmount" name="prodAmount" value="<%= prodAmount %>"> --> <!-- /index.jsp?workgroup=cart&work=addtocart" -->
+                 
+             	</form> 
+             	
+             	
             </div>
         </div>
         <div class="floating">
@@ -569,9 +581,14 @@
             var newQuantity = currentQuantity + amount;
             if (newQuantity > 0) {
                 quantityInput.value = newQuantity;
+                //추가) 최종수량 저장
+                finalQuantity = newQuantity;
+               
                 var productPrice = <%= productPrice %>;
                 var totalPriceElement = document.querySelector('.total-price .price');
                 totalPriceElement.textContent = (newQuantity * productPrice).toLocaleString('ko-KR') + '원';
+           		//추가) 최종수량
+                document.getElementById('finalQuantity').value = finalQuantity;
             }
         }
     </script>
