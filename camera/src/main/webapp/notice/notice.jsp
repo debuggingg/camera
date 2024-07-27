@@ -9,6 +9,7 @@
     pageEncoding="UTF-8"%>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
+
 <%
 
 // 페이징 처리에 필요한 전달값(페이지번호와 게시글갯수)을 반환받아 저장
