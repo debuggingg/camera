@@ -427,8 +427,14 @@
                     <h3><%= product.getProdName() %></h3>
                 </a>
                 <p class="price">₩<%= String.format("%,d", product.getProdPrice()) %></p>
-                <button type="button" class="uni-btn btn-basket"><span>장바구니</span></button>
-                <button type="button" class="uni-btn btn-buy"><span>바로구매</span></button>
+                <button type="button" class="uni-btn btn-basket"><span>바로구매</span></button>
+ 
+ <%--폼태그 추가 + for문 안에서 getProdno 불러오고 amount 초기값 1설정  --%>    
+                <form  action="<%=request.getContextPath()%>/index.jsp?workgroup=cart&work=addtocart" method="post">   
+                	<button type="submit" class="uni-btn btn-basket"><span>장바구니</span></button>
+               	 		<input type="hidden" name="prodNo" value="<%= product.getProdNo() %>">
+               			<input type="hidden" id="prodAmount" name="prodAmount" value="1"> <!-- /index.jsp?workgroup=cart&work=addtocart" -->
+               	</form>
             </div>
             <% } %>
         </div>
