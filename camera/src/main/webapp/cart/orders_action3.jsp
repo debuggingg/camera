@@ -14,9 +14,9 @@
 	UsersDTO loginUsers = (UsersDTO) session.getAttribute("loginUsers");
 
 	//로그인 여부 확인
-	if (loginUsers == null) {
- 	response.sendRedirect(request.getContextPath() + "/users/users_login.jsp");
- 	return;
+	if(loginUsers == null) {
+		request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=users&work=users_login");
+		return;	
 	}
 
 	String userId = loginUsers.getUsersId();
@@ -28,7 +28,7 @@
 	//카트에 담긴 상품이 없으면 처리
 	if (cartList == null || cartList.isEmpty()) {
 	 System.out.println("카트에 담긴 상품이 없습니다.");
-	 response.sendRedirect(request.getContextPath() + "/cart/empty_cart.jsp"); // 카트가 비어있는 페이지로 리다이렉트
+	 
 	 return;
 	}
 

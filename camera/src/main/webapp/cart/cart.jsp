@@ -19,7 +19,7 @@ if (loginUsers != null) {
 }
 
 if(loginUsers == null) {
-	request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=error&work=error_400");
+	request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=users&work=users_login");
 	return;	
 }
 
@@ -190,6 +190,7 @@ margin: 0 auto;
 
 .empty { 
 	text-align: center;
+	font-size : 3em;
 }
 
 /* cart만 고정 */

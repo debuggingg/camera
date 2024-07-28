@@ -10,13 +10,13 @@
 <%
 
 	UsersDTO loginUsers = (UsersDTO) session.getAttribute("loginUsers");
-	
-	// 로그인 여부 확인
-	if (loginUsers == null) {
-	    // 로그인되지 않았거나 세션에 사용자 정보가 없는 경우 처리
-	    response.sendRedirect(request.getContextPath() + "/users/users_login.jsp"); // 로그인 페이지로 리다이렉트
-	    return; // 리다이렉트 후 종료
+
+
+	if(loginUsers == null) {
+		request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=users&work=users_login");
+		return;	
 	}
+
 	
 	// 사용자가 전달한 데이터 가져오기
 	int prodNo = Integer.parseInt(request.getParameter("prodNo"));
@@ -54,6 +54,27 @@ margin: 0 auto;
 text-align: center;
 font-size: 20px;
 }
+.button-container {
+        display: flex; /* Flexbox 사용으로 가로 정렬 */
+        justify-content: center; /* 가운데 정렬 */
+        margin-top: 20px; /* 상단 여백 */
+    }
+
+    .button {
+        display: inline-block; /* 블록 요소로 변경 */
+        margin: 0 10px; /* 좌우 여백 추가 */
+        padding: 10px 20px; /* 내부 패딩 추가 */
+        text-decoration: none; /* 밑줄 제거 */
+        color: white; /* 글자색 흰색 */
+        background-color: #4CAF50; /* 배경색 */
+        border-radius: 5px; /* 모서리 둥글게 */
+        transition: background-color 0.3s; /* 배경색 전환 효과 */
+    }
+
+    .button:hover {
+        background-color: #45a049; /* 마우스 오버 시 색상 변경 */
+    }
+
     </style>
 </head>
 <body>
@@ -62,13 +83,14 @@ font-size: 20px;
  		<h1>장바구니 추가 결과</h1>
    		<p>상품수량 : <%= quantity %></p>
     	<p>상품 번호: <%= prodNo %></p>
-
+	
    		<div>
         	<a href="<%= request.getContextPath() %>/index.jsp">메인 페이지로 이동</a>
     	</div>
     	<div>
         	<a href="<%= request.getContextPath() %>/index.jsp?workgroup=cart&work=cart">장바구니로 이동</a>
     	</div>
+    
     </div>
 </div>
     
