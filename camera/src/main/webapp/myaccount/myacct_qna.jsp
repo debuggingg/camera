@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="xyz.itwill.dao.QnaDAO"%>
@@ -160,10 +161,20 @@ int displayNum=totalQna-(pageNum-1)*pageSize;
             <tr>
                 <%-- 게시글의 일련번호 출력 --%>
                 <td><%=displayNum %></td>
+                     <% displayNum--; %>
                 <%
-                    displayNum--; // 게시글의 일련번호를 1씩 감소하여 저장
-                    String url = request.getContextPath() + "/index.jsp?workgroup=qna&work=qna_detail"
-                            + "&qnaNo=" + qna.getQnaNo() + "&pageNum=" + pageNum + "&pageSize=" + pageSize;
+                String currentUrl = request.getRequestURI();
+                String queryString = request.getQueryString();
+                String returnUrl = currentUrl + (queryString != null ? "?" + queryString : "");
+
+                String url = request.getContextPath() + "/index.jsp?workgroup=qna&work=qna_detail"
+                    + "&qnaNo=" + qna.getQnaNo()
+                    + "&pageNum=" + pageNum
+                    + "&pageSize=" + pageSize
+                    + "&returnUrl=" + URLEncoder.encode(returnUrl, "UTF-8");
+                    
+
+                           
                 %>
                 
                 <%-- 게시글 유형 출력 --%>
@@ -220,7 +231,11 @@ int displayNum=totalQna-(pageNum-1)*pageSize;
         }
     %>
     <%
-        String myUrl = request.getContextPath() + "/index.jsp?workgroup=qna&work=qna_list&pageSize=" + pageSize;
+    String currentUrl = request.getRequestURI();
+    String queryString = request.getQueryString();
+    String returnUrl = currentUrl + (queryString != null ? "?" + queryString : "");
+        String myUrl = request.getContextPath() + "/index.jsp?workgroup=qna&work=qna_list&pageSize=" + pageSize
+        		 + "&returnUrl=" + URLEncoder.encode(returnUrl, "UTF-8");
     %>
     
     <div id="page_list">
