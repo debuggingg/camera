@@ -391,19 +391,11 @@
 ProductDAO productDAO = ProductDAO.getDAO();
 
 String filter = request.getParameter("filter");
-
-String search=request.getParameter("search");//조회대상
-if(search == null) {//전달값이 없는 경우 - 조회기능을 사용하지 않은 경우
-	search="";
-}
-
-String keyword=request.getParameter("keyword");//조회단어
-if(keyword == null) {
-	keyword="";
-}
+String search = request.getParameter("search") != null ? request.getParameter("search") : "";
+String keyword = request.getParameter("keyword") != null ? request.getParameter("keyword") : "";
 
 int pageNum = 1;
-int pageSize = 12; 
+int pageSize = 12;
 if (request.getParameter("pageNum") != null) {
     try {
         pageNum = Integer.parseInt(request.getParameter("pageNum"));
@@ -411,7 +403,7 @@ if (request.getParameter("pageNum") != null) {
         pageNum = 1;
     }
 }
-int totalProducts = productDAO.getTotalProducts(filter);
+int totalProducts = productDAO.getTotalProducts(keyword, search);
 int totalPage = (int) Math.ceil((double) totalProducts / pageSize);
 if (pageNum <= 0 || pageNum > totalPage) {
     pageNum = 1;
@@ -419,42 +411,45 @@ if (pageNum <= 0 || pageNum > totalPage) {
 int startRow = (pageNum - 1) * pageSize + 1;
 int endRow = pageNum * pageSize;
 
-List<ProductDTO> products = productDAO.searchProducts(keyword, search);
+List<ProductDTO> products = productDAO.searchProducts(keyword, search, startRow, endRow, filter);
 %>
-<main>
 
-<h1 style="text-align: center; font-size: 50px;">검색 결과 </h1>
+<main>
+    <h1 style="text-align: center; font-size: 50px;">검색 결과 </h1>
     <section class="product-list">
         <h2>Camera</h2>
         <div class="filter">
-            <a href="<%=request.getContextPath()%>/index.jsp?workgroup=product&work=product_list&filter=new">신상품</a> | 
-            <a href="<%=request.getContextPath()%>/index.jsp?workgroup=product&work=product_list&filter=lowestPrice">낮은가격</a> | 
-            <a href="<%=request.getContextPath()%>/index.jsp?workgroup=product&work=product_list&filter=highestPrice">높은가격</a>
+            <a href="<%=request.getContextPath()%>/index.jsp?workgroup=product&work=product_list&filter=new&search=<%= search %>&keyword=<%= keyword %>">신상품</a> | 
+            <a href="<%=request.getContextPath()%>/index.jsp?workgroup=product&work=product_list&filter=lowestPrice&search=<%= search %>&keyword=<%= keyword %>">낮은가격</a> | 
+            <a href="<%=request.getContextPath()%>/index.jsp?workgroup=product&work=product_list&filter=highestPrice&search=<%= search %>&keyword=<%= keyword %>">높은가격</a>
         </div>
         <div class="products">
-            <% for (ProductDTO product : products) { %>
-            <div class="product">
-                <a href="<%=request.getContextPath()%>/product/product_detail.jsp?prodNo=<%= product.getProdNo() %>">
-                    <img src="<%=request.getContextPath()%>/product_image/<%= product.getProdImage1() %>" alt="<%= product.getProdName() %>">
-                    <h3><%= product.getProdName() %></h3>
-                </a>
-                <p class="price">₩<%= String.format("%,d", product.getProdPrice()) %></p>
-                <button type="button" class="uni-btn btn-basket"><span>장바구니</span></button>
-                <button type="button" class="uni-btn btn-buy"><span>바로구매</span></button>
-            </div>
-            <% } %>
+            <% if (products.isEmpty()) { %>
+                <p style="text-align: center; font-size:50px;" >검색결과가 없습니다.</p>
+            <% } else {
+                for (ProductDTO product : products) { %>
+                <div class="product">
+                    <a href="<%=request.getContextPath()%>/product/product_detail.jsp?prodNo=<%= product.getProdNo() %>">
+                        <img src="<%=request.getContextPath()%>/product_image/<%= product.getProdImage1() %>" alt="<%= product.getProdName() %>">
+                        <h3><%= product.getProdName() %></h3>
+                    </a>
+                    <p class="price">₩<%= String.format("%,d", product.getProdPrice()) %></p>
+                    <button type="button" class="uni-btn btn-basket"><span>장바구니</span></button>
+                    <button type="button" class="uni-btn btn-buy"><span>바로구매</span></button>
+                </div>
+            <% } } %>
         </div>
         <br>
         <br>
         <div class="pagination">
             <% if (pageNum > 1) { %>
-                <a href="<%=request.getContextPath()%>/index.jsp?workgroup=product&work=product_list&pageNum=<%= pageNum - 1 %>&filter=<%= filter %>">&laquo;</a>
+                <a href="<%=request.getContextPath()%>/index.jsp?workgroup=product&work=product_list&pageNum=<%= pageNum - 1 %>&filter=<%= filter %>&search=<%= search %>&keyword=<%= keyword %>">&laquo;</a>
             <% } %>
             <% for (int i = 1; i <= totalPage; i++) { %>
-                <a href="<%=request.getContextPath()%>/index.jsp?workgroup=product&work=product_list&pageNum=<%= i %>&filter=<%= filter %>" class="<%= (i == pageNum) ? "active" : "" %>"><%= i %></a>
+                <a href="<%=request.getContextPath()%>/index.jsp?workgroup=product&work=product_list&pageNum=<%= i %>&filter=<%= filter %>&search=<%= search %>&keyword=<%= keyword %>" class="<%= (i == pageNum) ? "active" : "" %>"><%= i %></a>
             <% } %>
             <% if (pageNum < totalPage) { %>
-                <a href="<%=request.getContextPath()%>/index.jsp?workgroup=product&work=product_list&pageNum=<%= pageNum + 1 %>&filter=<%= filter %>">&raquo;</a>
+                <a href="<%=request.getContextPath()%>/index.jsp?workgroup=product&work=product_list&pageNum=<%= pageNum + 1 %>&filter=<%= filter %>&search=<%= search %>&keyword=<%= keyword %>">&raquo;</a>
             <% } %>
         </div>
         <div class="floating">
@@ -462,5 +457,3 @@ List<ProductDTO> products = productDAO.searchProducts(keyword, search);
         </div>
     </section>
 </main>
-</body>
-</html>

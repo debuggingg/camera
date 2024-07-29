@@ -19,7 +19,7 @@
 	String contentPath = workgroup + "/" + work + ".jsp";
 
 	String headerPath = "/header.jsp";
-	if (workgroup.contains("admin")) {
+	if (workgroup.equals("admin")) {
 		headerPath = "/header_admin.jsp";
 	}
 %>
@@ -27,7 +27,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, 
+  maximum-scale=1.0, minimum-scale=1.0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,12 +36,13 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
 	rel="stylesheet">
+	
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&display=swap"
 	rel="stylesheet">
-	 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
 </head>
