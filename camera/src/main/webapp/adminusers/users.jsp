@@ -49,7 +49,7 @@ if(keyword==null){
 			<option id="searchInput" value="USERS_STATUS" <% if(search.equals("USERS_STATUS")) { %>selected<% } %>>&nbsp;status&nbsp;</option>
 		</select>
 		<input type="text" name="keyword" value="<%=keyword%>">
-		<button type="submit" id="searchButton">검색</button>
+		<button type="submit" id="searchBut">검색</button>
         </form>
    <div class="table-container">
        

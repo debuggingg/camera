@@ -23,11 +23,7 @@ if(users.getUsersNo() != 9){
 
 UsersDTO loginUsers = (UsersDTO) session.getAttribute("loginUsers");
 
-if (loginUsers == null) {
-    out.println("로그인 정보가 없습니다.");
-} else {
-    out.println("로그인 사용자 ID: " + loginUsers.getUsersId());
-}
+
 %>     
 
 <!DOCTYPE html>
@@ -37,9 +33,9 @@ if (loginUsers == null) {
 <title>Insert title here</title>
 
 <style type="text/css">
-#account-box{width: 1100px; height: 600px; border: 1px solid green; margin: 0 auto;}
+#account-box{width: 1300px; height: 700px; border: 1px solid green; margin: 0 auto;}
 #acc1-box{width: 200px; height: 600px; border: 1px solid black; float: left;}
-#acc2-box{width: 895px; height: 600px; border: 1px solid black; float: right; overflow-y: auto}
+#acc2-box{width: 1090px; height: 600px; border: 1px solid black; float: right; overflow-y: auto}
 
 #acc1-box nav ul{border: 1px solid red; height: 400px; margin: 0 auto; margin-top: 100px;;}
 #acc1-box nav ul li{border: 1px solid blue; width: 200px; text-align: center; height: 70px; }
@@ -100,6 +96,12 @@ if (loginUsers == null) {
             color: #333;
             background-color: #f8f9fa;
             text-align: center;
+            }
+            
+#orderlist{
+ width: 900px;
+ margin: 0 auto;            
+}
 
 </style>
 </head>
@@ -115,16 +117,18 @@ if (loginUsers == null) {
             </ul>
         </nav>
     </div>
-    <form action="<%= request.getContextPath() %>/index.jsp?workgroup=myaccount&work=myacct_orderlist" method="post">
-        <select name="search">
+   
+    <div id="acc2-box">
+    <div id="orderlist">
+     <form action="<%= request.getContextPath() %>/index.jsp?workgroup=myaccount&work=myacct_orderlist" method="post" style="position: relative; top:40px;">
+        <select name="search" style="font-size:17px;">
             <option value="prod_name" <% if (search.equals("prod_name")) { %>selected<% } %>>&nbsp;productName&nbsp;</option>
             <option value="Orders_users_id" <% if (search.equals("Orders_users_id")) { %>selected<% } %>>&nbsp;userId&nbsp;</option>
         </select>
-        <input type="text" name="keyword" value="<%= keyword %>">
-        <button type="submit" id="searchButton">검색</button>
+        <input type="text" name="keyword" value="<%= keyword %>" style="height: 20px; position: relative; bottom:2px;">
+        <button type="submit" id="searchButton" style="color: white; background-color: white; border:1px solid white;">검색</button>
     </form>
-    <div id="acc2-box">
-        <h1 style="font-size: 30px; margin-top: 10px; text-align: center;">주문 내역</h1>
+        <h1 style="font-size: 30px; margin-top: 10px; text-align: center;">OrderList</h1>
         <table class="board">
             <thead>
                 <tr>
@@ -170,6 +174,7 @@ if (loginUsers == null) {
 
             <% } %>
         </table>
+        </div>
     </div>
 </div>
 </body>

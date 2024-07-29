@@ -89,9 +89,9 @@ font-size:15px;
 #link a:hover {
 	background-color: black;
 } 
-#account-box{width: 1100px; height: 600px; border: 1px solid green; margin: 0 auto;}
+#account-box{width: 1300px; height: 700px; border: 1px solid green; margin: 0 auto;}
 #acc1-box{width: 200px; height: 600px; border: 1px solid black; float: left;}
-#acc2-box{width: 895px; height: 600px; border: 1px solid black; float: right;}
+#acc2-box{width: 1090px; height: 600px; border: 1px solid black; float: right;}
 
 #acc1-box nav ul{border: 1px solid red; height: 400px; margin: 0 auto; margin-top: 100px;;}
 #acc1-box nav ul li{border: 1px solid blue; width: 200px; text-align: center; height: 70px; }
@@ -164,11 +164,11 @@ font-size:15px;
 	<a href="<%=request.getContextPath()%>/index.jsp?workgroup=myaccount&work=password_confirm&action=remove" style="font-size:17px;">[회원탈퇴]</a>
 </div>
 	<div class="date-info">
-    <p><strong style="font-size:17px;">회원가입날짜 =</strong> <%=loginUsers.getUsersSigndate().substring(0, 10) %></p>
+    <p><strong style="font-size:17px;">회원가입날짜 =</strong> <strong style="font-size:17px;"><%= loginUsers.getUsersSigndate().substring(0, 10) %></strong>
     <% if(loginUsers.getUsersLastLogin() == null) { %>
         <p style="display: none;"><strong style="font-size:17px;">마지막 로그인 날짜 =</strong></p>
     <% } else { %>
-        <p><strong style="font-size:17px;">마지막 로그인 날짜 =</strong> <%=loginUsers.getUsersLastLogin() %></p>
+        <p><strong style="font-size:17px;">마지막 로그인 날짜 =</strong> <strong style="font-size:17px;"><%=loginUsers.getUsersLastLogin() %></strong></p>
     <% } %>
 </div>
  </div>

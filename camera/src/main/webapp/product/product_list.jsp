@@ -384,6 +384,11 @@
             padding: 8px 10px;
         }
     }
+           .buttons-container {
+    display: flex;
+    justify-content: center; 
+    gap: 5px; 
+    }	
     </style>
 </head>
 <body>
@@ -434,8 +439,19 @@ List<ProductDTO> products = productDAO.searchProducts(keyword, search, startRow,
                         <h3><%= product.getProdName() %></h3>
                     </a>
                     <p class="price">₩<%= String.format("%,d", product.getProdPrice()) %></p>
-                    <button type="button" class="uni-btn btn-basket"><span>장바구니</span></button>
-                    <button type="button" class="uni-btn btn-buy"><span>바로구매</span></button>
+                    
+                    <div class="buttons-container">
+                <form  action="<%=request.getContextPath()%>/index.jsp?workgroup=cart&work=addtoorder" method="post">   
+                <button type="submit" class="uni-btn btn-basket"><span>바로구매</span></button>
+						<input type="hidden" name="prodNo" value="<%= product.getProdNo() %>">
+               			<input type="hidden" id="prodAmount" name="prodAmount" value="1"> 
+               	</form>
+                <form  action="<%=request.getContextPath()%>/index.jsp?workgroup=cart&work=addtocart" method="post">   
+                	<button type="submit" class="uni-btn btn-basket"><span>장바구니</span></button>
+               	 		<input type="hidden" name="prodNo" value="<%= product.getProdNo() %>">
+               			<input type="hidden" id="prodAmount" name="prodAmount" value="1"> 
+               	</form>
+           	</div>
                 </div>
             <% } } %>
         </div>
