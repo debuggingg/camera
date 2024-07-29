@@ -41,7 +41,7 @@
 		.btni {
 			 font-size: 14.5px;
 			 color:white;
-			 background-color: black;
+			 background-color: gray;
 			 --bs-btn-hover-border-color: black;
 		}
 		.form-control {
