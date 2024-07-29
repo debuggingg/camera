@@ -76,7 +76,7 @@ public class QnaDAO extends JdbcDAO {
     }
 
     // 페이징 관련 정보(시작행번호, 종료행번호)를 전달받아 QNA 테이블의 행을 페이징 처리로 검색하여 검색된 QNA 목록을 반환하는 메소드
-    public List<QnaDTO> selectQnaList(int startRow, int endRow) {
+    public List<QnaDTO> selectQnaList(int usersNo,int startRow, int endRow) {
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -84,8 +84,9 @@ public class QnaDAO extends JdbcDAO {
         try {
             con = getConnection();
 
-            String sql = "SELECT * FROM (SELECT ROWNUM RN, TEMP.* FROM (SELECT QNA_NO, QNA_USERS_NO, USERS_NAME, QNA_TYPE, QNA_TITLE, QNA_CONTENT, QNA_STATUS, QNA_DATE FROM QNA JOIN USERS ON QNA_USERS_NO = USERS_NO ORDER BY QNA_NO DESC) TEMP) WHERE RN BETWEEN ? AND ?";
+            String sql = "SELECT * FROM (SELECT ROWNUM RN, TEMP.* FROM (SELECT QNA_NO, QNA_USERS_NO, USERS_NAME, QNA_TYPE, QNA_TITLE, QNA_CONTENT, QNA_STATUS, QNA_DATE FROM QNA JOIN USERS ON QNA_USERS_NO = USERS_NO WHERE QNA_USERS_NO = ? ORDER BY QNA_NO DESC) TEMP) WHERE RN BETWEEN ? AND ?";
             pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, usersNo);
             pstmt.setInt(1, startRow);
             pstmt.setInt(2, endRow);
 

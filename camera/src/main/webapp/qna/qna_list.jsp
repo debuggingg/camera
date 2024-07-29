@@ -45,7 +45,9 @@
     // 페이징 관련 정보(시작행번호, 종료행번호)와 게시글 조회기능 관련 정보(조회대상과 조회단어)를
     // 전달받아 QNA 테이블에 저장된 행에서 조회정보가 포함된 행을 페이징 처리로 검색하여
     // List 객체를 반환하는 QnaDAO 클래스의 메소드 호출
-    List<QnaDTO> qnaList=QnaDAO.getDAO().selectQnaList(startRow, endRow);
+   
+    int no=loginUsers.getUsersNo();
+    List<QnaDTO> qnaList=QnaDAO.getDAO().selectQnaList(no,startRow, endRow);
     
     // 세션에 저장된 권한 관련 정보가 저장된 속성값을 객체로 반환받아 저장
     // => 로그인 사용자에게만 글쓰기 권한 제공
@@ -75,6 +77,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/qna/qna_list.css">
 </head>
 <body>
+<%--   <% if(loginMember != null)  {//로그인 사용자인 경우 %> --%>
 <div class="container">
 <div id="qna_list">
     <div id="qna_title">QnA(<%=totalQna %>)</div>
@@ -88,7 +91,7 @@
             <option value="100" <% if(pageSize==100) { %> selected <% } %>>&nbsp;100개&nbsp;</option>    
         </select>
         &nbsp;&nbsp;&nbsp;
-        <% if(loginMember != null) {//로그인 사용자인 경우 %>
+        <% if(loginUsers != null) {//로그인 사용자인 경우 %>
             <button type="button" class="btn-btn1" id="writeBtn">글쓰기</button>
         <% } %>    
     </div>
@@ -111,8 +114,10 @@
                 <td colspan="7">검색된 게시글이 없습니다.</td>
             </tr>
         <% } else { %>
+            
             <%-- List 객체의 요소값(QnaDTO 객체)을 차례대로 제공받아 변수에 저장하는 반복문 --%>
             <% for(QnaDTO qna : qnaList) { %>
+            <% if (loginUsers.getUsersNo()== qna.getQnaUsersNo()) { %>
             <tr>
                 <%-- 게시글의 일련번호 출력 --%>
                 <td><%=displayNum %></td>
@@ -154,11 +159,14 @@
                         <%=qna.getQnaDate() %>    
                     <% } %>
                 </td>
+             
             </tr>
-            <% } %>
-        <% } %>
+               <% } %>
+          <% } %>
+      
+ 
     </table>
-    
+       
     <%-- 페이지 번호 출력 --%>
     <%
         // 하나의 페이지블럭에 출력될 페이지번호의 갯수 설정
@@ -201,11 +209,15 @@
             <a href="<%=myUrl%>&pageNum=<%=startPage+blockSize%>">&raquo;</a>
         <% } else { %>
             <span>&raquo;</span>
+             <% } %>
+             
         <% } %>
     </div>
 </div>
 </div>
-
+ <%-- <% }else{ %>
+ 
+ <%} %>  --%>
 <script type="text/javascript">
 // 게시글 갯수 변경 이벤트 처리
 document.getElementById("pageSize").addEventListener("change", function() {
