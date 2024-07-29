@@ -52,7 +52,7 @@ public class QnaDAO extends JdbcDAO {
     }
 
     // QNA 테이블의 총 행의 갯수를 반환하는 메소드
-    public int selectTotalQna() {
+    public int selectTotalQna(int no) {
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -60,9 +60,11 @@ public class QnaDAO extends JdbcDAO {
         try {
             con = getConnection();
 
-            String sql = "SELECT COUNT(*) FROM QNA";
+            String sql = "SELECT COUNT(*) FROM QNA WHERE QNA_USERS_NO=?";
             pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, no);
             rs = pstmt.executeQuery();
+            
 
             if (rs.next()) {
                 count = rs.getInt(1);

@@ -18,8 +18,8 @@
     if(request.getParameter("pageSize") != null) {//전달값이 있는 경우
         pageSize=Integer.parseInt(request.getParameter("pageSize"));
     }
-    
-    int totalQna = QnaDAO.getDAO().selectTotalQna(); // 게시글의 총갯수
+    int no=loginUsers.getUsersNo();
+    int totalQna = QnaDAO.getDAO().selectTotalQna(no); // 게시글의 총갯수
     
     // 페이지의 총갯수를 계산하여 저장
     int totalPage=(int)Math.ceil((double)totalQna/pageSize);
@@ -44,12 +44,12 @@
     // 전달받아 QNA 테이블에 저장된 행에서 조회정보가 포함된 행을 페이징 처리로 검색하여
     // List 객체를 반환하는 QnaDAO 클래스의 메소드 호출
    
-    int no=loginUsers.getUsersNo();
+  
     List<QnaDTO> qnaList=QnaDAO.getDAO().selectQnaList(no,startRow, endRow);
     
     // 세션에 저장된 권한 관련 정보가 저장된 속성값을 객체로 반환받아 저장
     // => 로그인 사용자에게만 글쓰기 권한 제공
-    UsersDTO loginMember=(UsersDTO)session.getAttribute("loginUsers");
+    /* UsersDTO loginMember=(UsersDTO)session.getAttribute("loginUsers"); */
     
     // 서버의 현재 날짜와 시간이 저장된 Date 객체를 생성하여 SimpleDateFormat 객체에 저장된
     // 패턴의 문자열로 변환하여 저장
@@ -115,7 +115,7 @@
             
             <%-- List 객체의 요소값(QnaDTO 객체)을 차례대로 제공받아 변수에 저장하는 반복문 --%>
             <% for(QnaDTO qna : qnaList) { %>
-            <% if (loginUsers.getUsersNo()== qna.getQnaUsersNo()) { %>
+          <%--   <% if (loginUsers.getUsersNo()== qna.getQnaUsersNo()) { %> --%>
             <tr>
                 <%-- 게시글의 일련번호 출력 --%>
                 <td><%=displayNum %></td>
@@ -159,7 +159,7 @@
                 </td>
              
             </tr>
-               <% } %>
+       <%--         <% } %> --%>
           <% } %>
       
  
