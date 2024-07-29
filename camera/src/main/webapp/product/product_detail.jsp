@@ -117,19 +117,17 @@
                 <p>총 상품금액(1개)</p>
                 <p class="price"><%= String.format("%,d원", productPrice) %></p>
             </div>
-            <div class="buttons">
-                <button type="button" class="uni-btn btn-buy"><span>구매하기</span></button>
-               
-               <%-- 폼태그 추가 --%>
+             <div class="buttons-container">
+          	  	<form  action="<%=request.getContextPath()%>/index.jsp?workgroup=cart&work=addtoorder2" method="post">   
+              		  <button type="submit" class="uni-btn btn-buy"><span>구매하기</span></button>
+             		  <input type="hidden" name="prodNo" value="<%= prodNo %>">
+         		 		<input type="hidden" id="finalQuantity" name="finalQuantity" value="">
+         		 </form>
                 <form  action="<%=request.getContextPath()%>/index.jsp?workgroup=cart&work=addtocart2" method="post">   
                 	<button type="submit" class="uni-btn btn-basket"><span>장바구니</span></button>
                	 	<input type="hidden" name="prodNo" value="<%= prodNo %>">
-         		 	<input type="hidden" id="finalQuantity" name="finalQuantity" value=""> <!-- /index.jsp?workgroup=cart&work=addtocart"2 --> 
-               <!--	 <input type="hidden" id="prodAmount" name="prodAmount" value="<%= prodAmount %>"> --> <!-- /index.jsp?workgroup=cart&work=addtocart" -->
-                 
+         		 	<input type="hidden" id="finalQuantity" name="finalQuantity" value="">
              	</form> 
-             	
-             	
             </div>
         </div>
         <div class="floating">
@@ -145,7 +143,7 @@
             
             
             <div>
-                <h4><img src="<%=request.getContextPath()%>/product_image/<%= product.getProdImage4() %>" alt="상세 페이지 이미지 <%= productName %>"></h4>
+                <img src="<%=request.getContextPath()%>/product_image/<%= product.getProdImage4() %>" alt="상세 페이지 이미지 <%= productName %>">
                
             </div>
         </div>
@@ -279,29 +277,29 @@
         </div>
     </div>
     <script type="text/javascript">
-        function changeMainImage(imageSrc) {
-            document.getElementById('mainImage').src = imageSrc;
-        }
+    function changeMainImage(imageSrc) {
+        document.getElementById('mainImage').src = imageSrc;
+    }
 
-        function changeQuantity(amount) {
-            var quantityInput = document.getElementById('quantityInput');
-            var currentQuantity = parseInt(quantityInput.value);
-            if (isNaN(currentQuantity)) {
-                currentQuantity = 1;
-            }
-            var newQuantity = currentQuantity + amount;
-            if (newQuantity > 0) {
-                quantityInput.value = newQuantity;
-                //추가) 최종수량 저장
-                finalQuantity = newQuantity;
-               
-                var productPrice = <%= productPrice %>;
-                var totalPriceElement = document.querySelector('.total-price .price');
-                totalPriceElement.textContent = (newQuantity * productPrice).toLocaleString('ko-KR') + '원';
-           		//추가) 최종수량
-                document.getElementById('finalQuantity').value = finalQuantity;
-            }
+    function changeQuantity(amount) {
+        var quantityInput = document.getElementById('quantityInput');
+        var currentQuantity = parseInt(quantityInput.value);
+        if (isNaN(currentQuantity)) {
+            currentQuantity = 1;
         }
+        var newQuantity = currentQuantity + amount;
+        if (newQuantity > 0) {
+            quantityInput.value = newQuantity;
+            //추가) 최종수량 저장
+            finalQuantity = newQuantity;
+           
+            var productPrice = <%= productPrice %>;
+            var totalPriceElement = document.querySelector('.total-price .price');
+            totalPriceElement.textContent = (newQuantity * productPrice).toLocaleString('ko-KR') + '원';
+       		//추가) 최종수량
+            document.getElementById('finalQuantity').value = finalQuantity;
+        }
+    }
         
         function changePageSize(pageSize) {
             location.href = "<%= request.getContextPath() %>/index.jsp?workgroup=product&work=product_detail"
