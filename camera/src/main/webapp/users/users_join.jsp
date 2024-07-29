@@ -18,7 +18,6 @@
             height: auto;
             margin: 100px; 
         }
-
         .form-container {
             max-width: 550px;
             width: 100%;

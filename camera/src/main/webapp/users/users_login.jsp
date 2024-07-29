@@ -19,6 +19,7 @@
     } else {
         session.removeAttribute("id");
     }
+    
 %>    
 <!doctype html>
 <html lang="ko">

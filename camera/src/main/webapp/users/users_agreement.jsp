@@ -25,7 +25,7 @@
             border: 1px solid #ffffff;
             border-radius: 8px;
             
-                
+               
         }
         .terms-section {
             margin-bottom: 20px;
