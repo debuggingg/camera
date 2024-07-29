@@ -10,7 +10,7 @@
 <%
 
 
-
+//carttoorder.jsp
 // 세션에서 로그인 사용자 정보 가져오기
 UsersDTO loginUsers = (UsersDTO) session.getAttribute("loginUsers");
 
@@ -18,10 +18,10 @@ UsersDTO loginUsers = (UsersDTO) session.getAttribute("loginUsers");
 ProductDTO product = (ProductDTO) session.getAttribute("product");
 
 // 로그인 여부 확인
-	if(loginUsers == null) {
-		request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=users&work=users_login");
-		return;	
-	}
+   if(loginUsers == null) {
+      request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=users&work=users_login");
+      return;   
+   }
 
 
 

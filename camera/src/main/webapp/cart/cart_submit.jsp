@@ -13,7 +13,7 @@
 UsersDTO loginUsers=(UsersDTO)session.getAttribute("loginUsers");
 
 if(loginUsers == null) {
-	request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=users&work=users_login");
+	request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=error&work=error_400");
 	return;	
 }
 if (request.getMethod().equals("GET")) {

@@ -19,7 +19,7 @@ if (loginUsers != null) {
 }
 
 if(loginUsers == null) {
-	request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=users&work=users_login");
+	request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=error&work=error_400");
 	return;	
 }
 
@@ -168,20 +168,20 @@ td {
 }
 .removeBtn{
 width:900px;
-border:1px solid red;
+border:1px solid white;
 margin: 0 auto;
 }
 
 .removeBtn #removeSelectBtn {
-	background-color: rgb(207, 207, 207);
+	background-color: #ffc107;
 	cursor: pointer;
-	color: rgb(13, 13, 13);
+	
 	padding: 6px 12px;
 }
 .removeBtn #removeSelectBtn:hover {
-	background-color: rgb(13, 13, 13);
+	background-color: #45a049;
 	border: 1px solid rgb(207, 207, 207);
-	color: rgb(207, 207, 207);
+	
 }
 
 .quantity .upBtn {
@@ -190,7 +190,6 @@ margin: 0 auto;
 
 .empty { 
 	text-align: center;
-	font-size : 3em;
 }
 
 /* cart만 고정 */
@@ -315,8 +314,10 @@ body {
     	 			<input type="submit" id="submitAllBtn" class="submitAllBtn" value="주문하기">
    				</div>
  				<div class="continue-shopping">
-          		 <a href="./index.jsp" class="continue-shopping"  >쇼핑 계속하기</a>
+          		 <a href="./index.jsp">쇼핑 계속하기</a>
        			</div>
+       			
+       			
 		</div>
 
 		</form>
