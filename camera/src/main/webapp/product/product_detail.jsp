@@ -460,7 +460,9 @@
     }
 
     .tabs [class^="tab"] [type="radio"] + div,
-    .tabs [class*=" tab"] [type="radio"] + div {
+    .tabs [class*=" tab"] [type="radio"] + div	 {
+    	position:relative;
+    	z-index:999;
         display: block;
         opacity: 0;
         padding: 2rem 0;
@@ -647,8 +649,10 @@
         <div class="tab-menu">
             <label for="tab3-1">상품 정보</label>
             <input id="tab3-1" name="tabs-three" type="radio" checked="checked">
+            
+            
             <div>
-                <h4></h4>
+                <h4><img src="<%=request.getContextPath()%>/product_image/<%= product.getProdImage4() %>" alt="상세 페이지 이미지 <%= productName %>"></h4>
                
             </div>
         </div>
