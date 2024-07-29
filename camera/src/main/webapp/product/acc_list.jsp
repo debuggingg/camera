@@ -384,6 +384,11 @@
             padding: 8px 10px;
         }
     }
+        .buttons-container {
+    display: flex;
+    justify-content: center; 
+    gap: 5px; 
+	}    
     </style>
 </head>
 <body>
@@ -427,14 +432,20 @@
                     <h3><%= product.getProdName() %></h3>
                 </a>
                 <p class="price">₩<%= String.format("%,d", product.getProdPrice()) %></p>
-                <button type="button" class="uni-btn btn-basket"><span>바로구매</span></button>
- 
- <%--폼태그 추가 + for문 안에서 getProdno 불러오고 amount 초기값 1설정  --%>    
+                
+            <div class="buttons-container">
+                <form  action="<%=request.getContextPath()%>/index.jsp?workgroup=cart&work=addtoorder" method="post">   
+                <button type="submit" class="uni-btn btn-basket"><span>바로구매</span></button>
+						<input type="hidden" name="prodNo" value="<%= product.getProdNo() %>">
+               			<input type="hidden" id="prodAmount" name="prodAmount" value="1"> 
+               	</form>
                 <form  action="<%=request.getContextPath()%>/index.jsp?workgroup=cart&work=addtocart" method="post">   
                 	<button type="submit" class="uni-btn btn-basket"><span>장바구니</span></button>
                	 		<input type="hidden" name="prodNo" value="<%= product.getProdNo() %>">
-               			<input type="hidden" id="prodAmount" name="prodAmount" value="1"> <!-- /index.jsp?workgroup=cart&work=addtocart" -->
+               			<input type="hidden" id="prodAmount" name="prodAmount" value="1"> 
                	</form>
+           	</div>
+                
             </div>
             <% } %>
         </div>

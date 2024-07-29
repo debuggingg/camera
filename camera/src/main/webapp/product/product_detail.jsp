@@ -458,6 +458,7 @@
     gap: 5px; 
     
 }
+    
     </style>    
 </head>
 <body>
@@ -521,23 +522,20 @@
                 <p>총 상품금액(1개)</p>
                 <p class="price"><%= String.format("%,d원", productPrice) %></p>
             </div>
-            <div class="buttons">
             
-               <div class="buttons-container">
-                    <form action="<%=request.getContextPath()%>/index.jsp?workgroup=cart&work=addtoorder2" method="post">   
-                        <button type="submit" class="uni-btn btn-buy"><span>바로구매</span></button>
-                        	<input type="hidden" name="prodNo" value="<%= prodNo %>">
-         		 			<input type="hidden" id="finalQuantity" name="finalQuantity" value="">  
-                    </form>
-         
+            <div class="buttons-container">
+          	  	<form  action="<%=request.getContextPath()%>/index.jsp?workgroup=cart&work=addtoorder2" method="post">   
+              		  <button type="submit" class="uni-btn btn-buy"><span>구매하기</span></button>
+             		  <input type="hidden" name="prodNo" value="<%= prodNo %>">
+         		 		<input type="hidden" id="finalQuantity" name="finalQuantity" value="">
+         		 </form>
                 <form  action="<%=request.getContextPath()%>/index.jsp?workgroup=cart&work=addtocart2" method="post">   
                 	<button type="submit" class="uni-btn btn-basket"><span>장바구니</span></button>
-               	 		<input type="hidden" name="prodNo" value="<%= prodNo %>">
-         		 		<input type="hidden" id="finalQuantity" name="finalQuantity" value=""> 
+               	 	<input type="hidden" name="prodNo" value="<%= prodNo %>">
+         		 	<input type="hidden" id="finalQuantity" name="finalQuantity" value="">
              	</form> 
-             </div>
-             	
             </div>
+            
         </div>
         <div class="floating">
             <a href="#top"><i class="fa fa-arrow-circle-up"></i></a>
