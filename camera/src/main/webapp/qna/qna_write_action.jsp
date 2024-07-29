@@ -27,7 +27,8 @@ qna.setQnaStatus(0);
 int rows = QnaDAO.getDAO().insertQna(qna);
 
 if (rows > 0) {
-    response.sendRedirect("index.jsp?workgroup=qna&work=qna_list");
+   /*  response.sendRedirect("index.jsp?workgroup=qna&work=qna_list"); */
+	request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=qna&work=qna_list");
 } else {
     out.println("<script>alert('QnA 작성에 실패했습니다. 다시 시도해 주세요.'); history.back();</script>");
 }

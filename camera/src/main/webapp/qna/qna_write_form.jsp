@@ -82,7 +82,7 @@
 <body>
 <div class="container mt-5">
 
-    <form action="<%=request.getContextPath()%>/index.jsp?workgroup=qna&work=qna_write_action" method="post" id="qnaForm">
+    <form action= "<%= request.getContextPath() %>/index.jsp?workgroup=qna&work=qna_write_action" method="post" id="qnaForm">
         <h1 class="text-center">QnA 작성</h1>
         <div class="mb-3">
             <label for="qnaType" class="form-label">문의 유형</label>
@@ -100,12 +100,15 @@
             </select>
         </div>
         <div class="mb-3">
-            <label for="title" class="form-label">제목</label>
+        	<!--  <th>제목</th> -->
+          <label for="title" class="form-label">제목</label> 
             <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요">
         </div>
         <div class="mb-3">
-            <label for="content" class="form-label">내용</label>
-            <textarea class="form-control" id="content" name="content" rows="10" placeholder="내용을 입력하세요"></textarea>
+        		<!--  <th>내용</th> -->
+               <!--  <td><textarea class="form-control" id="content" name="content" rows="10" placeholder="내용을 입력하세요"></textarea></td> -->
+ 	   <label for="content" class="form-label">내용</label>
+         <textarea class="form-control" id="content" name="content" rows="10" placeholder="내용을 입력하세요"></textarea> 
             
         </div>
         <div class="buttons mt-4">
@@ -133,12 +136,12 @@ $("#qnaForm").submit(function(event) {
         isValid = false;
     }
 
-    if (isValid) {
+/*     if (isValid) {
         // form 제출
         this.submit();
     } else {
         event.preventDefault();
-    }
+    } */
 });
 </script>
 </body>
