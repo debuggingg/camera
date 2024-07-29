@@ -64,7 +64,7 @@ int displayNum = totalNotice - startRow;
 %>
 
 <style type="text/css">
-*{ font-family: 'Jua', sans-serif;}
+
 
 #review_title{
     font-size:30px;
@@ -93,7 +93,7 @@ int displayNum = totalNotice - startRow;
 }
 
 .board th {
-    background-color: #ffc107;
+    background-color: gray;
     color: white;
     font-weight: bold;
 }
