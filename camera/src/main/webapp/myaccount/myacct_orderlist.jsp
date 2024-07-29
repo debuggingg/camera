@@ -3,7 +3,8 @@
 <%@page import="xyz.itwill.dto.AdminOrdersDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>    
+    pageEncoding="UTF-8"%> 
+    <%@include file="/security/login_url.jspf" %>    
     
 <%
  String search=request.getParameter("search");
@@ -21,7 +22,7 @@ if(users.getUsersNo() != 9){
 	response.sendError(HttpServletResponse.SC_BAD_REQUEST);
 } */
 
-UsersDTO loginUsers = (UsersDTO) session.getAttribute("loginUsers");
+
 
 
 %>     
@@ -73,7 +74,7 @@ UsersDTO loginUsers = (UsersDTO) session.getAttribute("loginUsers");
     text-align: center;
 }
 .board th {
-    background-color: #ffc107;
+    background-color: gray;
     color: white;
     font-weight: bold;
 }

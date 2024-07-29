@@ -8,10 +8,11 @@
 
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@include file="/security/login_url.jspf" %>   
 
 
 <%
-UsersDTO loginUsers = (UsersDTO) session.getAttribute("loginUsers");
+
 String usersId = ""; // 초기화
 
 if (loginUsers != null) {

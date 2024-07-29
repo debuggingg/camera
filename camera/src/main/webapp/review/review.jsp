@@ -71,7 +71,7 @@ int displayNum = totalReview - (pageNum - 1) * pageSize; // 게시글에 출력�
 }
 
 .board th {
-    background-color: #ffc107;
+    background-color: gray;
     color: white;
     font-weight: bold;
 }
