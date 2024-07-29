@@ -81,7 +81,8 @@
 </head>
 <body>
 <div class="container mt-5">
-    <form action="qna_write_action.jsp" method="post" id="qnaForm">
+
+    <form action="<%=request.getContextPath()%>/index.jsp?workgroup=qna&work=qna_write_action" method="post" id="qnaForm">
         <h1 class="text-center">QnA 작성</h1>
         <div class="mb-3">
             <label for="qnaType" class="form-label">문의 유형</label>
@@ -105,6 +106,7 @@
         <div class="mb-3">
             <label for="content" class="form-label">내용</label>
             <textarea class="form-control" id="content" name="content" rows="10" placeholder="내용을 입력하세요"></textarea>
+            
         </div>
         <div class="buttons mt-4">
             <button type="button" class="btn-btn1" onclick="location.href='index.jsp?workgroup=qna&work=qna_list'">취소</button>

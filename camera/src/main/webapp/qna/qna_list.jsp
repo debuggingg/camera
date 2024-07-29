@@ -224,7 +224,7 @@ document.getElementById("pageSize").addEventListener("change", function() {
 
 // 글쓰기 버튼 클릭 이벤트 처리
 document.getElementById("writeBtn").addEventListener("click", function() {
-    location.href = "<%= request.getContextPath() %>/qna_write_form.jsp";
+    location.href = "<%= request.getContextPath() %>/index.jsp?workgroup=qna&work=qna_write_form";
 });
 </script>
 </body>
