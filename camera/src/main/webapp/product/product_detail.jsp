@@ -168,7 +168,7 @@
     
     <div style="text-align: right; font-size: 19px;">
         게시글 :
-        <select id="pageSize">
+        <select id="pageSize" onchange="changePageSize(this.value)">
             <option value="10" <% if (pageSize == 10) { %> selected <% } %>>&nbsp;10개&nbsp;</option>
             <option value="20" <% if (pageSize == 20) { %> selected <% } %>>&nbsp;20개&nbsp;</option>
             <option value="50" <% if (pageSize == 50) { %> selected <% } %>>&nbsp;50개&nbsp;</option>
@@ -246,6 +246,7 @@
         }
 
         String myUrl = request.getContextPath() + "/index.jsp?workgroup=product&work=product_detail"
+                + "&prodNo=" + prodNo
                 + "&pageSize=" + pageSize;
     %>
 
@@ -302,10 +303,10 @@
             }
         }
         
-        document.getElementById("pageSize").addEventListener("change", function() {
+        function changePageSize(pageSize) {
             location.href = "<%= request.getContextPath() %>/index.jsp?workgroup=product&work=product_detail"
-                + "&pageNum=<%= pageNum %>&pageSize=" + this.value;
-        });
+                + "&prodNo=<%= prodNo %>&pageNum=<%= pageNum %>&pageSize=" + pageSize;
+        }
     </script>
 </main>
 </body>
