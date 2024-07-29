@@ -433,7 +433,7 @@
         <div class="products">
             <% for (ProductDTO product : products) { %>
             <div class="product">
-                <a href="<%=request.getContextPath()%>/product/product_detail.jsp?prodNo=<%= product.getProdNo() %>">
+                <a href="<%=request.getContextPath()%>/index.jsp?workgroup=product&work=product_detail&prodNo=<%= product.getProdNo() %>">
                     <img src="<%=request.getContextPath()%>/product_image/<%= product.getProdImage1() %>" alt="<%= product.getProdName() %>">
                     <h3><%= product.getProdName() %></h3>
                 </a>
