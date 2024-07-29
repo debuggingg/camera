@@ -12,11 +12,10 @@
 	UsersDTO loginUsers = (UsersDTO) session.getAttribute("loginUsers");
 	
 	// 로그인 여부 확인
-	if (loginUsers == null) {
-	    // 로그인되지 않았거나 세션에 사용자 정보가 없는 경우 처리
-	    response.sendRedirect(request.getContextPath() + "/users/users_login.jsp"); // 로그인 페이지로 리다이렉트
-	    return; // 리다이렉트 후 종료
-	}
+	  if(loginUsers == null) {
+      request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=users&work=users_login");
+      return;   
+   }
 	
 	// 사용자가 전달한 데이터 가져오기
 	 String id = loginUsers.getUsersId();

@@ -19,9 +19,9 @@ if (loginUsers != null) {
 }
 
 if(loginUsers == null) {
-	request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=error&work=error_400");
-	return;	
-}
+    request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=users&work=users_login");
+    return;   
+ }
 
 List<CartDTO> cartList = CartDAO.getDAO().selectAllCartList(loginUsers.getUsersId());
 List<ProductDTO> productList = new ArrayList<ProductDTO>();
@@ -190,6 +190,7 @@ margin: 0 auto;
 
 .empty { 
 	text-align: center;
+	font-size: 3em;
 }
 
 /* cart만 고정 */

@@ -18,7 +18,7 @@ UsersDTO loginUsers = (UsersDTO) session.getAttribute("loginUsers");
 ProductDTO product = (ProductDTO) session.getAttribute("product");
 
 // 로그인 여부 확인
-   if(loginUsers == null) {
+    if(loginUsers == null) {
       request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=users&work=users_login");
       return;   
    }

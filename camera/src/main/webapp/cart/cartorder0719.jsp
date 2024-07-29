@@ -20,9 +20,9 @@
   }
 
   if(loginUsers == null) {
-  	request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=error&work=error_400");
-  	return;	
-  }
+      request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=users&work=users_login");
+      return;   
+   }
 
   List<CartDTO> cartList = CartDAO.getDAO().selectAllCartList(loginUsers.getUsersId());
   List<ProductDTO> productList = new ArrayList<ProductDTO>();
@@ -247,7 +247,6 @@ body {
 </head>
 <body>
 
-<h1>결제정보</h1>
 <form id="joinForm" action="<%=request.getContextPath()%>/index.jsp?workgroup=cart&work=orders_action3" method="post">
 <div id="detail">
 	<p>주문자 정보</p>
@@ -461,6 +460,20 @@ $('#newAddressCheckbox').change(function() {
         $("#newAddressForm").hide();
     }
 });
+	
+	function validateForm() {
+	    // 결제 수단이 선택되지 않은 경우
+	    if ($('input[name="payment"]:checked').length === 0) {
+	        alert('결제 수단을 선택해야 합니다.');
+	        return false; 
+	    }
+	    return true; 
+	}
+	
+	// 폼의 submit 이벤트에 validateForm 함수 연결
+	$('#joinForm').on('submit', function() {
+	    return validateForm(); 
+	});
 
     // 우편번호 검색 버튼 클릭 이벤트
     $("#postSearch").click(function() {

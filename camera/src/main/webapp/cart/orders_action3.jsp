@@ -14,10 +14,10 @@
 	UsersDTO loginUsers = (UsersDTO) session.getAttribute("loginUsers");
 
 	//로그인 여부 확인
-	if (loginUsers == null) {
- 	response.sendRedirect(request.getContextPath() + "/users/users_login.jsp");
- 	return;
-	}
+	  if(loginUsers == null) {
+      request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=users&work=users_login");
+      return;   
+   }
 
 	String userId = loginUsers.getUsersId();
 
