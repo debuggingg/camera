@@ -6,9 +6,7 @@
 <%@page import="xyz.itwill.dao.QnaDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-      
-      
-         <%@include file="/security/login_check.jspf" %>
+     <%@include file="/security/login_check.jspf" %>
 <%
     // 페이징 처리에 필요한 전달값(페이지번호와 게시글갯수)을 반환받아 저장
     int pageNum=1;//페이지번호 - 전달값이 없는 경우 사용할 기본값 저장
