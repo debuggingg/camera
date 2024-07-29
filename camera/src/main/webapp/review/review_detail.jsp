@@ -33,11 +33,15 @@
 		     
 		    } catch (UnsupportedEncodingException e) {
 		      // Handle the exception if decoding fails
-		      returnUrl = "index.jsp";
+		    	 returnUrl = request.getContextPath() + "/index.jsp?workgroup=myaccount&work=myacct_review";
 		    }
 		  } else {
-		    returnUrl = "index.jsp";
+			  returnUrl = request.getContextPath() + "/index.jsp?workgroup=myaccount&work=myacct_review";
+			  
 		  }
+	   
+
+
     %>
     
 
@@ -74,7 +78,7 @@ th, td {
 
 th {
 	width: 100px;
-	background-color: #ffc107;
+	background-color: gray;
 	color: white;
 }
 

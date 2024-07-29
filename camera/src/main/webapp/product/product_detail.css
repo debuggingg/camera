@@ -467,7 +467,7 @@
 }
 
 .board th {
-    background-color: #ffc107;
+    background-color: gray;
     color: white;
     font-weight: bold;
 }
