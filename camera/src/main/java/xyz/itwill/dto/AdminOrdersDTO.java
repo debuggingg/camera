@@ -36,9 +36,31 @@ public class AdminOrdersDTO {
 	private String ordersDate;
 	private int ordersStatus;
 	
+	
+	private String prodName;
+	private int prodPrice;
 	public AdminOrdersDTO() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+	public String getProdName() {
+		return prodName;
+	}
+
+	public void setProdName(String prodName) {
+		this.prodName = prodName;
+	}
+
+	public int getProdPrice() {
+		return prodPrice;
+	}
+
+	public void setProdPrice(int prodPrice) {
+		this.prodPrice = prodPrice;
+	}
+
 
 	public int getOrdersNo() {
 		return ordersNo;

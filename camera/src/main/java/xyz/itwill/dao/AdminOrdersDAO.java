@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import xyz.itwill.dto.AdminOrdersDTO;
+import xyz.itwill.dto.OrdersDTO;
 
 
 public class AdminOrdersDAO extends JdbcDAO{
@@ -153,4 +154,80 @@ public class AdminOrdersDAO extends JdbcDAO{
 			}
 			return rows;
 		} 
+	   
+		public List<AdminOrdersDTO> selectOrderByStatus(String search,String keyword){
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			List<AdminOrdersDTO> ordersByStatus=new ArrayList<>();
+			try {
+				   con=getConnection();
+				   if(keyword.equals("")) {
+
+				   String sql="select orders_users_id,orders_prod_no, prod_name,prod_price,orders_cart_amount,orders_cart_price, orders_status"
+				   		+ " from orders inner join product on orders_prod_no=prod_no inner join users on orders_users_id=users_id where orders_status <>2";
+				   pstmt=con.prepareStatement(sql);
+//				   }else if(orderStatus==1) {
+//					   String sql="select orders_users_id,orders_prod_no, prod_name,prod_price,orders_cart_amount,orders_cart_price, orders_status"
+//					   		+ " from orders inner join product on orders_prod_no=prod_no inner join users on orders_users_id=users_id where orders_status=1";
+//					   pstmt=con.prepareStatement(sql);   
+//				   }else if(orderStatus==2){
+//					   String sql="select orders_users_id,orders_prod_no, prod_name,prod_price,orders_cart_amount,orders_cart_price, orders_status"
+//					   		+ " from orders inner join product on orders_prod_no=prod_no inner join users on orders_users_id=users_id where orders_status=3";
+//					   pstmt=con.prepareStatement(sql);
+//				   }
+					   
+				   
+				   }else {
+					   		
+					   String sql = "SELECT orders_users_id, orders_prod_no, prod_name, prod_price, orders_cart_amount, orders_cart_price, orders_status " +
+					             "FROM orders " +
+					             "INNER JOIN product ON orders_prod_no = prod_no " +
+					             "INNER JOIN users ON orders_users_id = users_id " +
+					             "WHERE orders_status <> 2 AND "+search+" like '%'||?||'%' ORDER BY orders_no" ;
+					           
+						   pstmt=con.prepareStatement(sql);
+						   pstmt.setString(1, keyword);
+//					   }else if(orderStatus==1) {
+//						   String sql="select orders_users_id,orders_prod_no, prod_name,prod_price,orders_cart_amount,orders_cart_price, orders_status"
+//							   		+ " from orders inner join product on orders_prod_no=prod_no inner join users on orders_users_id=users_id "
+//							   		+ "where orders_status=1 AND where "+search+" like '%'||?||'%' order by orders_no";
+//							   pstmt=con.prepareStatement(sql);
+//							   pstmt.setString(1, keyword);
+//						   
+//					   }else if(orderStatus==2) {
+//						   String sql="select orders_users_id,orders_prod_no, prod_name,prod_price,orders_cart_amount,orders_cart_price, orders_status"
+//							   		+ " from orders inner join product on orders_prod_no=prod_no inner join users on orders_users_id=users_id "
+//							   		+ "where orders_status=2 AND where "+search+" like '%'||?||'%' order by orders_no";
+//							   pstmt=con.prepareStatement(sql);
+//							   pstmt.setString(1, keyword);
+//						   
+//					   }
+					  
+				   }
+				   rs=pstmt.executeQuery();
+				   while(rs.next()) {
+					   AdminOrdersDTO order=new AdminOrdersDTO();
+					   order.setOrdersUsersId(rs.getString("orders_users_id"));
+					   order.setOrdersProdNo(rs.getInt("ORDERS_PROD_NO"));
+					   order.setProdName(rs.getString("prod_name"));
+					   order.setProdPrice(rs.getInt("prod_price"));			  
+					   order.setOrdersCartAmount(rs.getInt("ORDERS_CART_AMOUNT"));
+					   order.setOrdersCartPrice(rs.getInt("ORDERS_CART_PRICE"));
+					   order.setOrdersStatus(rs.getInt("ORDERS_STATUS"));
+					   
+					   ordersByStatus.add(order);
+					   
+					   
+					   
+					   
+				   }
+			   }catch (SQLException e) {
+					System.out.println("[에러]selectOrdersList 메소드의 SQL 오류 = "+e.getMessage());
+			   }finally {
+				   close(con,pstmt,rs);
+				   
+			   }
+			   return ordersByStatus;
+		}
 }

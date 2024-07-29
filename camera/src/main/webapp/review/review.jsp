@@ -123,9 +123,7 @@ int displayNum = totalReview - (pageNum - 1) * pageSize; // 게시글에 출력�
             <option value="100" <% if (pageSize == 100) { %> selected <% } %>>&nbsp;100개&nbsp;</option>
         </select>
         &nbsp;&nbsp;&nbsp;
-        <% if (loginUsers != null) { %>
-            <button type="button" id="writeBtn">글쓰기</button>
-        <% } %>
+      
     </div>
 
     <table class="board">
@@ -222,8 +220,5 @@ document.getElementById("pageSize").addEventListener("change", function() {
         + "&pageNum=<%= pageNum %>&pageSize=" + this.value;
 });
 
-// 글쓰기 버튼 클릭 이벤트 처리
-document.getElementById("writeBtn").addEventListener("click", function() {
-    location.href = "<%= request.getContextPath() %>/index.jsp?workgroup=review&work=review_write";
-});
+
 </script>

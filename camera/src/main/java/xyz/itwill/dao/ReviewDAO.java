@@ -258,7 +258,7 @@ public class ReviewDAO extends JdbcDAO {
 	    return reviewList;
 	}
 	
-	public int selectTotalReviewByProduct(int reviewProdNo) {
+	public int selectTotalReviewByProduct(int prodNo) {
 	    Connection con = null;
 	    PreparedStatement pstmt = null;
 	    ResultSet rs = null;
@@ -268,7 +268,7 @@ public class ReviewDAO extends JdbcDAO {
 
 	        String sql = "select count(*) from review where review_prod_no = ?";
 	        pstmt = con.prepareStatement(sql);
-	        pstmt.setInt(1, reviewProdNo);
+	        pstmt.setInt(1, prodNo);
 
 	        rs = pstmt.executeQuery();
 
@@ -284,6 +284,73 @@ public class ReviewDAO extends JdbcDAO {
 	    return totalReview;
 	}
 
+	public List<ReviewDTO> selectReviewListByUser(int usersNo, int startRow, int endRow) {
+	    Connection con = null;
+	    PreparedStatement pstmt = null;
+	    ResultSet rs = null;
+	    List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
+	    try {
+	        con = getConnection();
+
+	        String sql = "select * from (select rownum rn, temp.* from (select review_no"
+	                + ",review_title,review_content,review_status,review_date,review_prod_no"
+	                + ",review_users_no,users_name,review_image from review join users on"
+	                + " review_users_no = users_no where review_users_no = ? order by review_date desc) temp) where rn between ? and ?";
+	        pstmt = con.prepareStatement(sql);
+	        pstmt.setInt(1, usersNo);
+	        pstmt.setInt(2, startRow);
+	        pstmt.setInt(3, endRow);
+
+	        rs = pstmt.executeQuery();
+
+	        while (rs.next()) {
+	            ReviewDTO review = new ReviewDTO();
+	            review.setReviewNo(rs.getInt("review_no"));
+	            review.setReviewTitle(rs.getString("review_title"));
+	            review.setReviewContent(rs.getString("review_content"));
+	            review.setReviewStatus(rs.getInt("review_status"));
+	            review.setReviewDate(rs.getString("review_date"));
+	            review.setReviewProdNo(rs.getInt("review_prod_no"));
+	            review.setReviewUsersNo(rs.getInt("review_users_no"));
+	            review.setUsersName(rs.getString("users_name"));
+	            review.setReviewImage(rs.getString("review_image"));
+
+	            reviewList.add(review);
+	        }
+
+	    } catch (SQLException e) {
+	        System.out.println("[에러]selectReviewListByUser() 메소드의 SQL 오류 = " + e.getMessage());
+	    } finally {
+	        close(con, pstmt, rs);
+	    }
+	    return reviewList;
+	}
+
+	public int selectTotalReviewByUser(int usersNo) {
+	    Connection con = null;
+	    PreparedStatement pstmt = null;
+	    ResultSet rs = null;
+	    int totalReview = 0;
+	    try {
+	        con = getConnection();
+
+	        String sql = "select count(*) from review where review_users_no = ?";
+	        pstmt = con.prepareStatement(sql);
+	        pstmt.setInt(1, usersNo);
+
+	        rs = pstmt.executeQuery();
+
+	        if (rs.next()) {
+	            totalReview = rs.getInt(1);
+	        }
+
+	    } catch (SQLException e) {
+	        System.out.println("[에러]selectTotalReviewByUser() 메소드의 SQL 오류 = " + e.getMessage());
+	    } finally {
+	        close(con, pstmt, rs);
+	    }
+	    return totalReview;
+	}
 
 		
 }

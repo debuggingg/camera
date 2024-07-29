@@ -60,18 +60,24 @@ th, td {
 <body>
 	<h1>상품추가</h1>
 	<hr>
-	<form name="productForm" action="<%=request.getContextPath()%>/index.jsp?workgroup=adminorders&work=ordersUpdate" method="post"
-	enctype="multipart/form-data" >
-		
-		<input type="hidden" name="no" value="<%=order.getOrdersNo()%>"> 
+	<form name="productForm" action="<%=request.getContextPath()%>/index.jsp?workgroup=adminorders&work=ordersUpdate" method="post">
+		<%-- 
+		<input type="hidden" name="no" value="<%=order.getOrdersNo()%>">  --%>
 		
 	<table>
 	
 		<tr>
+			<th class="title">orderNo</th>
+			<td class="input">
+				<%-- <input type="text" name="type" <% if(products != null) { %>value="<%=products.getProdType()%>"<% } %>> --%>
+				<input type="text" name="no" value="<%=order.getOrdersNo()%>" readonly="readonly">
+			</td>
+		</tr>
+		<tr>
 			<th class="title">orderProdNo</th>
 			<td class="input">
 				<%-- <input type="text" name="type" <% if(products != null) { %>value="<%=products.getProdType()%>"<% } %>> --%>
-				<input type="text" name="prodno" value="<%=order.getOrdersProdNo()%>">
+				<input type="text" name="prodno" value="<%=order.getOrdersProdNo()%>" readonly="readonly">
 			</td>
 		</tr>
 		<tr>
