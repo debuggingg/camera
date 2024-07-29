@@ -87,8 +87,8 @@ public class QnaDAO extends JdbcDAO {
             String sql = "SELECT * FROM (SELECT ROWNUM RN, TEMP.* FROM (SELECT QNA_NO, QNA_USERS_NO, USERS_NAME, QNA_TYPE, QNA_TITLE, QNA_CONTENT, QNA_STATUS, QNA_DATE FROM QNA JOIN USERS ON QNA_USERS_NO = USERS_NO WHERE QNA_USERS_NO = ? ORDER BY QNA_NO DESC) TEMP) WHERE RN BETWEEN ? AND ?";
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, usersNo);
-            pstmt.setInt(1, startRow);
-            pstmt.setInt(2, endRow);
+            pstmt.setInt(2, startRow);
+            pstmt.setInt(3, endRow);
 
             rs = pstmt.executeQuery();
 
