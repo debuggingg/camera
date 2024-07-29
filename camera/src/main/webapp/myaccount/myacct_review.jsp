@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="xyz.itwill.dto.UsersDTO"%>
@@ -43,6 +44,7 @@ int endRow = pageNum * pageSize;
 if (endRow > totalReview) {
     endRow = totalReview;
 }
+
 
 List<ReviewDTO> reviewList = ReviewDAO.getDAO().selectReviewListByUser(usersNo, startRow, endRow);
 String currentDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
@@ -270,9 +272,16 @@ int displayNum = totalReview - (pageNum - 1) * pageSize;
                 <% displayNum--; %>
                 <td class="subject">
                   <%
-                    String url = request.getContextPath() + "/index.jsp?workgroup=review&work=review_detail"
-                      + "&reviewNo=" + review.getReviewNo() + "&pageNum=" + pageNum + "&pageSize=" + pageSize;
-                  %>
+                        String currentUrl = request.getRequestURI();
+                        String queryString = request.getQueryString();
+                        String returnUrl = currentUrl + (queryString != null ? "?" + queryString : "");
+
+                        String url = request.getContextPath() + "/index.jsp?workgroup=review&work=review_detail"
+                            + "&reviewNo=" + review.getReviewNo()
+                            + "&pageNum=" + pageNum
+                            + "&pageSize=" + pageSize
+                            + "&returnUrl=" + URLEncoder.encode(returnUrl, "UTF-8");
+                        %>
                   <% if (review.getReviewStatus() == 1) { %>
                     <a href="<%= url %>"><%= review.getReviewTitle() %></a>
                   <% } else if (review.getReviewStatus() == 0) { %>

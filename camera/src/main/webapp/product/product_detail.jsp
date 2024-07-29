@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/product/product_detail.css">
+ 	<link rel="stylesheet" href="<%=request.getContextPath() %>/product/product_detail.css">
     <title>카메라 상세페이지</title>
    <%
     ReviewDAO reviewDAO = ReviewDAO.getDAO();
@@ -245,7 +245,7 @@
             endPage = totalPage;
         }
 
-        String myUrl = request.getContextPath() + "/index.jsp?workgroup=review&work=review"
+        String myUrl = request.getContextPath() + "/index.jsp?workgroup=product&work=product_detail"
                 + "&pageSize=" + pageSize;
     %>
 
@@ -303,7 +303,7 @@
         }
         
         document.getElementById("pageSize").addEventListener("change", function() {
-            location.href = "<%= request.getContextPath() %>/index.jsp?workgroup=review&work=review"
+            location.href = "<%= request.getContextPath() %>/index.jsp?workgroup=product&work=product_detail"
                 + "&pageNum=<%= pageNum %>&pageSize=" + this.value;
         });
     </script>
