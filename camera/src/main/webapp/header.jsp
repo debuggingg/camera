@@ -1,3 +1,6 @@
+<%@page import="xyz.itwill.dao.ProductDAO"%>
+<%@page import="java.util.List"%>
+<%@page import="xyz.itwill.dto.ProductDTO"%>
 <%@page import="xyz.itwill.dto.UsersDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -14,6 +17,9 @@ if(keyword == null) {
 	keyword="";
 }
 
+List<ProductDTO> product = ProductDAO.getDAO().searchProducts(keyword,search);
+
+
 %>
 <div id="header-top">
 	<div id="profile">
@@ -21,7 +27,7 @@ if(keyword == null) {
 		if (loginUsers == null) {
 		%>
 		<a href="index.jsp?workgroup=users&work=users_login">Login</a> <a
-			href="index.jsp?workgroup=users&work=users_agreement">Singup</a>
+			href="index.jsp?workgroup=users&work=users_agreement">Signup</a>
 		<%
 		} else {
 		%>
@@ -43,15 +49,20 @@ if(keyword == null) {
 <div id="header-bottom">
 	<div id="header-bottom-middle">
 		<div id="logo">
-			<a href="index.jsp" style="color: orange;">Filli Camera</a>
+			<a href="index.jsp" style="color: orange;"><img alt="" src="img/title1.jpg"" width="330px"; style="margin-top: 10px;"></a>
 		</div>
 		<div id="search_button">
-			<div id="search-middle">
-				<form action="" method="get">
-					<input id="search" type="text" name="search" placeholder="Search">
-				</form>
-			</div>
-		</div>
+			<div id="search_middle"> 
+   <form action="<%= request.getContextPath()%>/index.jsp?workgroup=product&work=product_list" method="post" id="form">
+
+    <select  name="search" id="searchInput">
+    <option id="searchInput" value="prod_name" <% if(search.equals("prod_name")) { %>selected<% } %>>&nbsp;name&nbsp;</option>
+    </select>
+    <input type="text" name="keyword"  value="<%=keyword%>" id="keyword" placeholder="search">
+    <button type="submit" id="searchButton">검색</button>
+</form>
+</div>
+		</div> 
 		<div id="nav-bar">
 			  <nav>
                 <ul>
@@ -62,7 +73,7 @@ if(keyword == null) {
                         <a href="#" style="margin-right:20px;">COMMUNITY</a>
                         <div class="dropdown-content">
                             <a href="index.jsp?workgroup=notice&work=notice" id="good">Notice</a>
-                            <a href="index.jsp?workgroup=qna&work=qna_write_form" id="good">Q&A</a> 
+                            <a href="index.jsp?workgroup=users&work=qna_list" id="good">Q&A</a>
                         </div>
                     </li>
                     <li class="dropdown-item2">

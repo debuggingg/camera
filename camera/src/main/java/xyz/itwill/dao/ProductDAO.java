@@ -333,4 +333,68 @@ public class ProductDAO extends JdbcDAO {
         }
         return productList;
     }
+    
+    
+    public int getTotalProducts(String filter) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        int total = 0;
+        try {
+            con = getConnection();
+            String sql = "SELECT COUNT(*) FROM product";
+            pstmt = con.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                total = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("[에러]getTotalProducts() 메서드의 SQL 오류 = " + e.getMessage());
+        } finally {
+            close(con, pstmt, rs);
+        }
+        return total;
+    }
+    
+    public List<ProductDTO> searchProducts(String keyword, String search) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        List<ProductDTO> productList = new ArrayList<>();
+        try {
+            con = getConnection();
+            if(keyword.equals("")) {
+            String sql = "select prod_no, prod_type, prod_name, prod_price, prod_amount, "
+            		+ "prod_image1, prod_image2, prod_image3, prod_image4, prod_info, prod_in_date from product";
+            pstmt=con.prepareStatement(sql);
+            }else {
+            String sql = "select prod_no, prod_type, prod_name, prod_price, prod_amount, "
+                  		+ "prod_image1, prod_image2, prod_image3, prod_image4, prod_info, prod_in_date from product where "+search+" like '%'||?||'%' order by prod_no";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, "keyword");
+            }
+          
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                ProductDTO product = new ProductDTO();
+                product.setProdNo(rs.getInt("PROD_NO"));
+                product.setProdType(rs.getInt("PROD_TYPE"));
+                product.setProdName(rs.getString("PROD_NAME"));
+                product.setProdPrice(rs.getInt("PROD_PRICE"));
+                product.setProdAmount(rs.getInt("PROD_AMOUNT"));
+                product.setProdImage1(rs.getString("PROD_IMAGE1"));
+                product.setProdImage2(rs.getString("PROD_IMAGE2"));
+                product.setProdImage3(rs.getString("PROD_IMAGE3"));
+                product.setProdImage4(rs.getString("PROD_IMAGE4"));
+                product.setProdInfo(rs.getString("PROD_INFO"));
+                product.setProdInDate(rs.getString("PROD_IN_DATE"));
+                productList.add(product);
+            }
+        } catch (SQLException e) {
+            System.out.println("[에러]searchProducts() 메서드의 SQL 오류 = " + e.getMessage());
+        } finally {
+            close(con, pstmt, rs);
+        }
+        return productList;
+    }
 }
