@@ -1,6 +1,8 @@
 <%@page import="xyz.itwill.dto.UsersDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<form action="<%=request.getContextPath()%>/index.jsp?workgroup=review&work=review_write_action"
+	method="post" id="reviewForm">
 <div id="header-top">
 	<div id="profile">
 		<span style="font-weight: bold;">관리자님, 환영합니다.</span>&nbsp;&nbsp;
@@ -34,4 +36,4 @@
 		</div>
 	</div>
 </div>
-
+</form>
