@@ -1,5 +1,5 @@
 @charset "UTF-8";
- body {
+ 	body {
         font-family: 'Do Hyeon', sans-serif;
         margin: 0;
         padding: 20px;
@@ -15,6 +15,7 @@
     .product-container {
         display: flex;
         justify-content: space-between;
+        font-family: "Do Hyeon", sans-serif;
         max-width: 1200px;
         margin: 0 auto;
         padding: 20px;
@@ -75,6 +76,7 @@
 
     .product-details .product-info li {
         margin-bottom: 10px;
+        font-family: "Do Hyeon", sans-serif;
     }
 
     .quantity {
@@ -109,6 +111,7 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 20px;
+        font-family: "Do Hyeon", sans-serif;
     }
 
     .total-price .price {
@@ -399,7 +402,9 @@
     }
 
     .tabs [class^="tab"] [type="radio"] + div,
-    .tabs [class*=" tab"] [type="radio"] + div {
+    .tabs [class*=" tab"] [type="radio"] + div	 {
+    	position:relative;
+    	z-index:999;
         display: block;
         opacity: 0;
         padding: 2rem 0;
@@ -431,4 +436,72 @@
         margin-left: -200%;
     }
     
-    
+      
+   
+ a {text-decoration: none !important}
+
+#review_title {
+    font-size: 30px;
+}
+
+#review_list {
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+.board {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 17px;
+}
+
+.board th, .board td {
+    border: 1px solid #dee2e6;
+    padding: 12px;
+    text-align: center;
+}
+
+.board th {
+    background-color: #ffc107;
+    color: white;
+    font-weight: bold;
+}
+
+.board tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.board tr:hover {
+    background-color: #e9ecef;
+}
+
+.subject {
+    text-align: left;
+    padding: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#review_list a:hover {
+    text-decoration: none;
+    color: blue;
+    font-weight: bold;
+}
+
+.subject_hidden {    
+    color: black;
+    font-size: 14px;
+   
+}
+
+#page_list {
+    font-size: 1.5em;
+    margin: 10px;
+}
+
