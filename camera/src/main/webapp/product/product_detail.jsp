@@ -73,6 +73,7 @@
     .product-container {
         display: flex;
         justify-content: space-between;
+        font-family: "Do Hyeon", sans-serif;
         max-width: 1200px;
         margin: 0 auto;
         padding: 20px;
@@ -133,6 +134,7 @@
 
     .product-details .product-info li {
         margin-bottom: 10px;
+        font-family: "Do Hyeon", sans-serif;
     }
 
     .quantity {
@@ -167,6 +169,7 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 20px;
+        font-family: "Do Hyeon", sans-serif;
     }
 
     .total-price .price {
@@ -491,7 +494,6 @@
     
       
    
-* { font-family: 'Jua', sans-serif; }
  a {text-decoration: none !important}
 
 #review_title {

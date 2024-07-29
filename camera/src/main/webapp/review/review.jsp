@@ -42,7 +42,6 @@ int displayNum = totalReview - (pageNum - 1) * pageSize; // 게시글에 출력�
 %>
 
 <style type="text/css">
-* { font-family: 'Jua', sans-serif; }
  a {text-decoration: none !important}
 
 #review_title {
