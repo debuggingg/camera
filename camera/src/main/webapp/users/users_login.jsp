@@ -80,8 +80,11 @@
 		.my-4 {    	
    			font-size: xx-large;
 		}
-		.btn-warning {
+		.btni {
 			 font-size: 14.5px;
+			  color:white;
+			 background-color: black;
+			 --bs-btn-hover-border-color: black;
 		}
 		.form-control {
 			font-size: small;
@@ -107,8 +110,8 @@
                     <input type="password" class="form-control" id="pw" name="pw" placeholder="비밀번호를 입력하세요">
                     <div id="pwNullMsg" class="invalid-feedback">비밀번호를 입력해 주세요.(영문대소문자/숫자/특수 문자, 6~16자)</div>
                 </div>
-                <button class="btn btn-warning w-100 py-2" type="submit" id="login_btn">로그인</button>                
-                <a href="index.jsp?workgroup=users&work=users_agreement" class="btn btn-warning w-100 py-2 mt-2">회원가입</a>
+                <button class="btn btni w-100 py-2" type="submit" id="login_btn">로그인</button>                
+                <a href="index.jsp?workgroup=users&work=users_agreement" class="btn btni w-100 py-2 mt-2">회원가입</a>
                 <div class="d-flex justify-content-center mt-2">
                     <a href="index.jsp?workgroup=users&work=search_id_one" class="text-decoration-none text-muted mx-2">아이디 찾기</a>
                     <span class="text-muted">|</span>

@@ -38,8 +38,13 @@
 		.my-4 {    	
    			font-size: xx-large;
 		}
-		.btn-warning {
+		.btni {
 			 font-size: 14.5px;
+			 color:white;
+			 background-color: black;
+			 border: 1px solid black; 
+			 --bs-btn-hover-border-color: black;
+			 
 		}
 		.form-control {
 			font-size: small;
@@ -59,7 +64,7 @@
                     <label for="email" class="form-label">이메일</label>
                     <input type="email" class="form-control" id="email" placeholder="example@example.com">                  
                 </div>
-                <button type="submit" class="btn btn-warning w-100" id="btn">확인</button>         
+                <button type="submit" class="btn btni w-100" id="btn">확인</button>         
                 <div id="result" class="error-message"></div>
             </form>
         </div>

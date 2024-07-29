@@ -54,8 +54,11 @@
         .req {
    			 color: red;
 		}				
-		.btn-warning {
+		.btni {
 			font-size: 14.5px;
+			 color:white;
+			 background-color: black;
+			 --bs-btn-hover-border-color: black;
 		}
 		.f {
 			font-size: small;
@@ -337,7 +340,7 @@
             </div>
         </div>
 
-        <button class="btn btn-warning w-100" id="submitBtn" disabled onclick="submitForm()">확인</button>
+        <button class="btn btni w-100" id="submitBtn" disabled onclick="submitForm()">확인</button>
     </div>
 </div>
     <script>

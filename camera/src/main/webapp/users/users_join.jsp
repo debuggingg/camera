@@ -43,8 +43,11 @@
 		.my-4 {    	
    			font-size: xx-large;
 		}
-		.btn-warning {
+		.btni {
 			 font-size: 14.5px;
+			 color:white;
+			 background-color: black;
+			 --bs-btn-hover-border-color: black;
 		}
 		.form-control {
 			font-size: small;
@@ -152,7 +155,7 @@
                         <div id="emailValidMsg" class="msg">이메일을 형식에 맞게 입력해 주세요.</div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-warning w-100">가입하기</button>
+                <button type="submit" class="btn btni w-100">가입하기</button>
             </form>
         </div>
     </div>        
