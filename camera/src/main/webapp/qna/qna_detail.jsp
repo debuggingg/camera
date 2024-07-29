@@ -1,3 +1,5 @@
+<%@page import="java.io.UnsupportedEncodingException"%>
+<%@page import="java.net.URLDecoder"%>
 <%@page import="xyz.itwill.dto.UsersDTO"%>
 <%@page import="xyz.itwill.dao.QnaDAO"%>
 <%@page import="xyz.itwill.dto.QnaDTO"%>
@@ -35,6 +37,18 @@
     }
     
     UsersDTO loginUsers = (UsersDTO)session.getAttribute("loginUsers");
+    String returnUrl = request.getParameter("returnUrl");
+	   if (returnUrl != null) {
+		    try {
+		      returnUrl = URLDecoder.decode(returnUrl, "UTF-8");
+		     
+		    } catch (UnsupportedEncodingException e) {
+		      // Handle the exception if decoding fails
+		      returnUrl = "index.jsp";
+		    }
+		  } else {
+		    returnUrl = "index.jsp";
+		  }
 %>
     
 <style type="text/css">
@@ -189,8 +203,7 @@ $("#removeBtn").click(function() {
 });
 
 $("#listBtn").click(function() {
-    location.href="<%= request.getContextPath() %>/qna/qna_list.jsp"
-        +"?pageNum=<%= pageNum %>&pageSize=<%= pageSize %>";
+	 location.href = "<%= returnUrl %>";
 });
 </script>
 </html>
