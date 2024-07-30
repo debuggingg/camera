@@ -145,10 +145,10 @@
             </div>
         </div>
         <div class="tab-menu">
-            <label for="tab3-2">Q & A</label>
+            <label for="tab3-2">배송 정보</label>
             <input id="tab3-2" name="tabs-three" type="radio" value="2">
             <div class="tab-content" style="border:1px solid green;  position: relative; left: 500px;">
-              
+              	 <img src="<%=request.getContextPath()%>/product_image/<%= product.getProdImage2() %>" alt="상세 페이지 이미지 <%= productName %>">
                 
             </div>
         </div>
