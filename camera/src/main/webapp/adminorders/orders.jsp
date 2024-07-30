@@ -116,7 +116,7 @@ List<AdminOrdersDTO> orderList=AdminOrdersDAO.getDAO().selectOrdersList(search,k
 	
  	function removeProduct(no) {
  		if(confirm("주문 을  정말로 삭제 하시겠습니까?")) {
- 		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=adminproduct&work=ordersRemove&no="+no; 
+ 		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=adminorders&work=ordersRemove&no="+no; 
  		}
  	}
         
