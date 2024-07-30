@@ -140,23 +140,23 @@
         <div class="tab-menu">
             <label for="tab3-1">상품 정보</label>
             <input id="tab3-1" name="tabs-three" type="radio" value="1">
-            <div class="tab-content" style="border:1px solid green; width: 1900px;">
+            <div class="tab-content" style="border:1px solid green; position: relative; left: 500px;">
                 <img src="<%=request.getContextPath()%>/product_image/<%= product.getProdImage4() %>" alt="상세 페이지 이미지 <%= productName %>">
             </div>
         </div>
         <div class="tab-menu">
             <label for="tab3-2">Q & A</label>
             <input id="tab3-2" name="tabs-three" type="radio" value="2">
-            <div class="tab-content" style="border:1px solid green; width: 1900px;">
-                <h4>Q & A</h4>
-                <p>내용</p>
+            <div class="tab-content" style="border:1px solid green;  position: relative; left: 500px;">
+              
+                
             </div>
         </div>
         <div class="tab-menu">
             <label for="tab3-3">리뷰</label>
             <input id="tab3-3" name="tabs-three" type="radio" value="3" <%= request.getParameter("tab") != null && request.getParameter("tab").equals("3") ? "checked" : "" %> >
-            <div class="tab-content" style="border:1px solid green; width: 1900px; ">
-                <h4>리뷰</h4>
+            <div class="tab-content" style="border:1px solid green; position: relative; left: 450px;">
+                
                 <div id="review_list">
                     <div id="review_title">Product Review (<%= totalReview %>)</div>
                     <div style="text-align: right; font-size: 19px;">
