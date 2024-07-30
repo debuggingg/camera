@@ -8,7 +8,7 @@
 
 	//비정상적인 요청에 대한 응답 처리
 	if(request.getParameter("no") == null) {
-		response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+		request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=error&work=error_400");
 		return;
 	}
 
@@ -21,7 +21,7 @@
 	
 	//비정상적인 요청에 대한 응답 처리
 	if(notice == null) {
-		response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+		request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=error&work=error_400");
 		return;
 	}
 %>
@@ -56,8 +56,7 @@ th, td {
 <body>
 	<h1>Notice Edit</h1>
 	<hr>
-	<form name="noticeForm" action="<%=request.getContextPath()%>/index.jsp?workgroup=adminnotice&work=noticeUpdate" method="post"
-	id="noticeForm" >
+	<form name="noticeForm" action="<%=request.getContextPath()%>/index.jsp?workgroup=adminnotice&work=noticeUpdate" method="post" >
 	<table>
 		<tr>
 			<th class="title">notice No</th>
