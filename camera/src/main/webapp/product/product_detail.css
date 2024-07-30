@@ -415,6 +415,7 @@ select:focus {
 
 .tabs .tab-menu {
     width: 33.33%;
+ 
 }
 
 .tabs .tab-menu[type="radio"] + div {
@@ -506,9 +507,4 @@ a {
 #page_list {
     font-size: 1.5em;
     margin: 10px;
-}
-.tab-content {
-    padding-left: 100px; 
-    margin: 0 auto;
-    max-width: 1000px;     
 }
