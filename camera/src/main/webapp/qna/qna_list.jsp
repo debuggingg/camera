@@ -6,7 +6,7 @@
 <%@page import="xyz.itwill.dao.QnaDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="/security/login_url.jspf" %> %>
+ <%@include file="/security/login_check.jspf" %>
 <%
     // 페이징 처리에 필요한 전달값(페이지번호와 게시글갯수)을 반환받아 저장
     int pageNum=1;//페이지번호 - 전달값이 없는 경우 사용할 기본값 저장
@@ -49,7 +49,6 @@
     
     // 세션에 저장된 권한 관련 정보가 저장된 속성값을 객체로 반환받아 저장
     // => 로그인 사용자에게만 글쓰기 권한 제공
-    /* UsersDTO loginMember=(UsersDTO)session.getAttribute("loginUsers"); */
     
     // 서버의 현재 날짜와 시간이 저장된 Date 객체를 생성하여 SimpleDateFormat 객체에 저장된
     // 패턴의 문자열로 변환하여 저장
@@ -75,7 +74,6 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/qna/qna_list.css">
 </head>
 <body>
-<%--   <% if(loginMember != null)  {//로그인 사용자인 경우 %> --%>
 <div class="container">
 <div id="qna_list">
     <div id="qna_title">QnA(<%=totalQna %>)</div>
@@ -114,23 +112,17 @@
         <% } else { %>
             
             <%-- List 객체의 요소값(QnaDTO 객체)을 차례대로 제공받아 변수에 저장하는 반복문 --%>
-            <% for(QnaDTO qna : qnaList) { %>
-          <%--   <% if (loginUsers.getUsersNo()== qna.getQnaUsersNo()) { %> --%>
+            <% for(QnaDTO qna : qnaList) { 
+                if (qna.getQnaStatus() != 3) { // 삭제된 글은 숨김 처리
+            %>
             <tr>
                 <%-- 게시글의 일련번호 출력 --%>
                 <td><%=displayNum %></td>
+                	 <% displayNum--; %>
                 <%
                     displayNum--; // 게시글의 일련번호를 1씩 감소하여 저장
-                    String currentUrl = request.getRequestURI();
-                    String queryString = request.getQueryString();
-                    String returnUrl = currentUrl + (queryString != null ? "?" + queryString : "");
-
                     String url = request.getContextPath() + "/index.jsp?workgroup=qna&work=qna_detail"
-                        + "&qnaNo=" + qna.getQnaNo()
-                        + "&pageNum=" + pageNum
-                        + "&pageSize=" + pageSize
-                        + "&returnUrl=" + URLEncoder.encode(returnUrl, "UTF-8");
-                        
+                            + "&qnaNo=" + qna.getQnaNo() + "&pageNum=" + pageNum + "&pageSize=" + pageSize;
                 %>
                 
                 <%-- 게시글 유형 출력 --%>
@@ -165,12 +157,12 @@
                         <%=qna.getQnaDate() %>    
                     <% } %>
                 </td>
-             
             </tr>
-       <%--         <% } %> --%>
-          <% } %>
-      
- 
+            <% 
+                } 
+            } 
+            %>
+        <% } %>
     </table>
        
     <%-- 페이지 번호 출력 --%>
@@ -215,15 +207,10 @@
             <a href="<%=myUrl%>&pageNum=<%=startPage+blockSize%>">&raquo;</a>
         <% } else { %>
             <span>&raquo;</span>
-             <% } %>
-             
         <% } %>
     </div>
 </div>
 </div>
- <%-- <% }else{ %>
- 
- <%} %>  --%>
 <script type="text/javascript">
 // 게시글 갯수 변경 이벤트 처리
 document.getElementById("pageSize").addEventListener("change", function() {

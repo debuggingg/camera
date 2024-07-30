@@ -24,10 +24,10 @@
     }
 
     // QnA 상태를 삭제 상태로 업데이트
-    qna.setQnaStatus(0);
+    qna.setQnaStatus(3);
     QnaDAO.getDAO().updateQna(qna);
+    
 
-    // 필요하다면 QnA와 관련된 파일 삭제 (여기서는 파일 업로드 관련 코드가 없으므로 생략)
 
     // 삭제 후 QnA 목록으로 리다이렉트
     request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=qna&work=qna_list"
