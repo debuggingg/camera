@@ -36,7 +36,7 @@ if(users.getUsersNo() != 9){
 <style type="text/css">
 #account-box{width: 1300px; height: 700px;  margin: 0 auto;}
 #acc1-box{width: 200px; height: 600px;  float: left;}
-#acc2-box{width: 1090px; height: 600px;  float: right; overflow-y: auto}
+#acc2-box{width: 1090px; height: 600px;  float: right; overflow-y: auto;}
 
 #acc1-box nav ul{ height: 400px; margin: 0 auto; margin-top: 100px;;}
 #acc1-box nav ul li{ width: 200px; text-align: center; height: 70px; }
