@@ -143,6 +143,7 @@ td {
 }
 </style>
 
+
 <div class="container">
     <h1 class="text-center">QnA 상세보기</h1>
     <table>

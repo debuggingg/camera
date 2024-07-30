@@ -71,7 +71,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">           
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/qna/qna_list.css">
+     <link rel="stylesheet" href="<%=request.getContextPath() %>/qna/qna_list.css">
 </head>
 <body>
 <div class="container">

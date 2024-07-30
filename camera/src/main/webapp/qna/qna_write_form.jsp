@@ -56,7 +56,7 @@
         }
 
         .btn-btn1 {
-            background-color: #f6d365;
+            background-color: gray;
             color: #000;
             width: 150px;
             height: 50px;
@@ -74,7 +74,7 @@
         .btn-btn1:active,
         .btn-btn1:focus,
         .btn-btn1:hover {
-            background-color: #f6d365;
+            background-color: gray;
             color: #000;
             outline: none;
             box-shadow: none;
