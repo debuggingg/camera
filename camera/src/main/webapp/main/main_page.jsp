@@ -33,8 +33,8 @@
 					</div>
 				</div>
 				<div id="textbox">
-					<h1>Yellow Camera</h1>
-					<P>10000000원</P>
+					<h1>키디캡쳐 필름 카메라</h1>
+					<P>₩700,000</P>
 				</div>
 				<div id="add-box">
 					<h1>
@@ -49,8 +49,8 @@
 					</div>
 				</div>
 				<div id="textbox">
-					<h1>Yellow Camera</h1>
-					<P>10000000원</P>
+					<h1>롱위캔드 필름 카메라</h1>
+					<P>₩500,000</P>
 
 				</div>
 				<div id="add-box">
@@ -66,8 +66,8 @@
 					</div>
 				</div>
 				<div id="textbox">
-					<h1>Yellow Camera</h1>
-					<P>10000000원</P>
+					<h1>아그파 필름 카메라</h1>
+					<P>₩800,000</P>
 				</div>
 				<div id="add-box">
 					<h1>
@@ -82,8 +82,8 @@
 					</div>
 				</div>
 				<div id="textbox">
-					<h1>Yellow Camera</h1>
-					<P>10000000원</P>
+					<h1>하이라라 필름 카메라</h1>
+					<P>₩400,000</P>
 				</div>
 				<div id="add-box">
 					<h1>
@@ -108,8 +108,8 @@
 					</div>
 				</div>
 				<div id="textbox">
-					<h1>Film</h1>
-					<P>10000000원</P>
+					<h1>Film11</h1>
+					<P>₩16,000</P>
 				</div>
 				<div id="add-box">
 					<h1>
@@ -120,12 +120,12 @@
 			<div id="product-box">
 				<div id="productimg">
 					<div id="flimimglist2">
-						<img src="img/flimimg2.png" alt="" width="220px">
+						<img src="img/film2.png" alt="" width="340px">
 					</div>
 				</div>
 				<div id="textbox">
-					<h1>Film</h1>
-					<P>10000000원</P>
+					<h1>Film2</h1>
+					<P>₩15,000</P>
 
 				</div>
 				<div id="add-box">
@@ -137,12 +137,12 @@
 			<div id="product-box">
 				<div id="productimg">
 					<div id="flimimglist3">
-						<img src="img/flimimg3.png" alt="" width="200px">
+						<img src="img/film6.png" alt="" width="340px">
 					</div>
 				</div>
 				<div id="textbox">
-					<h1>Film</h1>
-					<P>10000000원</P>
+					<h1>Film6</h1>
+					<P>₩13,000</P>
 				</div>
 				<div id="add-box">
 					<h1>
@@ -153,12 +153,12 @@
 			<div id="product-box">
 				<div id="productimg">
 					<div id="flimimglist4">
-						<img src="img/flimimg4.png" alt="" width="410px">
+						<img src="img/film9.png" alt="" width="340px">
 					</div>
 				</div>
 				<div id="textbox">
-					<h1>Film</h1>
-					<P>10000000원</P>
+					<h1>Film9</h1>
+					<P>₩12,000</P>
 				</div>
 				<div id="add-box">
 					<h1>
