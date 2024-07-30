@@ -29,7 +29,7 @@
 			<div id="product-box">
 				<div id="productimg">
 					<div id="productimglist1">
-						<img src="img/productimg1.png" alt="" width="280px">
+						<img src="img/camera3.png" alt="" width="280px">
 					</div>
 				</div>
 				<div id="textbox">
@@ -45,7 +45,7 @@
 			<div id="product-box">
 				<div id="productimg">
 					<div id="productimglist2">
-						<img src="img/productimg2.png" alt="" width="330px">
+						<img src="img/camera1.png" alt="" width="330px">
 					</div>
 				</div>
 				<div id="textbox">
@@ -62,7 +62,7 @@
 			<div id="product-box">
 				<div id="productimg">
 					<div id="productimglist3">
-						<img src="img/productimg3.png" alt="" width="330px">
+						<img src="img/camera4.png" alt="" width="330px">
 					</div>
 				</div>
 				<div id="textbox">
