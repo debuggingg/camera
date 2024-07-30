@@ -92,7 +92,7 @@ th, td {
 
 th {
     width: 150px;
-    background-color: #f6d365;
+    background-color: gray;
     color: white;
     text-align: center;
     font-family: 'Do Hyeon', sans-serif; 
@@ -122,7 +122,7 @@ td {
 }
 
 .btn {
-    background-color: #f6d365;
+    background-color: gray;
     color: black;
     width: 150px;
     height: 50px;
@@ -139,7 +139,7 @@ td {
 }
 
 .btn:hover {
-    background-color: #e0a800;
+    background-color: #f6d365;
 }
 </style>
 

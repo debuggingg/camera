@@ -164,7 +164,7 @@
 .btn-btn1:active,
 .btn-btn1:focus,
 .btn-btn1:hover {
-    background-color: gray;
+    background-color: #f6d365;
     color: #000;
     outline: none;
     box-shadow: none;

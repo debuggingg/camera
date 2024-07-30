@@ -50,6 +50,7 @@
         if (endRow > totalReview) {
             endRow = totalReview;
         }
+        
 
         List<ReviewDTO> reviewList = reviewDAO.selectReviewListByProduct(prodNo, startRow, endRow);
         String currentDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
@@ -259,72 +260,61 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        function changeMainImage(imageSrc) {
-            document.getElementById('mainImage').src = imageSrc;
+   <script type="text/javascript">
+    function changeMainImage(imageSrc) {
+        document.getElementById('mainImage').src = imageSrc;
+    }
+    function changeQuantity(amount) {
+        var quantityInput = document.getElementById('quantityInput');
+        var currentQuantity = parseInt(quantityInput.value);
+        if (isNaN(currentQuantity)) {
+            currentQuantity = 1;
         }
-        function changeQuantity(amount) {
-            var quantityInput = document.getElementById('quantityInput');
-            var currentQuantity = parseInt(quantityInput.value);
-            if (isNaN(currentQuantity)) {
-                currentQuantity = 1;
-            }
-            var newQuantity = currentQuantity + amount;
-            if (newQuantity > 0) {
-                quantityInput.value = newQuantity;
-                finalQuantity = newQuantity;
-                var productPrice = <%= productPrice %>;
-                var totalPriceElement = document.querySelector('.total-price .price');
-                totalPriceElement.textContent = (newQuantity * productPrice).toLocaleString('ko-KR') + '원';
-                document.getElementById('finalQuantityCart').value = finalQuantity;
-                document.getElementById('finalQuantityPay').value = finalQuantity;
-            }
+        var newQuantity = currentQuantity + amount;
+        if (newQuantity > 0) {
+            quantityInput.value = newQuantity;
+            var productPrice = <%= productPrice %>;
+            var totalPriceElement = document.querySelector('.total-price .price');
+            totalPriceElement.textContent = (newQuantity * productPrice).toLocaleString('ko-KR') + '원';
+            document.getElementById('finalQuantityCart').value = newQuantity;
+            document.getElementById('finalQuantityPay').value = newQuantity;
         }
-        function changePageSize(pageSize) {
-            location.href = "<%= request.getContextPath() %>/index.jsp?workgroup=product&work=product_detail"
-                + "&prodNo=<%= prodNo %>&pageNum=<%= pageNum %>&pageSize=" + pageSize
-                + "&tab=" + document.querySelector('.tab-menu input[type="radio"]:checked').value;
-        }
-        document.addEventListener('DOMContentLoaded', function () {
-            const tabs = document.querySelectorAll('.tab-menu input[type="radio"]');
-            const contents = document.querySelectorAll('.tab-content');
-            const urlParams = new URLSearchParams(window.location.search);
-            const currentTab = urlParams.get('tab') || '1'; // 기본 탭을 '1'로 설정
-            tabs.forEach(tab => {
-                tab.addEventListener('change', function () {
-                    contents.forEach(content => {
-                        content.style.display = 'none';
-                    });
-                    const targetContent = tab.nextElementSibling;
-                    if (targetContent) {
-                        targetContent.style.display = 'block';
-                    }
+    }
+    function changePageSize(pageSize) {
+        location.href = "<%= request.getContextPath() %>/index.jsp?workgroup=product&work=product_detail"
+            + "&prodNo=<%= prodNo %>&pageNum=<%= pageNum %>&pageSize=" + pageSize
+            + "&tab=" + document.querySelector('.tab-menu input[type="radio"]:checked').value;
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+        const tabs = document.querySelectorAll('.tab-menu input[type="radio"]');
+        const contents = document.querySelectorAll('.tab-content');
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentTab = urlParams.get('tab') || '1'; // 기본 탭을 '1'로 설정
+        tabs.forEach(tab => {
+            tab.addEventListener('change', function () {
+                contents.forEach(content => {
+                    content.style.display = 'none';
                 });
+                const targetContent = tab.nextElementSibling;
+                if (targetContent) {
+                    targetContent.style.display = 'block';
+                }
             });
-            document.querySelector(`.tab-menu input[type="radio"][value="${currentTab}"]`).checked = true;
-            document.querySelector('.tab-menu input[type="radio"]:checked').dispatchEvent(new Event('change'));
-            if (currentTab === '3') {
-                const reviewTab = document.querySelector('.tab-menu input[type="radio"][value="3"]').nextElementSibling;
-                if (reviewTab) {
-                    setTimeout(() => {
-                        reviewTab.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }, 500); // 페이지 로드 후 0.5초 후 스크롤
-                }
-            }
         });
+        document.querySelector(`.tab-menu input[type="radio"][value="${currentTab}"]`).checked = true;
+        document.querySelector('.tab-menu input[type="radio"]:checked').dispatchEvent(new Event('change'));
+        if (currentTab === '3') {
+            const reviewTab = document.querySelector('.tab-menu input[type="radio"][value="3"]').nextElementSibling;
+            if (reviewTab) {
+                setTimeout(() => {
+                    reviewTab.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 500); // 페이지 로드 후 0.5초 후 스크롤
+            }
+        }
+    });
+</script>
 
-            document.querySelector(`.tab-menu input[type="radio"][value="${currentTab}"]`).checked = true;
-            document.querySelector('.tab-menu input[type="radio"]:checked').dispatchEvent(new Event('change'));
-            if (currentTab === '3') {
-                const reviewTab = document.querySelector('.tab-menu input[type="radio"][value="3"]').nextElementSibling;
-                if (reviewTab) {
-                    setTimeout(() => {
-                        reviewTab.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }, 500); // 페이지 로드 후 0.5초 후 스크롤
-                }
-            }
-        });
-    </script>
+
 </main>
 </body>
 </html>
