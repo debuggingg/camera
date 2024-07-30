@@ -28,7 +28,7 @@
 	//카트에 담긴 상품이 없으면 처리
 	if (cartList == null || cartList.isEmpty()) {
 	 System.out.println("카트에 담긴 상품이 없습니다.");
-	 response.sendRedirect(request.getContextPath() + "/cart/empty_cart.jsp"); // 카트가 비어있는 페이지로 리다이렉트
+	 
 	 return;
 	}
 

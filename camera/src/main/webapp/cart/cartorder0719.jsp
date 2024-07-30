@@ -300,7 +300,7 @@ html, body {
                         </li>
                         <li>
                             <label>우편번호</label>
-                            <input type="text" name="phone" id="phone" readonly="readonly">
+                            <input type="text" name="zipcode" id="zipcode" size="7" readonly="readonly">
                              <span id="postSearch">우편번호 검색</span>
                         </li>
                         <li>
@@ -414,7 +414,20 @@ $('#newAddressCheckbox').change(function() {
         $("#newAddressForm").hide();
     }
 });
-
+	function validateForm() {
+	    // 결제 수단이 선택되지 않은 경우
+	    if ($('input[name="payment"]:checked').length === 0) {
+	        alert('결제 수단을 선택해야 합니다.');
+	        return false; 
+	    }
+	    return true; 
+	}
+	
+	// 폼의 submit 이벤트에 validateForm 함수 연결
+	$('#joinForm').on('submit', function() {
+	    return validateForm(); 
+	});
+	
     // 우편번호 검색 버튼 클릭 이벤트
     $("#postSearch").click(function() {
         new daum.Postcode({
