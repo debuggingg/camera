@@ -60,7 +60,7 @@ public class QnaDAO extends JdbcDAO {
         try {
             con = getConnection();
 
-            String sql = "SELECT COUNT(*) FROM QNA WHERE QNA_USERS_NO=?";
+            String sql = "SELECT COUNT(*) FROM QNA WHERE QNA_USERS_NO=? and Qna_Status <> 3";
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, no);
             rs = pstmt.executeQuery();
@@ -86,7 +86,7 @@ public class QnaDAO extends JdbcDAO {
         try {
             con = getConnection();
 
-            String sql = "SELECT * FROM (SELECT ROWNUM RN, TEMP.* FROM (SELECT QNA_NO, QNA_USERS_NO, USERS_NAME, QNA_TYPE, QNA_TITLE, QNA_CONTENT, QNA_STATUS, QNA_DATE FROM QNA JOIN USERS ON QNA_USERS_NO = USERS_NO WHERE QNA_USERS_NO = ? ORDER BY QNA_NO DESC) TEMP) WHERE RN BETWEEN ? AND ?";
+            String sql = "SELECT * FROM (SELECT ROWNUM RN, TEMP.* FROM (SELECT QNA_NO, QNA_USERS_NO, USERS_NAME, QNA_TYPE, QNA_TITLE, QNA_CONTENT, QNA_STATUS, QNA_DATE FROM QNA JOIN USERS ON QNA_USERS_NO = USERS_NO WHERE QNA_USERS_NO = ? and Qna_Status <> 3 ORDER BY QNA_NO DESC) TEMP) WHERE RN BETWEEN ? AND ?";
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, usersNo);
             pstmt.setInt(2, startRow);

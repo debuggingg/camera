@@ -120,12 +120,12 @@
                 <form action="<%=request.getContextPath()%>/index.jsp?workgroup=cart&work=addtoorder2" method="post">   
                     <button type="submit" class="uni-btn btn-buy"><span>구매하기</span></button>
                     <input type="hidden" name="prodNo" value="<%= prodNo %>">
-                    <input type="hidden" id="finalQuantity" name="finalQuantity" value="">
+                    <input type="hidden" id="finalQuantityPay" name="finalQuantity" value="">
                 </form>
                 <form action="<%=request.getContextPath()%>/index.jsp?workgroup=cart&work=addtocart2" method="post">   
                     <button type="submit" class="uni-btn btn-basket"><span>장바구니</span></button>
                     <input type="hidden" name="prodNo" value="<%= prodNo %>">
-                    <input type="hidden" id="finalQuantity" name="finalQuantity" value="">
+                    <input type="hidden" id="finalQuantityCart" name="finalQuantity" value="">
                 </form> 
             </div>
         </div>
@@ -148,7 +148,7 @@
             <label for="tab3-2">배송 정보</label>
             <input id="tab3-2" name="tabs-three" type="radio" value="2">
             <div class="tab-content" style="border:1px solid green;  position: relative; left: 500px;">
-              	 <img src="<%=request.getContextPath()%>/product_image/<%= product.getProdImage2() %>" alt="상세 페이지 이미지 <%= productName %>">
+              	 <img src="<%=request.getContextPath()%>/product_image/<%= product.getProdImage3() %>" alt="상세 페이지 이미지 <%= productName %>">
                 
             </div>
         </div>
@@ -276,7 +276,8 @@
                 var productPrice = <%= productPrice %>;
                 var totalPriceElement = document.querySelector('.total-price .price');
                 totalPriceElement.textContent = (newQuantity * productPrice).toLocaleString('ko-KR') + '원';
-                document.getElementById('finalQuantity').value = finalQuantity;
+                document.getElementById('finalQuantityCart').value = finalQuantity;
+                document.getElementById('finalQuantityPay').value = finalQuantity;
             }
         }
         function changePageSize(pageSize) {
