@@ -92,7 +92,7 @@
         <div class="product-images">
             <img id="mainImage" src="<%=request.getContextPath()%>/product_image/<%= productImages[0] %>" alt="메인 이미지 <%= product.getProdName() %>">
             <div class="thumbnail-images">
-                <% for (int i = 0; i < 3; i++) { 
+                <% for (int i = 0; i < 2; i++) { 
                     if (productImages[i] != null && !productImages[i].isEmpty()) { %>
                     <img src="<%=request.getContextPath()%>/product_image/<%= productImages[i] %>" alt="작은 이미지<%= i + 1 %> <%= productName %>" onclick="changeMainImage('<%=request.getContextPath()%>/product_image/<%= productImages[i] %>')">
                 <% }} %>
