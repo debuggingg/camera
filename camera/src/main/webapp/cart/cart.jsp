@@ -174,15 +174,15 @@ margin: 0 auto;
 }
 
 .removeBtn #removeSelectBtn {
-	background-color: #ffc107;
+	background-color: gray;
 	cursor: pointer;
 	
 	padding: 6px 12px;
 }
 .removeBtn #removeSelectBtn:hover {
-	background-color: #45a049;
+	background-color: #f6d365;
 	border: 1px solid rgb(207, 207, 207);
-	
+	transition:1s;
 }
 
 .quantity .upBtn {
