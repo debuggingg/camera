@@ -121,8 +121,16 @@
                 <td><%=displayNum %></td>
                 <%
                     displayNum--; // 게시글의 일련번호를 1씩 감소하여 저장
+                    String currentUrl = request.getRequestURI();
+                    String queryString = request.getQueryString();
+                    String returnUrl = currentUrl + (queryString != null ? "?" + queryString : "");
+
                     String url = request.getContextPath() + "/index.jsp?workgroup=qna&work=qna_detail"
-                            + "&qnaNo=" + qna.getQnaNo() + "&pageNum=" + pageNum + "&pageSize=" + pageSize;
+                        + "&qnaNo=" + qna.getQnaNo()
+                        + "&pageNum=" + pageNum
+                        + "&pageSize=" + pageSize
+                        + "&returnUrl=" + URLEncoder.encode(returnUrl, "UTF-8");
+                        
                 %>
                 
                 <%-- 게시글 유형 출력 --%>
