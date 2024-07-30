@@ -90,7 +90,7 @@
         padding: 10px 20px; /* 내부 패딩 추가 */
         text-decoration: none; /* 밑줄 제거 */
         color: white; /* 글자색 흰색 */
-        background-color: #ffc107; /* 배경색 */
+        background-color: gray; /* 배경색 */
         border-radius: 5px; /* 모서리 둥글게 */
         transition: background-color 0.3s; /* 배경색 전환 효과 */
     }
@@ -103,7 +103,7 @@
 <body>
 <div class="container">
     <div class="content">
-        <h1 class="header">장바구니 추가 결과</h1>
+        <h1 class="header"><h1>장바구니 추가 결과</h1>
        	<p class="text">주문자 아아디: <%= id %>
         <p class="text">상품 번호: <%= prodNo %></p>
         <p class="text">주문 수량: <%= quantity %></p>
