@@ -3,6 +3,7 @@
 <%@page import="xyz.itwill.dto.AdminProductDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+      <%@include file="/security/login_check.jspf" %>
 <%
 if(request.getParameter("no")==null){
 	request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=error&work=error_400");

@@ -2,7 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%-- users number 을 전달받아 users  테이블에 저장된 행을 삭제하고 [users.jsp] 문서를 요청할 
-수 있는 URL 주소로 응답하는 JSP 문서 --%>      
+수 있는 URL 주소로 응답하는 JSP 문서 --%> 
+ <%@include file="/security/login_check.jspf" %>     
 <%
       //비정상적인 요청에 대한 응답 처리
       	if(request.getParameter("no") == null) {

@@ -3,7 +3,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+ <%@include file="/security/login_check.jspf" %>
 <%
  String search=request.getParameter("search");
 if(search == null) {//전달값이 없는 경우 - 조회기능을 사용하지 않은 경우
