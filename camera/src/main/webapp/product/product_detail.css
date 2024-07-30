@@ -515,3 +515,11 @@ a {
 	padding-top: 40px;
 	
 }
+
+.tab-content {
+    display: none;
+}
+
+.tab-menu input[type="radio"]:checked + .tab-content {
+    display: block;
+}

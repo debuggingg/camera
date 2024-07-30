@@ -50,7 +50,6 @@
         if (endRow > totalReview) {
             endRow = totalReview;
         }
-        
 
         List<ReviewDTO> reviewList = reviewDAO.selectReviewListByProduct(prodNo, startRow, endRow);
         String currentDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
@@ -134,133 +133,131 @@
             <a href="#top"><i class="fa fa-arrow-circle-up"></i></a>
         </div>
     </div>
+</div>
+<br>
+<br>
+<div class="tabs">
+    <div class="tab-menu">
+        <label for="tab3-1">상품 정보</label>
+        <input id="tab3-1" name="tabs-three" type="radio" value="1" checked>
+        <div class="tab-content">
+            <img src="<%=request.getContextPath()%>/product_image/<%= product.getProdImage4() %>" alt="상세 페이지 이미지 <%= productName %>">
+        </div>
     </div>
-    <br>
-    <br>
-    <div class="tabs">
-        <div class="tab-menu">
-            <label for="tab3-1">상품 정보</label>
-            <input id="tab3-1" name="tabs-three" type="radio" value="1">
-            <div class="tab-content" style="width: 1800px;">
-                <img src="<%=request.getContextPath()%>/product_image/<%= product.getProdImage4() %>" alt="상세 페이지 이미지 <%= productName %>">
-            </div>
+    <div class="tab-menu">
+        <label for="tab3-2">배송 정보</label>
+        <input id="tab3-2" name="tabs-three" type="radio" value="2">
+        <div class="tab-content">
+             <img src="<%=request.getContextPath()%>/product_image/<%= product.getProdImage3() %>" alt="상세 페이지 이미지 <%= productName %>">
         </div>
-        <div class="tab-menu">
-            <label for="tab3-2">배송 정보</label>
-            <input id="tab3-2" name="tabs-three" type="radio" value="2">
-            <div class="tab-content" style="  width: 1800px;">
-              	 <img src="<%=request.getContextPath()%>/product_image/<%= product.getProdImage3() %>" alt="상세 페이지 이미지 <%= productName %>">
-                
-            </div>
-        </div>
-        <div class="tab-menu">
-            <label for="tab3-3">리뷰</label>
-            <input id="tab3-3" name="tabs-three" type="radio" value="3" <%= request.getParameter("tab") != null && request.getParameter("tab").equals("3") ? "checked" : "" %> >
-            <div class="tab-content" style="width: 1850px;">
-                
-                <div id="review_list">
-                    <div id="review_title">Product Review (<%= totalReview %>)</div>
-                    <div style="text-align: right; font-size: 19px;">
-                        게시글 :
-                        <select id="pageSize" onchange="changePageSize(this.value)">
-                            <option value="10" <% if (pageSize == 10) { %> selected <% } %>>&nbsp;10개&nbsp;</option>
-                            <option value="20" <% if (pageSize == 20) { %> selected <% } %>>&nbsp;20개&nbsp;</option>
-                            <option value="50" <% if (pageSize == 50) { %> selected <% } %>>&nbsp;50개&nbsp;</option>
-                            <option value="100" <% if (pageSize == 100) { %> selected <% } %>>&nbsp;100개&nbsp;</option>
-                        </select>
-                        &nbsp;&nbsp;&nbsp;
-                    </div>
-                    <table class="board">
-                        <thead>
+    </div>
+    <div class="tab-menu">
+        <label for="tab3-3">리뷰</label>
+        <input id="tab3-3" name="tabs-three" type="radio" value="3" <%= request.getParameter("tab") != null && request.getParameter("tab").equals("3") ? "checked" : "" %> >
+        <div class="tab-content">
+            <div id="review_list">
+                <div id="review_title">Product Review (<%= totalReview %>)</div>
+                <div style="text-align: right; font-size: 19px;">
+                    게시글 :
+                    <select id="pageSize" onchange="changePageSize(this.value)">
+                        <option value="10" <% if (pageSize == 10) { %> selected <% } %>>&nbsp;10개&nbsp;</option>
+                        <option value="20" <% if (pageSize == 20) { %> selected <% } %>>&nbsp;20개&nbsp;</option>
+                        <option value="50" <% if (pageSize == 50) { %> selected <% } %>>&nbsp;50개&nbsp;</option>
+                        <option value="100" <% if (pageSize == 100) { %> selected <% } %>>&nbsp;100개&nbsp;</option>
+                    </select>
+                    &nbsp;&nbsp;&nbsp;
+                </div>
+                <table class="board">
+                    <thead>
+                        <tr>
+                            <th width="100">글번호</th>
+                            <th width="500">제목</th>
+                            <th width="100">작성자</th>
+                            <th width="200">작성일</th>
+                        </tr>
+                    </thead>
+                    <% if (totalReview == 0) { %>
+                        <tr>
+                            <td colspan="4">작성된 게시글이 없습니다.</td>
+                        </tr>
+                    <% } else { %>
+                        <% for (ReviewDTO review : reviewList) { %>
                             <tr>
-                                <th width="100">글번호</th>
-                                <th width="500">제목</th>
-                                <th width="100">작성자</th>
-                                <th width="200">작성일</th>
-                            </tr>
-                        </thead>
-                        <% if (totalReview == 0) { %>
-                            <tr>
-                                <td colspan="4">작성된 게시글이 없습니다.</td>
-                            </tr>
-                        <% } else { %>
-                            <% for (ReviewDTO review : reviewList) { %>
-                                <tr>
-                                    <td><%= displayNum %></td>
-                                    <% displayNum--; %>
-                                    <td class="subject">
-                                        <%
-                                        String currentUrl = request.getRequestURI();
-                                        String queryString = request.getQueryString();
-                                        String returnUrl = currentUrl + (queryString != null ? "?" + queryString : "");
-                                        String url = request.getContextPath() + "/index.jsp?workgroup=review&work=review_detail"
-                                            + "&reviewNo=" + review.getReviewNo()
-                                            + "&pageNum=" + pageNum
-                                            + "&pageSize=" + pageSize
-                                            + "&returnUrl=" + URLEncoder.encode(returnUrl, "UTF-8")
-                                            + "&tab=3";
-                                        %>
-                                        <% if (review.getReviewStatus() == 1) { %>
-                                            <a href="<%= url %>"><%= review.getReviewTitle() %></a>
-                                        <% } else if (review.getReviewStatus() == 0) { %>
-                                            <span class="subject_hidden">
-                                                게시글 작성자 또는 관리자에 의해 삭제된 게시글입니다.
-                                            </span>
+                                <td><%= displayNum %></td>
+                                <% displayNum--; %>
+                                <td class="subject">
+                                    <%
+                                    String currentUrl = request.getRequestURI();
+                                    String queryString = request.getQueryString();
+                                    String returnUrl = currentUrl + (queryString != null ? "?" + queryString : "");
+                                    String url = request.getContextPath() + "/index.jsp?workgroup=review&work=review_detail"
+                                        + "&reviewNo=" + review.getReviewNo()
+                                        + "&pageNum=" + pageNum
+                                        + "&pageSize=" + pageSize
+                                        + "&returnUrl=" + URLEncoder.encode(returnUrl, "UTF-8")
+                                        + "&tab=3";
+                                    %>
+                                    <% if (review.getReviewStatus() == 1) { %>
+                                        <a href="<%= url %>"><%= review.getReviewTitle() %></a>
+                                    <% } else if (review.getReviewStatus() == 0) { %>
+                                        <span class="subject_hidden">
+                                            게시글 작성자 또는 관리자에 의해 삭제된 게시글입니다.
+                                        </span>
+                                    <% } %>
+                                </td>
+                                <% if (review.getReviewStatus() != 0) { %>
+                                    <td><%= review.getUsersName() %></td>
+                                    <td>
+                                        <% if (currentDate.equals(review.getReviewDate().substring(0, 10))) { %>
+                                            <%= review.getReviewDate().substring(11) %>
+                                        <% } else { %>
+                                            <%= review.getReviewDate() %>
                                         <% } %>
                                     </td>
-                                    <% if (review.getReviewStatus() != 0) { %>
-                                        <td><%= review.getUsersName() %></td>
-                                        <td>
-                                            <% if (currentDate.equals(review.getReviewDate().substring(0, 10))) { %>
-                                                <%= review.getReviewDate().substring(11) %>
-                                            <% } else { %>
-                                                <%= review.getReviewDate() %>
-                                            <% } %>
-                                        </td>
-                                    <% } else { %>
-                                        <td>&nbsp;</td>
-                                        <td>&nbsp;</td>
-                                    <% } %>
-                                </tr>
-                            <% } %>
+                                <% } else { %>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                <% } %>
+                            </tr>
                         <% } %>
-                    </table>
-                    <% 
-                        int blockSize = 5; // 페이지 블럭 크기
-                        int startPage = (pageNum - 1) / blockSize * blockSize + 1; // 시작 페이지 번호
-                        int endPage = startPage + blockSize - 1; // 종료 페이지 번호
-                        if (endPage > totalPage) {
-                            endPage = totalPage;
-                        }
-                        String myUrl = request.getContextPath() + "/index.jsp?workgroup=product&work=product_detail"
-                                + "&prodNo=" + prodNo
-                                + "&pageSize=" + pageSize
-                                + "&tab=3";
-                    %>
-                    <div id="page_list">
-                        <% if (startPage > blockSize) { %>
-                            <a href="<%= myUrl %>&pageNum=<%= startPage - blockSize %>">[이전]</a>
+                    <% } %>
+                </table>
+                <% 
+                    int blockSize = 5; // 페이지 블럭 크기
+                    int startPage = (pageNum - 1) / blockSize * blockSize + 1; // 시작 페이지 번호
+                    int endPage = startPage + blockSize - 1; // 종료 페이지 번호
+                    if (endPage > totalPage) {
+                        endPage = totalPage;
+                    }
+                    String myUrl = request.getContextPath() + "/index.jsp?workgroup=product&work=product_detail"
+                            + "&prodNo=" + prodNo
+                            + "&pageSize=" + pageSize
+                            + "&tab=3";
+                %>
+                <div id="page_list">
+                    <% if (startPage > blockSize) { %>
+                        <a href="<%= myUrl %>&pageNum=<%= startPage - blockSize %>">[이전]</a>
+                    <% } else { %>
+                        [이전]
+                    <% } %>
+                    <% for (int i = startPage; i <= endPage; i++) { %>
+                        <% if (pageNum != i) { %>
+                            <a href="<%= myUrl %>&pageNum=<%= i %>">[<%= i %>]</a>
                         <% } else { %>
-                            [이전]
+                            [<%= i %>]
                         <% } %>
-                        <% for (int i = startPage; i <= endPage; i++) { %>
-                            <% if (pageNum != i) { %>
-                                <a href="<%= myUrl %>&pageNum=<%= i %>">[<%= i %>]</a>
-                            <% } else { %>
-                                [<%= i %>]
-                            <% } %>
-                        <% } %>
-                        <% if (endPage != totalPage) { %>
-                            <a href="<%= myUrl %>&pageNum=<%= startPage + blockSize %>">[다음]</a>
-                        <% } else { %>
-                            [다음]
-                        <% } %>
-                    </div>
+                    <% } %>
+                    <% if (endPage != totalPage) { %>
+                        <a href="<%= myUrl %>&pageNum=<%= startPage + blockSize %>">[다음]</a>
+                    <% } else { %>
+                        [다음]
+                    <% } %>
                 </div>
             </div>
         </div>
     </div>
-   <script type="text/javascript">
+</div>
+<script type="text/javascript">
     function changeMainImage(imageSrc) {
         document.getElementById('mainImage').src = imageSrc;
     }
@@ -273,11 +270,12 @@
         var newQuantity = currentQuantity + amount;
         if (newQuantity > 0) {
             quantityInput.value = newQuantity;
+            finalQuantity = newQuantity;
             var productPrice = <%= productPrice %>;
             var totalPriceElement = document.querySelector('.total-price .price');
             totalPriceElement.textContent = (newQuantity * productPrice).toLocaleString('ko-KR') + '원';
-            document.getElementById('finalQuantityCart').value = newQuantity;
-            document.getElementById('finalQuantityPay').value = newQuantity;
+            document.getElementById('finalQuantityCart').value = finalQuantity;
+            document.getElementById('finalQuantityPay').value = finalQuantity;
         }
     }
     function changePageSize(pageSize) {
@@ -313,8 +311,6 @@
         }
     });
 </script>
-
-
 </main>
 </body>
 </html>
