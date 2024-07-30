@@ -147,14 +147,14 @@
     <div class="tab-menu">
         <label for="tab3-2">배송 정보</label>
         <input id="tab3-2" name="tabs-three" type="radio" value="2">
-        <div class="tab-content" style="width:1800px;">
+        <div class="tab-content" style="width:1900px;">
              <img src="<%=request.getContextPath()%>/product_image/<%= product.getProdImage3() %>" alt="상세 페이지 이미지 <%= productName %>">
         </div>
     </div>
     <div class="tab-menu">
         <label for="tab3-3">리뷰</label>
         <input id="tab3-3" name="tabs-three" type="radio" value="3" <%= request.getParameter("tab") != null && request.getParameter("tab").equals("3") ? "checked" : "" %> >
-        <div class="tab-content" style="width:1800px;">
+        <div class="tab-content" style="width:1900px;">
             <div id="review_list">
                 <div id="review_title">Product Review (<%= totalReview %>)</div>
                 <div style="text-align: right; font-size: 19px;">
