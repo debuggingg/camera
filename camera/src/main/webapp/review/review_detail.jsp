@@ -50,8 +50,8 @@
 #review_detail {
 	width: 500px;
 	margin: 0 auto;
-
-	height: 350px;
+	
+	height: 550px;
 	margi-top:20px;
 	
 }
@@ -59,8 +59,8 @@
 #review-detail-middle-box{
 	width: 500px;
 	height: 200px;
-	
 	margin-top:60px;
+	
 }
 
 table {

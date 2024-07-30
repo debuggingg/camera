@@ -75,9 +75,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">           
     <link rel="stylesheet" href="<%=request.getContextPath() %>/qna/qna_list.css">
 <style type="text/css">
-#account-box{width: 1100px; height: 600px; border: 1px solid green; margin: 0 auto;}
+#account-box{width: 1300px; height: 700px; border: 1px solid green; margin: 0 auto;}
 #acc1-box{width: 200px; height: 600px; border: 1px solid black; float: left;}
-#acc2-box{width: 895px; height: 600px; border: 1px solid black; float: right;}
+#acc2-box{width: 1090px; height: 600px; border: 1px solid black; float: right;}
 
 #acc1-box nav ul{border: 1px solid red; height: 400px; margin: 0 auto; margin-top: 100px;;}
 #acc1-box nav ul li{border: 1px solid blue; width: 200px; text-align: center; height: 70px; }
@@ -109,7 +109,7 @@
     border-collapse: collapse;
     margin: 10px 0;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    font-size: 14px;
+    font-size: 17px;
 }
 .board th, .board td {
     border: 1px solid #dee2e6;
@@ -148,7 +148,7 @@
 .btn-btn1 {
     background-color: gray;
     color: #000;
-    width: 100px;
+    width: 70px;
     height: 40px;
     font-size: 18px;
     border: none;
@@ -159,12 +159,13 @@
     line-height: 50px;
     font-family: 'Do Hyeon', sans-serif;
     font-weight: 500; 
+    
 }
 
 .btn-btn1:active,
 .btn-btn1:focus,
 .btn-btn1:hover {
-    background-color: #f6d365;
+    background-color: gray;
     color: #000;
     outline: none;
     box-shadow: none;
@@ -190,9 +191,12 @@
     margin: 0 3px;
     text-decoration: none;
     color: #000;
+    font-size: 5px;
 }
 #page_list .current {
     font-weight: bold;
+ 
+   
 }
 
 </style>
@@ -216,7 +220,7 @@
 <div id="qna_list">
     <div id="qna_title">QnA(<%=totalQna %>)</div>
     
-    <div style="text-align: right;">
+    <div style="text-align: right; font-size: 17px;">
         게시글갯수 :
         <select id="pageSize" class="pageSizeform">
             <option value="10" <% if(pageSize==10) { %> selected <% } %>>&nbsp;10개&nbsp;</option>    

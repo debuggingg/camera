@@ -136,10 +136,10 @@ h1, h2 {
 }
 
 .buttonpay {
-    background-color: #4CAF50; /* Green background */
+    background-color: gray; /* Green background */
     color: white;
     padding: 10px 20px;
-    border: 1px solid #4CAF50; /* Green border */
+    border: 1px solid gray; /* Green border */
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
@@ -149,10 +149,7 @@ h1, h2 {
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
-.buttonpay:hover {
-    background-color: #45a049; /* Darker green on hover */
-    border-color: #45a049; /* Darker green border on hover */
-}
+
 
 .button-container {
     text-align: center;
@@ -346,8 +343,8 @@ html, body {
                 </fieldset>
             </div>
             <div class="button-container">
-                <button type="button" class="buttonpay"><a href="index.jsp?workgroup=cart&work=cart" style="color:white;">되돌아가기</a></button>
-                <button type="submit" class="buttonpay">결제하기</button>
+                <button type="button" class="buttonpay"><a href="index.jsp?workgroup=cart&work=cart" style="color:white; background-color: gray">되돌아가기</a></button>
+                <button type="submit" class="buttonpay" style="color:white; background-color: gray">결제하기</button>
             </div>
         </form>
         

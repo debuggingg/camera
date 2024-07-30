@@ -105,7 +105,7 @@
         }
 
         .header {
-            color: #ffc107; /* 제목 색상 */
+            color: gray; /* 제목 색상 */
             margin-bottom: 20px; /* 하단 여백 */
             font-size: 24px; /* 제목 크기 조정 */
             font-weight: bold; /* 굵게 설정 */
@@ -115,7 +115,7 @@
             font-size: 18px; /* 글자 크기 */
             line-height: 1.5; /* 줄 간격 */
             margin: 10px 0; /* 위아래 여백 */
-            color: #555; /* 텍스트 색상 조정 */
+            color: black; /* 텍스트 색상 조정 */
         }
 
    
@@ -132,7 +132,7 @@
         padding: 10px 20px; /* 내부 패딩 추가 */
         text-decoration: none; /* 밑줄 제거 */
         color: white; /* 글자색 흰색 */
-        background-color: #ffc107; /* 배경색 */
+        background-color: gray; /* 배경색 */
         border-radius: 5px; /* 모서리 둥글게 */
         transition: background-color 0.3s; /* 배경색 전환 효과 */
     }

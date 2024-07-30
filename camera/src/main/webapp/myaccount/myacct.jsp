@@ -39,7 +39,7 @@ margin-top: 50px;}
 	width: 500px;
 	margin: 0 auto;
 	text-align: left;
-	background-color: #D4B996;
+	background-color: gray;
 	padding: 20px;
 	border-radius: 10px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -52,7 +52,7 @@ font-size:15px;
 	width: 500px;
 	margin: 0 auto;
 	text-align: left;
-	background-color: #C9AD8D;
+	background-color: gray;
 	padding: 20px;
 	border-radius: 10px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -75,6 +75,7 @@ font-size:15px;
 	font-size: 1.2em; 
 	margin-top: 20px;
 	text-align: center;
+	
 }
 
 #link a {
@@ -160,8 +161,8 @@ font-size:15px;
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=loginUsers.getUsersAddress2() %></p>
 </div>
 <div id="link">
-	<a href="<%=request.getContextPath()%>/index.jsp?workgroup=myaccount&work=password_confirm&action=modify" style="font-size:17px;">[회원정보변경]</a>&nbsp;&nbsp;
-	<a href="<%=request.getContextPath()%>/index.jsp?workgroup=myaccount&work=password_confirm&action=remove" style="font-size:17px;">[회원탈퇴]</a>
+	<a href="<%=request.getContextPath()%>/index.jsp?workgroup=myaccount&work=password_confirm&action=modify" style="font-size:17px; background-color: gray;">[회원정보변경]</a>&nbsp;&nbsp;
+	<a href="<%=request.getContextPath()%>/index.jsp?workgroup=myaccount&work=password_confirm&action=remove" style="font-size:17px; background-color: gray;">[회원탈퇴]</a>
 </div>
 	<div class="date-info">
     <p><strong style="font-size:17px;">회원가입날짜 =</strong> <strong style="font-size:17px;"><%= loginUsers.getUsersSigndate().substring(0, 10) %></strong>
@@ -175,18 +176,5 @@ font-size:15px;
 </div>
 
 
-
-        
-        
         </div>
-
     </div>
-
-
-
-
-
-
-
-
-
