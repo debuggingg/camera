@@ -58,7 +58,7 @@
     
     // 게시글에 출력될 일련번호 시작값을 계산하여 저장
     int displayNum=totalQna-(pageNum-1)*pageSize;
-%>        
+%>       
     
 <!DOCTYPE html>
 <html>
