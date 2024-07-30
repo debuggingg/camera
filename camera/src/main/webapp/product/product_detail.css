@@ -21,6 +21,7 @@ body {
     background-color: #fff;
     border: 1px solid #a6a6a6;
     border-radius: 10px;
+    padding-top: 40px;
 }
 
 .product-images {
@@ -507,4 +508,10 @@ a {
 #page_list {
     font-size: 1.5em;
     margin: 10px;
+}
+
+#container-wrap{
+	width: 100%;
+	padding-top: 40px;
+	
 }

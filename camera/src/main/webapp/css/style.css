@@ -9,10 +9,10 @@ html{font-size: 62.5%;}/* 15px는 1.5rem!! */
 #header-bottom-middle{width: 1600px; height: 100px;  margin: 0 auto;}
 #logo{width: 250px; height: 100px;  float: left; text-align: center;  font-size: 30px; color: orange; }
 #search_button{float: left; width: 400px; height: 70px; margin-left: 50px;  margin-top:20px ;}
-#search-middle{width: 280px; height: 100px;  margin: 0 auto;}
+#search-middle{width: 350px; height: 100px;  margin: 0 auto;}
 #form{ margin: 0 auto; width: 270px; margin-top:5px; }
 #keyword{width:180px; height: 40px; background-color: #f4f4f4; border: 2px solid black; border-radius: 5px;}
-#searchButton{border: 1px solid  #f4f4f4;  font-size: 15px;  color: #f4f4f4;}
+#searchButton{border: 1px solid  #f4f4f4;  font-size: 1px;  color: #f4f4f4; background-color:#f4f4f4; }
 #searchInput{color: black; width: 70px;height:30px; font-size: 15px; border-radius: 5px; background-color: #f4f4f4;}
 
 
