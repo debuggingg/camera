@@ -30,7 +30,7 @@ public class ProductDAO extends JdbcDAO {
             con = getConnection();
 
             String sql = "insert into product (PROD_NO, PROD_TYPE, PROD_NAME, PROD_PRICE, PROD_AMOUNT,"
-            		+ " PROD_IMAGE1, PROD_IMAGE2, PROD_IMAGE3, PROD_IMAGE4, PROD_INFO, PROD_IN_DATE) " +
+                  + " PROD_IMAGE1, PROD_IMAGE2, PROD_IMAGE3, PROD_IMAGE4, PROD_INFO, PROD_IN_DATE) " +
                          "values (PRODUCT_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, sysdate)";
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, product.getProdType());
@@ -62,7 +62,7 @@ public class ProductDAO extends JdbcDAO {
             con = getConnection();
 
             String sql = "select PROD_NO, PROD_TYPE, PROD_NAME, PROD_PRICE, PROD_AMOUNT, PROD_IMAGE1, "
-            		+ "PROD_IMAGE2, PROD_IMAGE3, PROD_IMAGE4, PROD_INFO, PROD_IN_DATE from product where PROD_NO = ?";
+                  + "PROD_IMAGE2, PROD_IMAGE3, PROD_IMAGE4, PROD_INFO, PROD_IN_DATE from product where PROD_NO = ?";
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, prodNo);
 
@@ -344,9 +344,9 @@ public class ProductDAO extends JdbcDAO {
             con = getConnection();
             String sql = "SELECT * FROM (SELECT rownum rn, temp.* FROM (SELECT * FROM product WHERE ";
             if (!keyword.equals("")) {
-                sql += search + " LIKE '%' || ? || '%' ";
+                sql += search + " LIKE '%' || ? || '%' and prod_type <> 0 ";
             } else {
-                sql += "1=1"; // 검색어가 없는 경우 모든 상품
+                sql += "1=1 and prod_type <> 0 "  ; // 검색어가 없는 경우 모든 상품
             }
 
             if (filter != null) {
