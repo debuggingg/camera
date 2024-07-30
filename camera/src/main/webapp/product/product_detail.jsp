@@ -22,16 +22,43 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/product/product_detail.css">
     <title>카메라 상세페이지</title>
-   
+    <%
+        ReviewDAO reviewDAO = ReviewDAO.getDAO();
 
-     
+        int prodNo = Integer.parseInt(request.getParameter("prodNo"));
 
+        int pageNum = 1;
+        if (request.getParameter("pageNum") != null) {
+            pageNum = Integer.parseInt(request.getParameter("pageNum"));
+        }
+
+        int pageSize = 10;
+        if (request.getParameter("pageSize") != null) {
+            pageSize = Integer.parseInt(request.getParameter("pageSize"));
+        }
+
+        int totalReview = reviewDAO.selectTotalReviewByProduct(prodNo);
+        int totalPage = (int) Math.ceil((double) totalReview / pageSize);
+
+        if (pageNum <= 0 || pageNum > totalPage) {
+            pageNum = 1;
+        }
+
+        int startRow = (pageNum - 1) * pageSize + 1;
+        int endRow = pageNum * pageSize;
+
+        if (endRow > totalReview) {
+            endRow = totalReview;
+        }
+
+        List<ReviewDTO> reviewList = reviewDAO.selectReviewListByProduct(prodNo, startRow, endRow);
+        String currentDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        int displayNum = totalReview - (pageNum - 1) * pageSize;
+    %>
 </head>
 <body>
 
 <%
-int prodNo = Integer.parseInt(request.getParameter("prodNo"));     
-
     if(request.getParameter("prodNo") == null) {
         request.setAttribute("returnUrl", request.getContextPath() + "/index.jsp?workgroup=error&work=error_400");
         return;
@@ -113,17 +140,123 @@ int prodNo = Integer.parseInt(request.getParameter("prodNo"));
         <div class="tab-menu">
             <label for="tab3-1">상품 정보</label>
             <input id="tab3-1" name="tabs-three" type="radio" value="1">
-            <div class="tab-content" style="border:1px solid green; margin: 0 auto;">
+            <div class="tab-content" style="border:1px solid green; width: 1900px;">
                 <img src="<%=request.getContextPath()%>/product_image/<%= product.getProdImage4() %>" alt="상세 페이지 이미지 <%= productName %>">
             </div>
         </div>
         <div class="tab-menu">
-            <label for="tab3-2"><a href="index.jsp?workgroup=product&work=product_detail_dry">배송 정보</a></label>
-          
+            <label for="tab3-2">Q & A</label>
+            <input id="tab3-2" name="tabs-three" type="radio" value="2">
+            <div class="tab-content" style="border:1px solid green; width: 1900px;">
+                <h4>Q & A</h4>
+                <p>내용</p>
+            </div>
         </div>
         <div class="tab-menu">
-            <label for="tab3-3"><a href="index.jsp?workgroup=product&work=product_detail_review">Review</a></label>
-          
+            <label for="tab3-3">리뷰</label>
+            <input id="tab3-3" name="tabs-three" type="radio" value="3" <%= request.getParameter("tab") != null && request.getParameter("tab").equals("3") ? "checked" : "" %> >
+            <div class="tab-content" style="border:1px solid green; width: 1900px; ">
+                <h4>리뷰</h4>
+                <div id="review_list">
+                    <div id="review_title">Product Review (<%= totalReview %>)</div>
+                    <div style="text-align: right; font-size: 19px;">
+                        게시글 :
+                        <select id="pageSize" onchange="changePageSize(this.value)">
+                            <option value="10" <% if (pageSize == 10) { %> selected <% } %>>&nbsp;10개&nbsp;</option>
+                            <option value="20" <% if (pageSize == 20) { %> selected <% } %>>&nbsp;20개&nbsp;</option>
+                            <option value="50" <% if (pageSize == 50) { %> selected <% } %>>&nbsp;50개&nbsp;</option>
+                            <option value="100" <% if (pageSize == 100) { %> selected <% } %>>&nbsp;100개&nbsp;</option>
+                        </select>
+                        &nbsp;&nbsp;&nbsp;
+                    </div>
+                    <table class="board">
+                        <thead>
+                            <tr>
+                                <th width="100">글번호</th>
+                                <th width="500">제목</th>
+                                <th width="100">작성자</th>
+                                <th width="200">작성일</th>
+                            </tr>
+                        </thead>
+                        <% if (totalReview == 0) { %>
+                            <tr>
+                                <td colspan="4">작성된 게시글이 없습니다.</td>
+                            </tr>
+                        <% } else { %>
+                            <% for (ReviewDTO review : reviewList) { %>
+                                <tr>
+                                    <td><%= displayNum %></td>
+                                    <% displayNum--; %>
+                                    <td class="subject">
+                                        <%
+                                        String currentUrl = request.getRequestURI();
+                                        String queryString = request.getQueryString();
+                                        String returnUrl = currentUrl + (queryString != null ? "?" + queryString : "");
+                                        String url = request.getContextPath() + "/index.jsp?workgroup=review&work=review_detail"
+                                            + "&reviewNo=" + review.getReviewNo()
+                                            + "&pageNum=" + pageNum
+                                            + "&pageSize=" + pageSize
+                                            + "&returnUrl=" + URLEncoder.encode(returnUrl, "UTF-8")
+                                            + "&tab=3";
+                                        %>
+                                        <% if (review.getReviewStatus() == 1) { %>
+                                            <a href="<%= url %>"><%= review.getReviewTitle() %></a>
+                                        <% } else if (review.getReviewStatus() == 0) { %>
+                                            <span class="subject_hidden">
+                                                게시글 작성자 또는 관리자에 의해 삭제된 게시글입니다.
+                                            </span>
+                                        <% } %>
+                                    </td>
+                                    <% if (review.getReviewStatus() != 0) { %>
+                                        <td><%= review.getUsersName() %></td>
+                                        <td>
+                                            <% if (currentDate.equals(review.getReviewDate().substring(0, 10))) { %>
+                                                <%= review.getReviewDate().substring(11) %>
+                                            <% } else { %>
+                                                <%= review.getReviewDate() %>
+                                            <% } %>
+                                        </td>
+                                    <% } else { %>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    <% } %>
+                                </tr>
+                            <% } %>
+                        <% } %>
+                    </table>
+                    <% 
+                        int blockSize = 5; // 페이지 블럭 크기
+                        int startPage = (pageNum - 1) / blockSize * blockSize + 1; // 시작 페이지 번호
+                        int endPage = startPage + blockSize - 1; // 종료 페이지 번호
+                        if (endPage > totalPage) {
+                            endPage = totalPage;
+                        }
+                        String myUrl = request.getContextPath() + "/index.jsp?workgroup=product&work=product_detail"
+                                + "&prodNo=" + prodNo
+                                + "&pageSize=" + pageSize
+                                + "&tab=3";
+                    %>
+                    <div id="page_list">
+                        <% if (startPage > blockSize) { %>
+                            <a href="<%= myUrl %>&pageNum=<%= startPage - blockSize %>">[이전]</a>
+                        <% } else { %>
+                            [이전]
+                        <% } %>
+                        <% for (int i = startPage; i <= endPage; i++) { %>
+                            <% if (pageNum != i) { %>
+                                <a href="<%= myUrl %>&pageNum=<%= i %>">[<%= i %>]</a>
+                            <% } else { %>
+                                [<%= i %>]
+                            <% } %>
+                        <% } %>
+                        <% if (endPage != totalPage) { %>
+                            <a href="<%= myUrl %>&pageNum=<%= startPage + blockSize %>">[다음]</a>
+                        <% } else { %>
+                            [다음]
+                        <% } %>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script type="text/javascript">
@@ -146,8 +279,50 @@ int prodNo = Integer.parseInt(request.getParameter("prodNo"));
                 document.getElementById('finalQuantity').value = finalQuantity;
             }
         }
-       
-      
+        function changePageSize(pageSize) {
+            location.href = "<%= request.getContextPath() %>/index.jsp?workgroup=product&work=product_detail"
+                + "&prodNo=<%= prodNo %>&pageNum=<%= pageNum %>&pageSize=" + pageSize
+                + "&tab=" + document.querySelector('.tab-menu input[type="radio"]:checked').value;
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.tab-menu input[type="radio"]');
+            const contents = document.querySelectorAll('.tab-content');
+            const urlParams = new URLSearchParams(window.location.search);
+            const currentTab = urlParams.get('tab') || '1'; // 기본 탭을 '1'로 설정
+            tabs.forEach(tab => {
+                tab.addEventListener('change', function () {
+                    contents.forEach(content => {
+                        content.style.display = 'none';
+                    });
+                    const targetContent = tab.nextElementSibling;
+                    if (targetContent) {
+                        targetContent.style.display = 'block';
+                    }
+                });
+            });
+            document.querySelector(`.tab-menu input[type="radio"][value="${currentTab}"]`).checked = true;
+            document.querySelector('.tab-menu input[type="radio"]:checked').dispatchEvent(new Event('change'));
+            if (currentTab === '3') {
+                const reviewTab = document.querySelector('.tab-menu input[type="radio"][value="3"]').nextElementSibling;
+                if (reviewTab) {
+                    setTimeout(() => {
+                        reviewTab.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 500); // 페이지 로드 후 0.5초 후 스크롤
+                }
+            }
+        });
+
+            document.querySelector(`.tab-menu input[type="radio"][value="${currentTab}"]`).checked = true;
+            document.querySelector('.tab-menu input[type="radio"]:checked').dispatchEvent(new Event('change'));
+            if (currentTab === '3') {
+                const reviewTab = document.querySelector('.tab-menu input[type="radio"][value="3"]').nextElementSibling;
+                if (reviewTab) {
+                    setTimeout(() => {
+                        reviewTab.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 500); // 페이지 로드 후 0.5초 후 스크롤
+                }
+            }
+        });
     </script>
 </main>
 </body>
