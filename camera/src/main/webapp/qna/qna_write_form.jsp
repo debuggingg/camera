@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% String returnUrl=request.getParameter("returnUrl"); %>
+   
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -115,6 +117,8 @@
             <button type="button" class="btn-btn1" onclick="location.href='index.jsp?workgroup=qna&work=qna_list'">취소</button>
             <button type="submit" class="btn-btn1">등록</button>
         </div>
+       
+       <input type="hidden" name="returnUrl" value="<%=returnUrl%>">
     </form>
 </div>
 <div id="message" style="color: red;"></div>

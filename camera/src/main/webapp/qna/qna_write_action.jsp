@@ -1,3 +1,5 @@
+<%@page import="java.io.UnsupportedEncodingException"%>
+<%@page import="java.net.URLDecoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="xyz.itwill.dao.QnaDAO" %>
@@ -25,10 +27,24 @@ qna.setQnaContent(content);
 qna.setQnaStatus(0);
 
 int rows = QnaDAO.getDAO().insertQna(qna);
+String returnUrl = request.getParameter("returnUrl");
+if (returnUrl != null) {
+	    try {
+	      returnUrl = URLDecoder.decode(returnUrl, "UTF-8");
+	     
+	    } catch (UnsupportedEncodingException e) {
+	      // Handle the exception if decoding fails
+	      returnUrl = "index.jsp";
+	    }
+	  } else {
+	    returnUrl = "index.jsp";
+	  }
+
+
 
 if (rows > 0) {
    /*  response.sendRedirect("index.jsp?workgroup=qna&work=qna_list"); */
-	request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=qna&work=qna_list");
+	request.setAttribute("returnUrl", returnUrl);
 } else {
     out.println("<script>alert('QnA 작성에 실패했습니다. 다시 시도해 주세요.'); history.back();</script>");
 }

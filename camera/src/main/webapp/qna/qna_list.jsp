@@ -121,7 +121,7 @@
                 	 <% displayNum--; %>
                 <%
                     // 게시글의 일련번호를 1씩 감소하여 저장
-                    String currentUrl = request.getRequestURI();
+                String currentUrl = request.getRequestURI();
                 String queryString = request.getQueryString();
                 String returnUrl = currentUrl + (queryString != null ? "?" + queryString : "");
 
@@ -190,7 +190,11 @@
         }
     %>
     <%
-        String myUrl = request.getContextPath() + "/index.jsp?workgroup=qna&work=qna_list&pageSize=" + pageSize;
+    String currentUrl = request.getRequestURI();
+    String queryString = request.getQueryString();
+    String returnUrl = currentUrl + (queryString != null ? "?" + queryString : "");
+        String myUrl = request.getContextPath() + "/index.jsp?workgroup=qna&work=qna_list&pageSize=" + pageSize
+        		 + "&returnUrl=" + URLEncoder.encode(returnUrl, "UTF-8");
     %>
     
     <div id="page_list">
@@ -224,11 +228,19 @@
 document.getElementById("pageSize").addEventListener("change", function() {
     location.href = "<%= request.getContextPath() %>/index.jsp?workgroup=qna&work=qna_list&pageNum=<%= pageNum %>&pageSize=" + this.value;
 });
+<%-- <%
+String currentUrl = request.getRequestURI();
+String queryString = request.getQueryString();
+String returnUrl = currentUrl + (queryString != null ? "?" + queryString : "");
 
+%> --%>
 // 글쓰기 버튼 클릭 이벤트 처리
 document.getElementById("writeBtn").addEventListener("click", function() {
-    location.href = "<%= request.getContextPath() %>/index.jsp?workgroup=qna&work=qna_write_form";
+    location.href = "<%= request.getContextPath() %>/index.jsp?workgroup=qna&work=qna_write_form"
+    		+"&returnUrl=<%=URLEncoder.encode(returnUrl, "UTF-8")%>";
 });
+
+
 </script>
 </body>
 </html>
