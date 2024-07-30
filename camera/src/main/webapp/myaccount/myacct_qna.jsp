@@ -99,6 +99,101 @@
   #good:hover:after { transform: scaleX(1); }
   #good:after{ transform-origin:100% 50%; }
   #good:after{  transform-origin:  0% 50%; }
+  
+  .container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+}
+.board {
+    border-collapse: collapse;
+    margin: 10px 0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+}
+.board th, .board td {
+    border: 1px solid #dee2e6;
+    padding: 5px;
+    text-align: center;
+}
+.board th {
+    background-color: gray;
+    color: white;
+    font-weight: bold;
+}
+.board tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.board tr:hover {
+    background-color: #e9ecef;
+}
+.hidden-column {
+    display: none;
+}
+.message-box {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: #333;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+.pageSizeform {
+    padding: 3px;
+}
+
+.btn-btn1 {
+    background-color: gray;
+    color: #000;
+    width: 100px;
+    height: 40px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    line-height: 50px;
+    font-family: 'Do Hyeon', sans-serif;
+    font-weight: 500; 
+}
+
+.btn-btn1:active,
+.btn-btn1:focus,
+.btn-btn1:hover {
+    background-color: gray;
+    color: #000;
+    outline: none;
+    box-shadow: none;
+}
+
+
+
+
+#qna_list {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+
+#page_list {
+    text-align: center;
+    margin: 15px 0;
+}
+#page_list a {
+    margin: 0 3px;
+    text-decoration: none;
+    color: #000;
+}
+#page_list .current {
+    font-weight: bold;
+}
 
 </style>
 </head>
@@ -236,7 +331,7 @@
     String currentUrl = request.getRequestURI();
     String queryString = request.getQueryString();
     String returnUrl = currentUrl + (queryString != null ? "?" + queryString : "");
-        String myUrl = request.getContextPath() + "/index.jsp?workgroup=qna&work=qna_list&pageSize=" + pageSize
+        String myUrl = request.getContextPath() + "/index.jsp?workgroup=myaccount&work=myacct_qna&pageSize=" + pageSize
         		 + "&returnUrl=" + URLEncoder.encode(returnUrl, "UTF-8");
     %>
     
@@ -269,7 +364,7 @@
 <script type="text/javascript">
 // 게시글 갯수 변경 이벤트 처리
 document.getElementById("pageSize").addEventListener("change", function() {
-    location.href = "<%= request.getContextPath() %>/index.jsp?workgroup=qna&work=qna_list&pageNum=<%= pageNum %>&pageSize=" + this.value;
+    location.href = "<%= request.getContextPath() %>/index.jsp?workgroup=myaccount&work=myacct_qna&pageNum=<%= pageNum %>&pageSize=" + this.value;
 });
 <%-- <%
 String currentUrl = request.getRequestURI();
