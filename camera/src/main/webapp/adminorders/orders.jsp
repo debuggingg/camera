@@ -43,7 +43,7 @@ List<AdminOrdersDTO> orderList=AdminOrdersDAO.getDAO().selectOrdersList(search,k
   
 
     <div class="container">
-        <h1>관리자 페이지</h1>
+        <h1>관리자 Order 페이지</h1>
         <form action="<%= request.getContextPath()%>/index.jsp?workgroup=adminorders&work=orders" method="post">
         	<select  name="search">
 			<option id="searchInput" value="ORDERS_USERS_NAME" <% if(search.equals("ORDERS_USERS_NAME")) { %>selected<% } %>>&nbsp;ORDERS_USERS_NAME&nbsp;</option>

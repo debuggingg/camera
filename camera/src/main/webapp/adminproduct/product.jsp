@@ -48,7 +48,7 @@ if(users.getUsersNo() != 9){
     <!-- <form id="join" action="<%=request.getContextPath() %>/index.jsp?workgroup=member&work=member_join_action" method="post"> -->
 
     <div class="container">
-        <h1>관리자 페이지</h1>
+        <h1>관리자 Product 페이지</h1>
         <form action="<%= request.getContextPath()%>/index.jsp?workgroup=adminproduct&work=product" method="post">
         	<select  name="search">
 			<option id="searchInput" value="prod_name" <% if(search.equals("prod_name")) { %>selected<% } %>>&nbsp;name&nbsp;</option>

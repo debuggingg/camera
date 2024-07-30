@@ -45,7 +45,7 @@ if(users.getUsersNo() != 9){
     
 
     <div class="container">
-        <h1>관리자 페이지</h1>
+        <h1>관리자 Notice 페이지</h1>
         <form action="<%= request.getContextPath()%>/index.jsp?workgroup=adminnotice&work=notice" method="post">
         	<select  name="search">
 			<option id="searchInput" value="notice_title" <% if(search.equals("notice_title")) { %>selected<% } %>>&nbsp;title&nbsp;</option>
