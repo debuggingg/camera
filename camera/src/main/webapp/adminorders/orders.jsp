@@ -72,6 +72,7 @@ List<AdminOrdersDTO> orderList=AdminOrdersDAO.getDAO().selectOrdersList(search,k
                     <th>orderCartPrice</th>
                     <th>orderDate</th>
                     <th>orderStatus</th>
+                    <td>배송완료</td>
                     <td>상품삭제</td>
                     <td>상품변경</td>
                 </tr>
@@ -98,6 +99,7 @@ List<AdminOrdersDTO> orderList=AdminOrdersDAO.getDAO().selectOrdersList(search,k
                     <td><%=order.getOrdersStatus() %></td>
                     
                   
+                    <td><button type="button" onclick="delivery(<%=order.getOrdersNo() %>);" class="status-button" data-status="300">delivery</button></td>
                     <td><button type="button" onclick="removeProduct(<%=order.getOrdersNo() %>);" class="status-button" data-status="300">삭제</button></td>
                     <td><button type="button" onclick="updateProduct(<%=order.getOrdersNo() %>);"class="status-button" data-status="100">변경</button></td>
                 
@@ -109,7 +111,12 @@ List<AdminOrdersDTO> orderList=AdminOrdersDAO.getDAO().selectOrdersList(search,k
 </div>
     <script type="text/javascript"> 
 
-	
+ 	function delivery(no) {
+ 		if(confirm("주문이 완료 되었나요??")) {
+ 		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=adminorders&work=ordersDelivery&no="+no; 
+ 		}
+ 	}
+
  	function updateProduct(no) {
  		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=adminorders&work=ordersUpdateForm&no="+no;	 
  	}

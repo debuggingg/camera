@@ -90,12 +90,12 @@ font-size:15px;
 #link a:hover {
 	background-color: black;
 } 
-#account-box{width: 1300px; height: 700px; border: 1px solid green; margin: 0 auto;}
-#acc1-box{width: 200px; height: 600px; border: 1px solid black; float: left;}
-#acc2-box{width: 1090px; height: 600px; border: 1px solid black; float: right;}
+#account-box{width: 1300px; height: 700px;  margin: 0 auto;}
+#acc1-box{width: 200px; height: 600px;  float: left;}
+#acc2-box{width: 1090px; height: 600px;  float: right;}
 
-#acc1-box nav ul{border: 1px solid red; height: 400px; margin: 0 auto; margin-top: 100px;;}
-#acc1-box nav ul li{border: 1px solid blue; width: 200px; text-align: center; height: 70px; }
+#acc1-box nav ul{ height: 400px; margin: 0 auto; margin-top: 100px;;}
+#acc1-box nav ul li{ width: 200px; text-align: center; height: 70px; }
 
 #acc1-box nav ul li a{margin-top:20px; font-size: 23px; color: black;}
 
