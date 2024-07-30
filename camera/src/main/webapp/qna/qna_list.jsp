@@ -98,7 +98,6 @@
                 <th width="100">글번호</th>
                 <th width="200">글유형</th>
                 <th width="300">제목</th>
-                <th width="300">내용</th>
                 <th width="100">작성자</th>
                 <th width="100">답변상태</th>
                 <th width="200">작성일</th>
@@ -142,7 +141,7 @@
                 </td>
                 
                 <%-- 게시글 내용 출력 --%>
-                <td class="subject"><%=qna.getQnaContent() %></td>
+               <%-- <td class="subject"><%=qna.getQnaContent() %></td>--%>
 
                 <%-- 게시글 작성자(회원이름) 출력 --%>
                 <td><%=qna.getUsersName() %></td>
