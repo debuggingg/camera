@@ -15,9 +15,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
+    *{list-style: none; text-decoration: none;}
         body {            
             font-family: 'Do Hyeon', sans-serif; 
             color: #333; 
+            
         }
         
         .do-hyeon-regular {

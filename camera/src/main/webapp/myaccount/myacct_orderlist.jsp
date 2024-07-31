@@ -151,9 +151,9 @@ if(users.getUsersNo() != 9){
         <td class="hidden-column"><%= order.getOrdersUsersId() %></td>
         <td class="hidden-column"><%= order.getOrdersProdNo() %></td>
         <td><%= order.getProdName() %></td>
-        <td><%= order.getProdPrice() %></td>
+        <td>₩<%= String.format("%,d", order.getProdPrice())%></td>
         <td><%= order.getOrdersCartAmount() %></td>
-        <td><%= order.getOrdersCartPrice() %></td>
+        <td>₩<%= String.format("%,d", order.getOrdersCartPrice())%></td>
         <% if (order.getOrdersStatus() == 0) { %>
         <td>배송 준비중입니다</td>
         <% } else if (order.getOrdersStatus() == 1) { %>
