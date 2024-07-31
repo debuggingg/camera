@@ -124,7 +124,7 @@
 <div id="message" style="color: red;"></div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-$("#qnaForm").submit(function(event) {
+/* $("#qnaForm").submit(function(event) {
     var isValid = true;
     $("#message").text("");
 
@@ -138,7 +138,19 @@ $("#qnaForm").submit(function(event) {
         $("#message").text("내용을 입력해 주세요.");
         $("#content").focus();
         isValid = false;
-    }
+    } */
+    
+    $("#qnaForm").submit(function() {
+    	if ($("#title").val() == "") {
+    		$("#message").text("제목을 입력해 주세요.");
+    		$("#title").focus();
+    		return false;
+    	}
+    	if ($("#content").val() == "") {
+    		$("#message").text("내용을 입력해 주세요.");
+    		$("#content").focus();
+    		return false;
+    	}
 
 /*     if (isValid) {
         // form 제출
