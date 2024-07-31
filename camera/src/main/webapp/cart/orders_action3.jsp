@@ -25,12 +25,6 @@
 	CartDAO cartDAO = CartDAO.getDAO();
 	List<CartDTO> cartList = cartDAO.selectAllCartList(userId);
 
-	//카트에 담긴 상품이 없으면 처리
-	if (cartList == null || cartList.isEmpty()) {
-	 System.out.println("카트에 담긴 상품이 없습니다.");
-	 
-	 return;
-	}
 
 	//요청 파라미터 가져오기
 String id = loginUsers.getUsersId();
