@@ -25,7 +25,8 @@
 
     // QnA 상태를 삭제 상태로 업데이트
     qna.setQnaStatus(3);
-    QnaDAO.getDAO().updateQna(qna);
+	
+	 QnaDAO.getDAO().removeQna(qna);
     
 
 

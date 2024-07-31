@@ -296,5 +296,31 @@ public class QnaDAO extends JdbcDAO {
         return qna;
     }
     
+    // QNA 정보를 수정하고 수정된 행의 개수를 반환하는 메소드
+    public int removeQna(QnaDTO qna) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        int rows = 0;
+        try {
+            con = getConnection();
+
+            String sql = "UPDATE QNA SET QNA_TYPE = ?, QNA_TITLE = ?, QNA_CONTENT = ?, QNA_STATUS = ? WHERE QNA_NO = ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, qna.getQnaType());
+            pstmt.setString(2, qna.getQnaTitle());
+            pstmt.setString(3, qna.getQnaContent());
+            pstmt.setInt(4, qna.getQnaStatus());
+            pstmt.setInt(5, qna.getQnaNo());
+
+            rows = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("[에러]updateQna() 메소드의 SQL 오류 = " + e.getMessage());
+        } finally {
+            close(con, pstmt);
+        }
+        return rows;
+    }
+
+    
 }
 
