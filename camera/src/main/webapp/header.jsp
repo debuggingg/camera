@@ -54,7 +54,7 @@ if(keyword == null) {
 			<div id="search_middle"> 
    <form action="<%= request.getContextPath()%>/index.jsp?workgroup=product&work=product_list" method="post" id="form">
 
-    <select  name="search" id="searchInput">
+    <select   name="search" id="searchInput">
     <option id="searchInput" value="prod_name" <% if(search.equals("prod_name")) { %>selected<% } %>>&nbsp;name&nbsp;</option>
     </select>
     <input type="text" name="keyword"  value="<%=keyword%>" id="keyword" placeholder="search">

@@ -33,42 +33,59 @@
 	}
 
 	//요청 파라미터 가져오기
-	String id = loginUsers.getUsersId();
-	String name = request.getParameter("name");
-	String phone = request.getParameter("phone");
-	String email = loginUsers.getUsersEmail();
-	String zipcode = request.getParameter("zipcode");
-	String address1 = request.getParameter("address1");
-	String address2 = request.getParameter("address2");
-	String ordersrequest = request.getParameter("ordersrequest");
-	String payment = request.getParameter("payment");
-	int orderscartprice = Integer.parseInt(request.getParameter("price"));
-	int orderstotalprice = Integer.parseInt(request.getParameter("selectedTotal"));
-	//OrdersDAO 객체 생성
-	OrdersDAO ordersDAO = OrdersDAO.getDAO();
-	
-	//카트 리스트를 반복하여 주문 처리
-	for (CartDTO cartItem : cartList) {
-	 OrdersDTO orders = new OrdersDTO();
-	 orders.setOrdersProdNo(cartItem.getCartproductNo());
-	 orders.setOrdersUsersId(userId);
-	 orders.setOrdersUsersName(name);
-	 orders.setOrdersUsersPhone(phone);
-	 orders.setOrdersUsersEmail(email);
-	 orders.setOrdersUsersZipcode(zipcode);
-	 orders.setOrdersUsersAddress1(address1);
-	 orders.setOrdersUsersAddress2(address2);
-	 orders.setOrdersRequest(ordersrequest);
-	 orders.setOrdersPayment(payment);
-	 orders.setOrdersCartAmount(cartItem.getCartQuantity());
-	 orders.setOrdersCartPrice(orderscartprice*cartItem.getCartQuantity());
-	
-	 // OrdersDAO를 통해 주문을 데이터베이스에 저장
-	 ordersDAO.insertOrder(orders);
-	 
-	 
-	 cartDAO.clearCart(loginUsers.getUsersId());
+String id = loginUsers.getUsersId();
+String name = request.getParameter("name");
+String phone = request.getParameter("phone");
+String email = loginUsers.getUsersEmail();
+String zipcode = request.getParameter("zipcode");
+String address1 = request.getParameter("address1");
+String address2 = request.getParameter("address2");
+String ordersrequest = request.getParameter("ordersrequest");
+String payment = request.getParameter("payment");
+
+// 가격을 배열로 가져오고, 각 가격을 int로 변환
+String[] orderscartpriceArray = request.getParameterValues("price");
+int[] orderscartprice = new int[orderscartpriceArray.length];
+for (int i = 0; i < orderscartpriceArray.length; i++) {
+    try {
+        orderscartprice[i] = Integer.parseInt(orderscartpriceArray[i]);
+    } catch (NumberFormatException e) {
+        // 가격이 잘못된 경우 기본값 0으로 설정
+        orderscartprice[i] = 0;
+    }
 }
+
+int orderstotalprice = Integer.parseInt(request.getParameter("selectedTotal"));
+
+// OrdersDAO 객체 생성
+
+// 카트 리스트를 반복하여 주문 처리
+for (int i = 0; i < cartList.size(); i++) {
+    CartDTO cartItem = cartList.get(i);
+
+    OrdersDTO orders = new OrdersDTO();
+    orders.setOrdersProdNo(cartItem.getCartproductNo());
+    orders.setOrdersUsersId(id);
+    orders.setOrdersUsersName(name);
+    orders.setOrdersUsersPhone(phone);
+    orders.setOrdersUsersEmail(email);
+    orders.setOrdersUsersZipcode(zipcode);
+    orders.setOrdersUsersAddress1(address1);
+    orders.setOrdersUsersAddress2(address2);
+    orders.setOrdersRequest(ordersrequest);
+    orders.setOrdersPayment(payment);
+    orders.setOrdersCartAmount(cartItem.getCartQuantity());
+
+    // 배열에서 가격을 가져와서 설정 (각 아이템의 가격을 가져옴)
+    int cartPrice = orderscartprice[i]; // i는 카트 아이템의 인덱스
+    orders.setOrdersCartPrice(cartPrice * cartItem.getCartQuantity());
+
+    // OrdersDAO를 통해 주문을 데이터베이스에 저장
+    OrdersDAO.getDAO().insertOrder(orders);
+}
+
+// 카트 비우기
+cartDAO.clearCart(loginUsers.getUsersId());
 	
 	
 	

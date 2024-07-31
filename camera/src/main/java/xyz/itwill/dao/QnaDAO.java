@@ -10,6 +10,7 @@ import java.util.List;
 
 import xyz.itwill.dto.AdminQnaDTO;
 import xyz.itwill.dto.QnaDTO;
+import xyz.itwill.dto.ReviewDTO;
 
 public class QnaDAO extends JdbcDAO {
     private static QnaDAO _dao;
@@ -186,13 +187,13 @@ public class QnaDAO extends JdbcDAO {
         try {
             con = getConnection();
 
-            String sql = "UPDATE QNA SET QNA_TYPE = ?, QNA_TITLE = ?, QNA_CONTENT = ?, QNA_STATUS = ? WHERE QNA_NO = ?";
+            String sql = "UPDATE QNA SET QNA_TYPE = ?, QNA_TITLE = ?, QNA_CONTENT = ? WHERE QNA_NO = ?";
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, qna.getQnaType());
             pstmt.setString(2, qna.getQnaTitle());
             pstmt.setString(3, qna.getQnaContent());
-            pstmt.setInt(4, qna.getQnaStatus());
-            pstmt.setInt(5, qna.getQnaNo());
+           
+            pstmt.setInt(4, qna.getQnaNo());
 
             rows = pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -294,5 +295,6 @@ public class QnaDAO extends JdbcDAO {
         }
         return qna;
     }
+    
 }
 

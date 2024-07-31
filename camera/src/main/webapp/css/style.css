@@ -13,7 +13,7 @@ html{font-size: 62.5%;}/* 15px는 1.5rem!! */
 #form{ margin: 0 auto; width: 270px; margin-top:5px; }
 #keyword{width:180px; height: 40px; background-color: #f4f4f4; border: 2px solid black; border-radius: 5px;}
 #searchButton{border: 1px solid  #f4f4f4;  font-size: 1px;  color: #f4f4f4; background-color:#f4f4f4; }
-#searchInput{color: black; width: 70px;height:30px; font-size: 15px; border-radius: 5px; background-color: #f4f4f4;}
+#searchInput{color:#f4f4f4; width: 0px;height:0px; font-size: 0px; border-radius: 0px; background-color: #f4f4f4;}
 
 
 

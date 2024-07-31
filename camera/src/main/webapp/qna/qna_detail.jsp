@@ -190,6 +190,7 @@ td {
             <button type="button" class="btn" id="removeBtn">삭제</button>
         <% } %>
         
+        <button type="button" class="btn" id="listBtn1">변경</button>
         <button type="button" class="btn" id="listBtn">글목록</button>
     </div>
 </div>
@@ -203,6 +204,11 @@ $("#removeBtn").click(function() {
     }
 });
 
+$("#listBtn1").click(function() {
+	 location.href="<%= request.getContextPath() %>/index.jsp?workgroup=qna&work=qnaModifyForm"
+         +"&qnaNo=<%= qna.getQnaNo() %>&pageNum=<%= pageNum %>&pageSize=<%= pageSize %>";
+
+});
 $("#listBtn").click(function() {
 	 location.href = "<%= returnUrl %>";
 });
