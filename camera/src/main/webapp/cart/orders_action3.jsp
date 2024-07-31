@@ -163,10 +163,10 @@ cartDAO.clearCart(loginUsers.getUsersId());
     <p class="text">수령인 이름: <%= name %></p>
     <p class="text">이메일 : <%= email %></p>
     <p class="text">전화번호: <%= phone %></p>
-    <p class="text"p>우편번호: <%= zipcode %></p>
+    <p class="text">우편번호: <%= zipcode %></p>
     <p class="text">기본 주소: <%= address1 %></p>
     <p class="text">상세 주소: <%= address2 %></p>
-    <p class="text"p>배송 요청 사항: <%= ordersrequest %></p>
+    <p class="text">배송 요청 사항: <%= ordersrequest %></p>
     <p class="text">결제 수단: <%=payment %></p>    
     <p class="text">총 결제 가격 : <%=orderstotalprice %></p>
     <br>
