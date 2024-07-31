@@ -39,7 +39,7 @@ CartDAO.getDAO().clearCart(usersId);
 String[] cartno = request.getParameterValues("checkP"); 
 String[] q = request.getParameterValues("countInput");
 String[] cartprodNo = request.getParameterValues("prodNo");
-System.out.println(cartprodNo.length);
+
 int[] quantity = new int[q.length];
 
 //수량 배열 초기화
