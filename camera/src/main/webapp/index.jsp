@@ -56,7 +56,6 @@
 		<jsp:include page="<%=headerPath%>" />
 	</div>
 
-
 	<div id="content">
 		<jsp:include page="<%=contentPath%>" />
 		<%
