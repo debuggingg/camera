@@ -18,7 +18,6 @@
         body {            
             font-family: 'Do Hyeon', sans-serif; 
             color: #333; 
-            font-size: 17px;
         }
         
         .do-hyeon-regular {
@@ -34,7 +33,6 @@
         .form-control {
             height: auto; 
             border: 1px solid #333;
-            font-size: small;
         }
         .form-control:focus {
             border-color: #f6d365; 
@@ -76,7 +74,7 @@
         .btn-btn1:active,
         .btn-btn1:focus,
         .btn-btn1:hover {
-            background-color: #f6d365;
+            background-color: gray;
             color: #000;
             outline: none;
             box-shadow: none;
@@ -126,7 +124,7 @@
 <div id="message" style="color: red;"></div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-/* $("#qnaForm").submit(function(event) {
+$("#qnaForm").submit(function(event) {
     var isValid = true;
     $("#message").text("");
 
@@ -140,19 +138,7 @@
         $("#message").text("내용을 입력해 주세요.");
         $("#content").focus();
         isValid = false;
-    } */
-    
-    $("#qnaForm").submit(function() {
-    	if ($("#title").val() == "") {
-    		$("#message").text("제목을 입력해 주세요.");
-    		$("#title").focus();
-    		return false;
-    	}
-    	if ($("#content").val() == "") {
-    		$("#message").text("내용을 입력해 주세요.");
-    		$("#content").focus();
-    		return false;
-    	}
+    }
 
 /*     if (isValid) {
         // form 제출
