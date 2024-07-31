@@ -18,6 +18,7 @@
         body {            
             font-family: 'Do Hyeon', sans-serif; 
             color: #333; 
+            font-size: 17px;
         }
         
         .do-hyeon-regular {
@@ -33,6 +34,7 @@
         .form-control {
             height: auto; 
             border: 1px solid #333;
+            font-size: small;
         }
         .form-control:focus {
             border-color: #f6d365; 

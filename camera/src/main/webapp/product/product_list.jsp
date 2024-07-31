@@ -422,7 +422,7 @@ List<ProductDTO> products = productDAO.searchProducts(keyword, search, startRow,
 <main>
     <h1 style="text-align: center; font-size: 50px;">검색 결과 </h1>
     <section class="product-list">
-        <h2>Camera</h2>
+       
         <div class="filter">
             <a href="<%=request.getContextPath()%>/index.jsp?workgroup=product&work=product_list&filter=new&search=<%= search %>&keyword=<%= keyword %>">신상품</a> | 
             <a href="<%=request.getContextPath()%>/index.jsp?workgroup=product&work=product_list&filter=lowestPrice&search=<%= search %>&keyword=<%= keyword %>">낮은가격</a> | 

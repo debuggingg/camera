@@ -104,7 +104,7 @@
 <div class="container">
     <div class="content">
         <h1 class="header"><h1>장바구니 추가 결과</h1>
-       	<p class="text">주문자 아아디: <%= id %>
+       	<p class="text">주문자 아이디: <%= id %>
         <p class="text">상품 번호: <%= prodNo %></p>
         <p class="text">주문 수량: <%= quantity %></p>
        

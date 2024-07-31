@@ -53,7 +53,7 @@ public class NoticeDAO extends JdbcDAO{
 	}
 
 	// 페이징 관련 정보(시작행번호, 종료행번호)
-	// 전달받아 REVIEW 테이블에 저장된 행에서 조회정보가 포함된 행을 페이징 처리로 검색하여
+	// 전달받아 Notice 테이블에 저장된 행에서 조회정보가 포함된 행을 페이징 처리로 검색하여
 	// 검색된 게시글 목록(List 객체)을 반환하는 메소드 //NEED
 	public List<NoticeDTO> selectNoticeList(int startRow, int endRow) {
 		Connection con = null;
@@ -91,7 +91,7 @@ public class NoticeDAO extends JdbcDAO{
 		return noticeList;
 	}
 
-	// 게시글(ReviewDTO 객체)을 전달받아 REVIEW 테이블의 행으로 삽입하고 삽입행의 갯수를 반환하는 메소드 //NEED
+	// 게시글(NoticeDTO 객체)을 전달받아 REVIEW 테이블의 행으로 삽입하고 삽입행의 갯수를 반환하는 메소드 //NEED
 	public int insertNotice(NoticeDTO notice) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -117,7 +117,7 @@ public class NoticeDAO extends JdbcDAO{
 		return rows;
 	}
 
-	// 게시글(ReviewDTO 객체)을 전달받아 REVIEW 테이블에 저장된 행을 변경하고 변경행의 갯수를 /NEED
+	// 게시글(Notice 객체)을 전달받아 REVIEW 테이블에 저장된 행을 변경하고 변경행의 갯수를 /NEED
 	// 반환하는 메소드
 	public int updateNotice(NoticeDTO notice) {
 		Connection con = null;
@@ -144,7 +144,7 @@ public class NoticeDAO extends JdbcDAO{
 		return rows;
 	}
 	
-	//REVIEW_SEQ 시퀸스의 다음값을 검색하여 반환하는 메소드
+	//Notice_SEQ 시퀸스의 다음값을 검색하여 반환하는 메소드
 		public int selectNoticeNextNum() {
 			Connection con=null;
 			PreparedStatement pstmt=null;
@@ -169,6 +169,8 @@ public class NoticeDAO extends JdbcDAO{
 			return nextNum;
 		}
 		
+		//글번호(int)를 전달받아 Notice 테이블에 저장된 하나의 행을 검색하여 게시글(Notice 객체)로
+		//반환하는 메소드
 		public NoticeDTO selectNoticeByNum(int noticeNo) {
 			Connection con=null;
 			PreparedStatement pstmt=null;

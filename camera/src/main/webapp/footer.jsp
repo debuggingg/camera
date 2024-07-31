@@ -34,11 +34,11 @@
                 </div>
                 <div id="right-box3">
                     <div id="sns1"><span>sns</span></div>
-                    <div id="sns2"><a href="https://www.instagram.com/">Instagram</a></div>
-                    <div id="sns3"><a href="https://www.youtube.com/">YouTube</a></div>
-                    <div id="sns4"><a href="https://www.facebook.com/">Facebook</a></div>
-                    <div id="sns5"><a href="https://www.kakaocorp.com/page/">Kakao</a></div>
-                    <div id="sns6"><a href="https://x.com/">Twitter</a></div>
+                    <div id="sns2"><a href="https://www.instagram.com/"  style="color:black;">Instagram</a></div>
+                    <div id="sns3"><a href="https://www.youtube.com/"  style="color:black;">YouTube</a></div>
+                    <div id="sns4"><a href="https://www.facebook.com/"  style="color:black;">Facebook</a></div>
+                    <div id="sns5"><a href="https://www.kakaocorp.com/page/"  style="color:black;">Kakao</a></div>
+                    <div id="sns6"><a href="https://x.com/"  style="color:black;">Twitter</a></div>
                 </div>
 
             </div>
